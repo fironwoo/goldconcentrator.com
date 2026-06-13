@@ -1,0 +1,99 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { buildCanonicalUrl, SITE, truncateDescription } from '../lib/site';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+  type?: 'website' | 'article';
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description = SITE.description,
+  image = '/images/hero-gravity-plant.webp',
+  noindex = false,
+  type = 'website',
+  structuredData,
+} = Astro.props;
+const pageTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
+const canonical = buildCanonicalUrl(Astro.url.pathname);
+const socialImage = buildCanonicalUrl(image);
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  url: SITE.origin,
+  email: SITE.email,
+  description: SITE.description,
+  areaServed: 'Worldwide',
+  knowsAbout: [
+    'Alluvial gold processing',
+    'Hard rock gold processing',
+    'Gravity concentration',
+    'Tin processing',
+    'Tungsten processing',
+    'Chrome ore processing',
+  ],
+};
+const jsonLd = structuredData
+  ? [organization, ...(Array.isArray(structuredData) ? structuredData : [structuredData])]
+  : [organization];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={truncateDescription(description)} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="Gold Concentrator Knowledge" href="/rss.xml" />
+    <meta name="theme-color" content="#222321" />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={truncateDescription(description)} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={truncateDescription(description)} />
+    <meta name="twitter:image" content={socialImage} />
+    {jsonLd.map((item) => <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />)}
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: fixed;
+    z-index: 100;
+    top: 10px;
+    left: 10px;
+    padding: 10px 14px;
+    color: var(--ink);
+    background: var(--gold-light);
+    transform: translateY(-150%);
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+</style>

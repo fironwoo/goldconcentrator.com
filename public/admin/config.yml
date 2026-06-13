@@ -1,0 +1,134 @@
+backend:
+  name: github
+  repo: fironwoo/goldconcentrator.com
+  branch: main
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+publish_mode: editorial_workflow
+locale: zh_Hans
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: global
+    label: 全局设置
+    files:
+      - name: site
+        label: 网站与联系方式
+        file: src/data/site.json
+        format: json
+        fields:
+          - { name: name, label: 品牌名称, widget: string }
+          - { name: origin, label: 正式网址, widget: string }
+          - { name: email, label: 主询盘邮箱, widget: string }
+          - { name: whatsapp, label: WhatsApp, widget: string, required: false }
+          - { name: location, label: 制造地区, widget: string }
+          - { name: officeAddress, label: 办公或签约地址, widget: string }
+          - { name: youtube, label: YouTube 地址, widget: string, required: false }
+          - { name: description, label: 网站简介, widget: text }
+          - { name: responsePromise, label: 回复承诺, widget: string }
+
+  - name: solutions
+    label: 矿种方案
+    label_singular: 方案
+    folder: src/content/solutions
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { name: title, label: 页面标题, widget: string }
+      - { name: eyebrow, label: 标题上方小字, widget: string }
+      - { name: description, label: 页面摘要, widget: text }
+      - { name: seoTitle, label: SEO 标题, widget: string }
+      - { name: order, label: 排序, widget: number, value_type: int }
+      - name: category
+        label: 页面类型
+        widget: select
+        options:
+          - { label: Gold 主方案, value: gold }
+          - { label: 其他独立矿种, value: mineral }
+          - { label: More 汇总页, value: more }
+      - { name: featured, label: 重点展示, widget: boolean, default: false }
+      - { name: keyVariables, label: 关键变量, widget: list, field: { name: item, label: 变量, widget: string } }
+      - name: processSteps
+        label: 典型流程阶段
+        widget: list
+        fields:
+          - { name: title, label: 阶段名称, widget: string }
+          - { name: description, label: 阶段说明, widget: text }
+      - name: equipmentRoles
+        label: 设备作用
+        widget: list
+        fields:
+          - { name: title, label: 设备或功能, widget: string }
+          - { name: description, label: 作用说明, widget: text }
+      - name: faq
+        label: 常见问题
+        widget: list
+        fields:
+          - { name: question, label: 问题, widget: string }
+          - { name: answer, label: 回答, widget: text }
+      - { name: body, label: 正文, widget: markdown }
+
+  - name: projects
+    label: 项目案例
+    label_singular: 案例
+    folder: src/content/projects
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: 案例标题, widget: string }
+      - { name: description, label: 摘要, widget: text }
+      - { name: country, label: 国家或保密说明, widget: string }
+      - { name: mineral, label: 矿种, widget: string }
+      - { name: capacity, label: 处理量, widget: string }
+      - { name: process, label: 流程概述, widget: string }
+      - { name: publishedAt, label: 发布日期, widget: datetime, time_format: false }
+      - { name: featured, label: 首页展示, widget: boolean, default: false }
+      - { name: verified, label: 证据已核验并允许收录, widget: boolean, default: false }
+      - { name: evidenceNote, label: 证据说明, widget: text }
+      - { name: body, label: 正文, widget: markdown }
+
+  - name: knowledge
+    label: 技术文章
+    label_singular: 文章
+    folder: src/content/knowledge
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: 标题, widget: string }
+      - { name: description, label: 摘要与 SEO 描述, widget: text }
+      - { name: category, label: 分类, widget: string }
+      - { name: publishedAt, label: 发布日期, widget: datetime, time_format: false }
+      - { name: updatedAt, label: 更新日期, widget: datetime, time_format: false, required: false }
+      - { name: featured, label: 重点文章, widget: boolean, default: false }
+      - { name: youtubeUrl, label: 关联 YouTube, widget: string, required: false }
+      - { name: body, label: 正文, widget: markdown }
+
+  - name: videos
+    label: 视频
+    label_singular: 视频
+    folder: src/content/videos
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: 标题, widget: string }
+      - { name: description, label: 摘要, widget: text }
+      - { name: mineral, label: 关联矿种, widget: string }
+      - { name: youtubeUrl, label: YouTube 地址, widget: string }
+      - { name: publishedAt, label: 发布日期, widget: datetime, time_format: false }
+      - { name: featured, label: 重点展示, widget: boolean, default: false }
+      - { name: draft, label: 草稿, widget: boolean, default: true }
+      - { name: body, label: 补充说明, widget: markdown, required: false }

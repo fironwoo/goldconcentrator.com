@@ -1,0 +1,245 @@
+---
+import Logo from './Logo.astro';
+
+const solutions = [
+  ['Alluvial Gold', '/solutions/alluvial-gold/'],
+  ['Hard Rock Gold', '/solutions/hard-rock-gold/'],
+  ['Tin', '/solutions/tin/'],
+  ['Tungsten', '/solutions/tungsten/'],
+  ['Chrome', '/solutions/chrome/'],
+  ['More Minerals', '/solutions/more-minerals/'],
+];
+---
+
+<header class="site-header" data-header>
+  <div class="container header-inner">
+    <Logo light />
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span>Menu</span>
+      <i></i>
+      <i></i>
+    </button>
+    <nav id="site-nav" aria-label="Primary navigation">
+      <div class="nav-group">
+        <button class="nav-trigger" type="button" aria-expanded="false">
+          Solutions <span>+</span>
+        </button>
+        <div class="dropdown">
+          {solutions.map(([label, href]) => <a href={href}>{label}</a>)}
+        </div>
+      </div>
+      <a href="/testing-process-design/">Testing & Process Design</a>
+      <a href="/projects/">Projects</a>
+      <a href="/knowledge/">Knowledge</a>
+      <a href="/manufacturing-delivery/">Manufacturing & Delivery</a>
+      <a href="/about/">About</a>
+      <a class="button header-cta" href="/assess-my-project/">Assess My Project</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menu = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = document.querySelector<HTMLElement>('#site-nav');
+  const trigger = document.querySelector<HTMLButtonElement>('.nav-trigger');
+  const dropdown = document.querySelector<HTMLElement>('.dropdown');
+
+  menu?.addEventListener('click', () => {
+    const open = menu.getAttribute('aria-expanded') === 'true';
+    menu.setAttribute('aria-expanded', String(!open));
+    nav?.classList.toggle('is-open', !open);
+  });
+
+  trigger?.addEventListener('click', () => {
+    const open = trigger.getAttribute('aria-expanded') === 'true';
+    trigger.setAttribute('aria-expanded', String(!open));
+    dropdown?.classList.toggle('is-open', !open);
+  });
+</script>
+
+<style>
+  .site-header {
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(rgba(20, 21, 20, 0.84), rgba(20, 21, 20, 0.52));
+    backdrop-filter: blur(12px);
+  }
+
+  .header-inner {
+    display: flex;
+    min-height: 78px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    color: rgba(255, 253, 248, 0.84);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  nav > a:not(.header-cta),
+  .nav-trigger {
+    transition: color 160ms ease;
+  }
+
+  nav > a:not(.header-cta):hover,
+  .nav-trigger:hover {
+    color: var(--gold-light);
+  }
+
+  .nav-group {
+    position: relative;
+  }
+
+  .nav-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 24px 0;
+    border: 0;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  .dropdown {
+    position: absolute;
+    top: calc(100% - 7px);
+    left: -20px;
+    display: grid;
+    width: 230px;
+    padding: 12px;
+    border-top: 2px solid var(--gold);
+    background: var(--charcoal);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease;
+  }
+
+  .dropdown a {
+    padding: 10px 12px;
+  }
+
+  .dropdown a:hover {
+    color: var(--gold-light);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-group:hover .dropdown,
+  .dropdown.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .header-cta {
+    min-height: 40px;
+    padding: 9px 14px;
+    font-size: 0.66rem;
+  }
+
+  .menu-toggle {
+    display: none;
+    border: 0;
+    color: var(--white);
+    background: transparent;
+  }
+
+  @media (max-width: 1100px) {
+    nav {
+      gap: 13px;
+      font-size: 0.64rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .site-header {
+      position: absolute;
+    }
+
+    .menu-toggle {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-content: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      position: absolute;
+      overflow: hidden;
+      width: 1px;
+      height: 1px;
+      clip: rect(0, 0, 0, 0);
+    }
+
+    .menu-toggle i {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    nav {
+      position: absolute;
+      top: 78px;
+      right: 0;
+      left: 0;
+      display: none;
+      align-items: stretch;
+      gap: 0;
+      padding: 18px 20px 24px;
+      background: var(--charcoal);
+    }
+
+    nav.is-open {
+      display: grid;
+    }
+
+    nav > a:not(.header-cta),
+    .nav-trigger {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      padding: 13px 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.78rem;
+    }
+
+    .dropdown {
+      position: static;
+      display: none;
+      width: auto;
+      padding: 4px 0 10px 16px;
+      border: 0;
+      box-shadow: none;
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+    }
+
+    .dropdown.is-open {
+      display: grid;
+    }
+
+    .header-cta {
+      margin-top: 16px;
+    }
+  }
+</style>

@@ -1,0 +1,11 @@
+name = "goldconcentrator-inquiry-cleanup"
+main = "cleanup.ts"
+compatibility_date = "2026-06-13"
+
+[triggers]
+crons = ["17 2 * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "goldconcentrator-inquiries"
+database_id = "17cc4cb2-b870-4bb5-bf2f-154591a55f9e"

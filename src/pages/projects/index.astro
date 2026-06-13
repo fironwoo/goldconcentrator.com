@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ProjectCta from '../../components/ProjectCta.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+---
+
+<BaseLayout
+  title="Mineral Processing Project Case Studies"
+  description="Anonymized project structures showing ore conditions, capacity, process decisions and the evidence required before performance data is published."
+>
+  <header class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Projects' }]} />
+      <span class="eyebrow">Anonymized and evidence-led</span>
+      <h1>Projects</h1>
+      <p>
+        We publish country, mineral, capacity, the original process problem and the selected route.
+        Customer identities and exact mine locations remain private unless written permission is
+        provided.
+      </p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container card-grid">
+      {projects.map((project) => (
+        <article class="surface-card">
+          <ul class="meta-list">
+            <li class="tag">{project.data.country}</li>
+            <li class="tag">{project.data.mineral}</li>
+            <li class="tag">{project.data.capacity}</li>
+          </ul>
+          <h2>{project.data.title}</h2>
+          <p>{project.data.description}</p>
+          <a class="text-link" href={`/projects/${project.id}/`}>View case structure</a>
+        </article>
+      ))}
+    </div>
+  </section>
+  <ProjectCta />
+</BaseLayout>
+
+<style>
+  h2 {
+    margin: 28px 0 12px;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+</style>

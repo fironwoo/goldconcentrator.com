@@ -1,0 +1,123 @@
+---
+import Logo from './Logo.astro';
+import { SITE } from '../lib/site';
+---
+
+<footer>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <Logo light />
+      <p>
+        Ore-led flowsheet design, gravity concentration testing and coordinated equipment delivery
+        for practical mineral processing projects.
+      </p>
+    </div>
+    <div>
+      <h2>Solutions</h2>
+      <a href="/solutions/alluvial-gold/">Alluvial Gold</a>
+      <a href="/solutions/hard-rock-gold/">Hard Rock Gold</a>
+      <a href="/solutions/tin/">Tin</a>
+      <a href="/solutions/tungsten/">Tungsten</a>
+      <a href="/solutions/chrome/">Chrome</a>
+    </div>
+    <div>
+      <h2>Company</h2>
+      <a href="/testing-process-design/">Testing & Process Design</a>
+      <a href="/projects/">Projects</a>
+      <a href="/knowledge/">Knowledge</a>
+      <a href="/manufacturing-delivery/">Manufacturing & Delivery</a>
+      <a href="/about/">About</a>
+    </div>
+    <div>
+      <h2>Start a project</h2>
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      <span>Manufacturing base: Jiangxi, China</span>
+      <a class="button" href="/assess-my-project/">Assess My Project</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© {new Date().getFullYear()} Gold Concentrator</span>
+    <div>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding: 74px 0 28px;
+    color: var(--white);
+    background:
+      linear-gradient(90deg, rgba(211, 154, 56, 0.04) 1px, transparent 1px),
+      var(--ink);
+    background-size: 40px 40px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr 1fr 1.1fr;
+    gap: 50px;
+  }
+
+  .footer-brand p {
+    max-width: 340px;
+    color: rgba(255, 253, 248, 0.6);
+    font-size: 0.9rem;
+  }
+
+  h2 {
+    margin: 0 0 18px;
+    color: var(--gold-light);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .footer-grid > div:not(.footer-brand) {
+    display: grid;
+    align-content: start;
+    gap: 9px;
+  }
+
+  a,
+  span {
+    color: rgba(255, 253, 248, 0.68);
+    font-size: 0.82rem;
+  }
+
+  a:hover {
+    color: var(--gold-light);
+  }
+
+  .button {
+    width: fit-content;
+    margin-top: 14px;
+    color: var(--ink);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 58px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-bottom div {
+    display: flex;
+    gap: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

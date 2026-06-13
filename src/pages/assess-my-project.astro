@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+---
+
+<BaseLayout
+  title="Assess My Mineral Processing Project"
+  description="Submit the ore type, target capacity, project stage and known test data for an initial mineral processing project review within one business day."
+>
+  <header class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Assess My Project' }]} />
+      <span class="eyebrow">Initial review at no charge</span>
+      <h1>Assess My Project</h1>
+      <p>
+        Tell us what you are processing and what is already known. We will identify the likely route,
+        missing information and the next practical step.
+      </p>
+    </div>
+  </header>
+  <section class="section assessment">
+    <div class="container assessment-grid">
+      <InquiryForm />
+      <aside>
+        <span class="eyebrow">What happens next</span>
+        <ol>
+          <li><strong>Human review</strong><span>A technical team member reads the submission.</span></li>
+          <li><strong>Missing-data check</strong><span>We identify what prevents a responsible recommendation.</span></li>
+          <li><strong>Initial direction</strong><span>You receive the likely route and recommended next step.</span></li>
+          <li><strong>Detailed scope</strong><span>Testing, calculations or drawings are quoted separately when needed.</span></li>
+        </ol>
+        <p>
+          We do not publish prices because process scope, equipment duty and delivery conditions
+          change the quotation.
+        </p>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .assessment {
+    background: var(--paper-deep);
+  }
+
+  .assessment-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: start;
+    gap: 34px;
+  }
+
+  aside {
+    padding: 28px;
+    color: var(--white);
+    background: var(--charcoal);
+  }
+
+  aside .eyebrow {
+    color: var(--gold-light);
+  }
+
+  ol {
+    margin: 8px 0 24px;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    padding: 17px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  li strong,
+  li span {
+    display: block;
+  }
+
+  li strong {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+
+  li span,
+  aside p {
+    color: rgba(255, 253, 248, 0.62);
+    font-size: 0.78rem;
+  }
+
+  @media (max-width: 900px) {
+    .assessment-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

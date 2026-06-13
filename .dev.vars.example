@@ -1,0 +1,5 @@
+TURNSTILE_SECRET_KEY=replace_with_turnstile_secret
+RESEND_API_KEY=replace_with_resend_api_key
+INQUIRY_FROM_EMAIL=Gold Concentrator <website@goldconcentrator.com>
+INQUIRY_TO_EMAIL=inquiry@goldconcentrator.com
+IP_HASH_SALT=replace_with_a_long_random_value

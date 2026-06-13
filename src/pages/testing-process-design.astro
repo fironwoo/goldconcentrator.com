@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ProjectCta from '../components/ProjectCta.astro';
+---
+
+<BaseLayout
+  title="Gravity Test Work & Mineral Processing Flowsheet Design"
+  description="Representative sampling, gravity amenability tests, size-by-size loss analysis and process design before equipment selection."
+>
+  <header class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Testing & Process Design' }]} />
+      <span class="eyebrow">Evidence before equipment</span>
+      <h1>Testing & Process Design</h1>
+      <p>
+        Our stable in-house capability focuses on gravity amenability and process-direction testing.
+        Additional flotation or leaching work is coordinated when the ore requires it.
+      </p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container content-shell">
+      <article class="prose">
+        <h2>Representative samples come first</h2>
+        <p>
+          A precise laboratory result from a biased sample is still misleading. Sampling should
+          represent the ore types, size ranges and variability that the future plant will receive.
+          We review the sampling context before interpreting a test result.
+        </p>
+        <h2>Gravity amenability program</h2>
+        <p>
+          The exact program depends on the mineral, but it can include feed preparation, size
+          distribution, staged gravity separation, concentrate cleaning and size-by-size tailings
+          checks. The objective is to learn where value reports and what preparation the separation
+          requires.
+        </p>
+        <h2>From test result to flowsheet</h2>
+        <p>
+          A laboratory machine does not become a plant by increasing its dimensions. Plant design
+          adds feed variability, mass flow, water balance, circulating load, sampling points,
+          dewatering, tailings and operator control.
+        </p>
+        <blockquote>
+          Initial project assessment is free. Detailed testing, calculations, drawings and equipment
+          documentation are scoped according to the work required and may be credited against a
+          complete equipment order.
+        </blockquote>
+      </article>
+      <aside class="sidebar">
+        <span class="eyebrow">Sample information</span>
+        <h2>Before shipping ore</h2>
+        <p>
+          Contact us first to agree sample mass, particle size, packaging, customs description and
+          the questions the test must answer.
+        </p>
+        <a class="button" href="/assess-my-project/">Plan the test program</a>
+      </aside>
+    </div>
+  </section>
+  <ProjectCta title="Let the ore answer the first design question." />
+</BaseLayout>

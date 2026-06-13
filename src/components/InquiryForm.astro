@@ -1,0 +1,503 @@
+---
+const turnstileSiteKey =
+  import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
+---
+
+<form class="inquiry-form" data-inquiry-form novalidate>
+  <div class="form-progress" aria-label="Form progress">
+    <span class="is-active" data-progress="0">1. Project</span>
+    <span data-progress="1">2. Ore & scope</span>
+    <span data-progress="2">3. Contact</span>
+  </div>
+
+  <div class="form-alert" data-form-alert role="alert" hidden></div>
+
+  <fieldset data-step="0">
+    <legend>What are you processing?</legend>
+    <p class="step-intro">
+      Choose the closest route. “Other” is suitable for tantalum-niobium, manganese,
+      ilmenite, zircon and other dense minerals.
+    </p>
+    <div class="choice-grid">
+      {
+        [
+          ['alluvial_gold', 'Alluvial Gold', 'Placer, river, beach or eluvial material'],
+          ['hard_rock_gold', 'Hard Rock Gold', 'Primary, weathered or sulphide-bearing ore'],
+          ['tin', 'Tin', 'Cassiterite-bearing ore or tailings'],
+          ['tungsten', 'Tungsten', 'Wolframite, scheelite or mixed ore'],
+          ['chrome', 'Chrome', 'Chromite ore or historical tailings'],
+          ['other', 'Other Mineral', 'Another gravity concentration opportunity'],
+        ].map(([value, title, description]) => (
+          <label class="choice">
+            <input type="radio" name="mineral" value={value} required />
+            <span><strong>{title}</strong><small>{description}</small></span>
+          </label>
+        ))
+      }
+    </div>
+    <div class="form-grid">
+      <label>
+        Target capacity
+        <select name="capacity" required>
+          <option value="">Select a range</option>
+          <option>Below 5 TPH</option>
+          <option>5-20 TPH</option>
+          <option>20-50 TPH</option>
+          <option>50-100 TPH</option>
+          <option>Above 100 TPH</option>
+          <option>Not sure yet</option>
+        </select>
+      </label>
+      <label>
+        Project country
+        <input name="country" autocomplete="country-name" required placeholder="e.g. Ghana" />
+      </label>
+      <label>
+        Current project stage
+        <select name="projectStage" required>
+          <option value="">Select the closest stage</option>
+          <option>Early exploration</option>
+          <option>Sampling and testing</option>
+          <option>Planning and supplier evaluation</option>
+          <option>Existing operation improvement</option>
+          <option>Ready to purchase</option>
+        </select>
+      </label>
+      <label>
+        Approximate budget <small>Optional</small>
+        <select name="budget">
+          <option>Not sure yet</option>
+          <option>Below USD 25,000</option>
+          <option>USD 25,000-75,000</option>
+          <option>USD 75,000-200,000</option>
+          <option>Above USD 200,000</option>
+        </select>
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset data-step="1" hidden>
+    <legend>What do you know about the ore?</legend>
+    <p class="step-intro">
+      Estimates are acceptable. We use these answers to identify missing data, not to force a final
+      flowsheet from incomplete information.
+    </p>
+    <div class="form-grid">
+      <label>
+        Ore or material type
+        <input name="oreType" placeholder="e.g. sticky alluvial clay or quartz vein ore" />
+      </label>
+      <label>
+        Known grade or assay
+        <input name="grade" placeholder="e.g. 2.4 g/t or not tested" />
+      </label>
+      <label>
+        Largest or typical feed size
+        <input name="feedSize" placeholder="e.g. below 80 mm" />
+      </label>
+      <label>
+        Water and power notes
+        <input name="utilities" placeholder="e.g. borehole water, diesel generator" />
+      </label>
+    </div>
+    <label>
+      Project description
+      <textarea
+        name="message"
+        rows="7"
+        required
+        placeholder="Describe the feed, current problem, desired product and any test work already completed."
+      ></textarea>
+    </label>
+    <div class="attachment-note">
+      <strong>Have assays, photos or video?</strong>
+      Submit this form first. The confirmation page will show the project email for sending files.
+    </div>
+  </fieldset>
+
+  <fieldset data-step="2" hidden>
+    <legend>Where should we reply?</legend>
+    <p class="step-intro">
+      A technical team member will review the submission within one business day.
+    </p>
+    <div class="form-grid">
+      <label>
+        Your name
+        <input name="name" autocomplete="name" required />
+      </label>
+      <label>
+        Company <small>Optional</small>
+        <input name="company" autocomplete="organization" />
+      </label>
+      <label>
+        Email
+        <input name="email" type="email" autocomplete="email" required />
+      </label>
+      <label>
+        WhatsApp <small>Recommended</small>
+        <input name="whatsapp" autocomplete="tel" placeholder="+country code" />
+      </label>
+    </div>
+    <label class="consent">
+      <input name="consent" type="checkbox" value="true" required />
+      <span>
+        I agree that Gold Concentrator may use this information to review and respond to my project
+        enquiry. See the <a href="/privacy/">privacy policy</a>.
+      </span>
+    </label>
+    <div
+      class="cf-turnstile"
+      data-sitekey={turnstileSiteKey}
+      data-theme="light"
+      data-response-field-name="cf-turnstile-response"
+    ></div>
+  </fieldset>
+
+  <div class="form-actions">
+    <button class="button button--back" type="button" data-back hidden>Back</button>
+    <button class="button" type="button" data-next>Continue</button>
+    <button class="button" type="submit" data-submit hidden>Submit project</button>
+  </div>
+</form>
+
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-inquiry-form]');
+
+  if (form) {
+    const steps = Array.from(form.querySelectorAll<HTMLFieldSetElement>('[data-step]'));
+    const progress = Array.from(form.querySelectorAll<HTMLElement>('[data-progress]'));
+    const back = form.querySelector<HTMLButtonElement>('[data-back]');
+    const next = form.querySelector<HTMLButtonElement>('[data-next]');
+    const submit = form.querySelector<HTMLButtonElement>('[data-submit]');
+    const alert = form.querySelector<HTMLElement>('[data-form-alert]');
+    let currentStep = 0;
+
+    const showStep = (index: number) => {
+      currentStep = index;
+      steps.forEach((step, stepIndex) => {
+        step.hidden = stepIndex !== index;
+      });
+      progress.forEach((item, stepIndex) => {
+        item.classList.toggle('is-active', stepIndex <= index);
+      });
+      if (back) back.hidden = index === 0;
+      if (next) next.hidden = index === steps.length - 1;
+      if (submit) submit.hidden = index !== steps.length - 1;
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    const validateStep = () => {
+      const required = Array.from(
+        steps[currentStep].querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
+          '[required]',
+        ),
+      );
+      for (const field of required) {
+        if (!field.checkValidity()) {
+          field.reportValidity();
+          return false;
+        }
+      }
+      return true;
+    };
+
+    next?.addEventListener('click', () => {
+      if (validateStep()) showStep(Math.min(currentStep + 1, steps.length - 1));
+    });
+
+    back?.addEventListener('click', () => {
+      showStep(Math.max(0, currentStep - 1));
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!validateStep() || !submit) return;
+
+      submit.disabled = true;
+      submit.textContent = 'Submitting…';
+      if (alert) alert.hidden = true;
+
+      const data = new FormData(form);
+      const payload: Record<string, string | boolean> = Object.fromEntries(
+        data.entries(),
+      ) as Record<string, string>;
+      payload.consent = data.get('consent') === 'true';
+      payload.turnstileToken = String(data.get('cf-turnstile-response') || '');
+
+      try {
+        const response = await fetch('/api/inquiry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.errors?.join(' ') || result.message || 'Submission failed.');
+        }
+
+        form.innerHTML = `
+          <div class="success">
+            <span class="eyebrow">Project received</span>
+            <h2>Thank you. Your project is in the review queue.</h2>
+            <p>We will review it within one business day. Send assays, ore photos or videos to
+              <a href="mailto:inquiry@goldconcentrator.com">inquiry@goldconcentrator.com</a>
+              and include the reference <strong>${result.reference}</strong>.
+            </p>
+          </div>`;
+      } catch (error) {
+        if (alert) {
+          alert.textContent =
+            error instanceof Error
+              ? error.message
+              : 'The form could not be submitted. Please email inquiry@goldconcentrator.com.';
+          alert.hidden = false;
+        }
+        submit.disabled = false;
+        submit.textContent = 'Submit project';
+      }
+    });
+  }
+</script>
+
+<style>
+  .inquiry-form {
+    padding: clamp(24px, 5vw, 52px);
+    border-top: 4px solid var(--copper);
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+
+  .form-progress {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 44px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .form-progress span {
+    padding: 0 0 14px;
+    color: #66655f;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .form-progress span.is-active {
+    color: var(--copper);
+    border-bottom: 3px solid var(--copper);
+  }
+
+  fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  legend {
+    padding: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 6vw, 4.3rem);
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .step-intro {
+    max-width: 690px;
+    margin: 14px 0 32px;
+    color: var(--muted);
+  }
+
+  .choice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  .choice {
+    position: relative;
+  }
+
+  .choice input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .choice span {
+    display: block;
+    min-height: 116px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    cursor: pointer;
+    transition:
+      border-color 160ms ease,
+      background 160ms ease;
+  }
+
+  .choice input:checked + span {
+    border-color: var(--copper);
+    background: rgba(182, 111, 50, 0.09);
+    box-shadow: inset 0 0 0 1px var(--copper);
+  }
+
+  .choice input:focus-visible + span {
+    outline: 3px solid var(--gold-light);
+    outline-offset: 3px;
+  }
+
+  .choice strong,
+  .choice small {
+    display: block;
+  }
+
+  .choice strong {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .choice small {
+    margin-top: 9px;
+    color: var(--muted);
+    font-size: 0.72rem;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  label:not(.choice):not(.consent) {
+    display: grid;
+    gap: 7px;
+    color: #44443f;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  label small {
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    border: 1px solid #c9c4bb;
+    border-radius: 0;
+    color: var(--ink);
+    background: #fbfaf6;
+  }
+
+  input,
+  select {
+    height: 52px;
+    padding: 0 13px;
+  }
+
+  textarea {
+    padding: 13px;
+    resize: vertical;
+  }
+
+  fieldset > label {
+    margin-top: 20px;
+  }
+
+  .attachment-note {
+    margin-top: 20px;
+    padding: 16px 18px;
+    border-left: 3px solid var(--gold);
+    background: var(--paper);
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .attachment-note strong {
+    color: var(--ink);
+  }
+
+  .consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin: 26px 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  .consent input {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+  }
+
+  .consent a {
+    color: var(--copper);
+    text-decoration: underline;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  .button--back {
+    color: var(--ink);
+    background: transparent;
+    border-color: var(--line);
+  }
+
+  .button[disabled] {
+    cursor: wait;
+    opacity: 0.6;
+  }
+
+  .form-alert {
+    margin-bottom: 22px;
+    padding: 13px 16px;
+    border-left: 4px solid #a53c2e;
+    color: #7a2c22;
+    background: #fae8e3;
+  }
+
+  :global(.success h2) {
+    max-width: 760px;
+    margin: 0 0 18px;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.8rem);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  :global(.success p) {
+    max-width: 680px;
+    color: var(--muted);
+  }
+
+  :global(.success a) {
+    color: var(--copper);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 760px) {
+    .choice-grid,
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .choice span {
+      min-height: 0;
+    }
+  }
+</style>

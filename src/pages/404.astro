@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page Not Found" description="The requested page could not be found." noindex>
+  <section class="page-hero not-found">
+    <div class="container">
+      <span class="eyebrow">404</span>
+      <h1>That route is not in the flowsheet.</h1>
+      <p>The page may have moved, or the address may be incomplete.</p>
+      <a class="button" href="/">Return home</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    min-height: 72vh;
+    display: grid;
+    align-items: center;
+  }
+
+  .button {
+    margin-top: 26px;
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ProjectCta from '../../components/ProjectCta.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('projects');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  type="article"
+  noindex={!entry.data.verified}
+>
+  <header class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Projects', href: '/projects/' }, { label: entry.data.title }]} />
+      <span class="eyebrow">{entry.data.country} / {entry.data.capacity}</span>
+      <h1>{entry.data.title}</h1>
+      <p>{entry.data.description}</p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container content-shell">
+      <article class="prose">
+        <ul class="meta-list">
+          <li class="tag">{entry.data.mineral}</li>
+          <li class="tag">{entry.data.process}</li>
+        </ul>
+        <blockquote><strong>Evidence status:</strong> {entry.data.evidenceNote}</blockquote>
+        <Content />
+      </article>
+      <aside class="sidebar">
+        <span class="eyebrow">Case policy</span>
+        <h2>No unsupported recovery claims</h2>
+        <p>
+          Results are published only when test, commissioning or customer records can support the
+          number and its operating conditions.
+        </p>
+        <a class="button" href="/assess-my-project/">Discuss a similar project</a>
+      </aside>
+    </div>
+  </section>
+  <ProjectCta />
+</BaseLayout>

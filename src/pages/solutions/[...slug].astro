@@ -1,0 +1,212 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ProjectCta from '../../components/ProjectCta.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('solutions');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: entry.data.faq.map((item: { question: string; answer: string }) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title={entry.data.seoTitle}
+  description={entry.data.description}
+  structuredData={faqSchema}
+>
+  <header class="page-hero solution-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Solutions', href: '/#solutions' }, { label: entry.data.title }]} />
+      <span class="eyebrow">{entry.data.eyebrow}</span>
+      <h1>{entry.data.title}</h1>
+      <p>{entry.data.description}</p>
+    </div>
+  </header>
+
+  <section class="section--tight variables">
+    <div class="container">
+      <span class="variables-label">The flowsheet changes with</span>
+      <ul>
+        {entry.data.keyVariables.map((variable: string) => <li>{variable}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-shell">
+      <article class="prose">
+        <Content />
+
+        <h2>Typical process logic</h2>
+        <ol class="process-list">
+          {entry.data.processSteps.map((step: { title: string; description: string }, index: number) => (
+            <li>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <div><h3>{step.title}</h3><p>{step.description}</p></div>
+            </li>
+          ))}
+        </ol>
+
+        <h2>Equipment roles, not a shopping list</h2>
+        <div class="role-grid">
+          {entry.data.equipmentRoles.map((role: { title: string; description: string }) => (
+            <div>
+              <h3>{role.title}</h3>
+              <p>{role.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+          {entry.data.faq.map((item: { question: string; answer: string }) => (
+            <details>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </article>
+      <aside class="sidebar">
+        <span class="eyebrow">Initial review</span>
+        <h2>What to send us</h2>
+        <p>
+          Mineral and ore type, target TPH, feed size, known grade or assay, project country and
+          any test work already completed.
+        </p>
+        <a class="button" href="/assess-my-project/">Assess My Project</a>
+      </aside>
+    </div>
+  </section>
+  <ProjectCta title={`Build the ${entry.data.title.toLowerCase()} route around your ore.`} />
+</BaseLayout>
+
+<style>
+  .solution-hero h1 {
+    max-width: 950px;
+  }
+
+  .variables {
+    color: var(--white);
+    background: var(--copper);
+  }
+
+  .variables .container {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .variables-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .variables ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .variables li {
+    padding: 7px 11px;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    font-size: 0.78rem;
+  }
+
+  .process-list {
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .process-list li {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .process-list > li > span {
+    color: var(--copper);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+  }
+
+  .process-list h3 {
+    margin: 0 0 6px;
+  }
+
+  .process-list p {
+    margin: 0;
+  }
+
+  .role-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .role-grid > div {
+    padding: 22px;
+    border: 1px solid var(--line);
+    background: rgba(255, 253, 248, 0.7);
+  }
+
+  .role-grid h3 {
+    margin: 0 0 8px;
+  }
+
+  .role-grid p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .faq details {
+    border-top: 1px solid var(--line);
+  }
+
+  .faq details:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .faq summary {
+    padding: 19px 0;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .faq p {
+    margin: 0 0 20px;
+  }
+
+  @media (max-width: 640px) {
+    .variables .container,
+    .role-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

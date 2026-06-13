@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ProjectCta from '../components/ProjectCta.astro';
+---
+
+<BaseLayout
+  title="Mineral Processing Equipment Manufacturing & Delivery"
+  description="Equipment coordination, production review, quality checks, packing and export delivery from our manufacturing base and supply network in China."
+>
+  <header class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Manufacturing & Delivery' }]} />
+      <span class="eyebrow">Jiangxi manufacturing base</span>
+      <h1>Manufacturing & Delivery</h1>
+      <p>
+        The flowsheet defines the equipment duty. We then coordinate manufacturing, interfaces,
+        checks, documentation, packing and export delivery around that duty.
+      </p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <div><span class="eyebrow">One accountable route</span><h2>Control the interfaces.</h2></div>
+        <p>
+          Many plant problems occur between machines: mismatched discharge heights, uncontrolled
+          pumps, missing chutes, unsuitable motors or undocumented recirculating streams.
+        </p>
+      </div>
+      <div class="card-grid">
+        <article class="surface-card"><h3>Manufacturing review</h3><p>Confirm duty, materials, drives, interfaces and the approved technical scope before production.</p></article>
+        <article class="surface-card"><h3>Quality checks</h3><p>Record agreed inspection points, dimensions, components and visible test conditions before packing.</p></article>
+        <article class="surface-card"><h3>Packing & shipment</h3><p>Coordinate packing lists, container planning, markings and export documents with the delivery scope.</p></article>
+      </div>
+      <div class="authorization-note">
+        <strong>Production wording policy</strong>
+        <p>
+          This site currently uses “manufacturing base and supply network.” Change public wording to
+          “our factory” only after written authorization covers brand use, images, customer visits,
+          warranty and delivery responsibility.
+        </p>
+      </div>
+    </div>
+  </section>
+  <ProjectCta />
+</BaseLayout>
+
+<style>
+  .authorization-note {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 28px;
+    margin-top: 40px;
+    padding: 24px;
+    border-left: 4px solid var(--gold);
+    background: var(--paper-deep);
+  }
+
+  .authorization-note strong {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .authorization-note p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  @media (max-width: 650px) {
+    .authorization-note {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

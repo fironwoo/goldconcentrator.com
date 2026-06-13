@@ -1,0 +1,70 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ProjectCta from '../../components/ProjectCta.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('knowledge');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: entry.data.title,
+  description: entry.data.description,
+  datePublished: entry.data.publishedAt.toISOString(),
+  dateModified: (entry.data.updatedAt ?? entry.data.publishedAt).toISOString(),
+  author: { '@type': 'Organization', name: 'Gold Concentrator' },
+};
+---
+
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  type="article"
+  structuredData={articleSchema}
+>
+  <header class="page-hero article-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Knowledge', href: '/knowledge/' }, { label: entry.data.title }]} />
+      <span class="eyebrow">{entry.data.category}</span>
+      <h1>{entry.data.title}</h1>
+      <p>{entry.data.description}</p>
+      <time datetime={entry.data.publishedAt.toISOString()}>
+        Published {entry.data.publishedAt.toLocaleDateString('en', { dateStyle: 'long' })}
+      </time>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container content-shell">
+      <article class="prose"><Content /></article>
+      <aside class="sidebar">
+        <span class="eyebrow">Project context</span>
+        <h2>Do not use an article as a final flowsheet.</h2>
+        <p>
+          The route must be checked against representative ore, target capacity, water, power and
+          site conditions.
+        </p>
+        <a class="button" href="/assess-my-project/">Request a project review</a>
+      </aside>
+    </div>
+  </section>
+  <ProjectCta />
+</BaseLayout>
+
+<style>
+  time {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-top: 24px;
+    color: var(--gold-light);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+</style>

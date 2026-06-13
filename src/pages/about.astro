@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ProjectCta from '../components/ProjectCta.astro';
+---
+
+<BaseLayout
+  title="About Gold Concentrator"
+  description="An ore-led mineral processing team combining more than ten years of core experience with gravity testing, flowsheet design and equipment delivery."
+>
+  <header class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'About' }]} />
+      <span class="eyebrow">Independent process integration</span>
+      <h1>About Gold Concentrator</h1>
+      <p>
+        Gold Concentrator is built around a simple operating principle: understand the ore and
+        process duty before selecting the equipment.
+      </p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container content-shell">
+      <article class="prose">
+        <h2>Experience belongs to the team, not an invented company history</h2>
+        <p>
+          Our core team brings more than ten years of mineral processing experience. We describe
+          that experience accurately and do not present it as the age of the Gold Concentrator
+          brand.
+        </p>
+        <h2>Focused on practical gravity concentration</h2>
+        <p>
+          Gold is the primary market and the reason for the domain. The underlying capability also
+          applies to tin, tungsten, chrome and other minerals where density difference, liberation
+          and particle size support gravity separation.
+        </p>
+        <h2>Clear limits build better projects</h2>
+        <p>
+          Our stable test capability focuses on gravity response. We coordinate other specialist
+          programs where needed. We publish project performance only when evidence and operating
+          conditions support it.
+        </p>
+      </article>
+      <aside class="sidebar">
+        <span class="eyebrow">Contact details</span>
+        <h2>Launch information required</h2>
+        <p>
+          Add the real office or contracting address, professional mailbox, WhatsApp number and
+          company registration details before public deployment.
+        </p>
+        <a class="button" href="/assess-my-project/">Discuss a project</a>
+      </aside>
+    </div>
+  </section>
+  <ProjectCta />
+</BaseLayout>

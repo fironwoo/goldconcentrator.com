@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<BaseLayout title="Website Terms" description="Terms for technical information published by Gold Concentrator." noindex>
+  <header class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Terms' }]} />
+      <h1>Website Terms</h1>
+      <p>How to use the technical information and project examples on this website.</p>
+    </div>
+  </header>
+  <section class="section">
+    <article class="container prose">
+      <h2>General information, not final design</h2>
+      <p>
+        Website content explains process principles and common project decisions. It is not a final
+        flowsheet, performance guarantee or equipment quotation for a specific ore.
+      </p>
+      <h2>Project-specific work</h2>
+      <p>
+        Final recommendations require agreed project data, representative testing and a defined
+        scope. Commercial terms are provided in a separate quotation or contract.
+      </p>
+      <h2>Performance data</h2>
+      <p>
+        Any published result applies only to the stated ore, sample, test method and operating
+        conditions. Results should not be transferred to another deposit without verification.
+      </p>
+    </article>
+  </section>
+</BaseLayout>

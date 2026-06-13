@@ -1,0 +1,36 @@
+---
+export const prerender = true;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#222321" />
+    <title>Gold Concentrator 内容后台</title>
+    <style>
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+        background: #f4f0e8;
+        font-family: Arial, sans-serif;
+      }
+
+      noscript {
+        display: block;
+        max-width: 680px;
+        margin: 80px auto;
+        padding: 24px;
+        color: #fffdf8;
+        background: #222321;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>内容后台需要启用 JavaScript。</noscript>
+    <script is:inline src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+  </body>
+</html>
