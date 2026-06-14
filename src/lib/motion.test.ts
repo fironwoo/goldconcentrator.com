@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getRevealDelay, REVEAL_SELECTOR } from './motion';
+import { getRevealDelay, REVEAL_SELECTOR, shouldEnableReveal } from './motion';
 
 describe('reveal motion rules', () => {
   it('targets hero content, headings, cards, process items, prose media and calls to action', () => {
@@ -20,5 +20,10 @@ describe('reveal motion rules', () => {
 
   it('does not return a negative delay', () => {
     expect(getRevealDelay(-2)).toBe(0);
+  });
+
+  it('disables reveal motion when reduced motion is requested', () => {
+    expect(shouldEnableReveal(true)).toBe(false);
+    expect(shouldEnableReveal(false)).toBe(true);
   });
 });

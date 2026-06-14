@@ -55,19 +55,8 @@ export const prerender = true;
     </div>
     <noscript>内容后台需要启用 JavaScript。请启用后重新打开本页。</noscript>
     <script is:inline src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
-    <script is:inline>
-      const help = document.querySelector('#cms-help');
-      let checks = 0;
-      const timer = window.setInterval(() => {
-        checks += 1;
-        const cmsInterface = document.querySelector('main, [role="main"], form');
-        if (cmsInterface && help) {
-          help.hidden = true;
-          window.clearInterval(timer);
-        } else if (checks >= 120) {
-          window.clearInterval(timer);
-        }
-      }, 250);
+    <script>
+      import '../../scripts/admin-help';
     </script>
   </body>
 </html>

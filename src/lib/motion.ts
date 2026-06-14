@@ -22,3 +22,7 @@ export const REVEAL_SELECTOR = [
 export function getRevealDelay(index: number): number {
   return Math.min(Math.max(index, 0) * 60, 300);
 }
+
+export function shouldEnableReveal(prefersReducedMotion: boolean): boolean {
+  return !prefersReducedMotion;
+}

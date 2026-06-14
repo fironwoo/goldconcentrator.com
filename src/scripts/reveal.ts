@@ -1,7 +1,7 @@
-import { getRevealDelay, REVEAL_SELECTOR } from '../lib/motion';
+import { getRevealDelay, REVEAL_SELECTOR, shouldEnableReveal } from '../lib/motion';
 
 function setupRevealMotion() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!shouldEnableReveal(window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
 
   const targets = Array.from(document.querySelectorAll<HTMLElement>(REVEAL_SELECTOR)).filter(
     (target) => !target.closest('[data-no-reveal]'),
