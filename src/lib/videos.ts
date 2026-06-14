@@ -1,5 +1,7 @@
 const YOUTUBE_ID_PATTERN = /^[A-Za-z0-9_-]{11}$/;
 
+export const DEFAULT_VIDEO_DRAFT = true;
+
 export function parseYouTubeVideoId(value: string): string | null {
   let url: URL;
 

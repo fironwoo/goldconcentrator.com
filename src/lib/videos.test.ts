@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { getPublicVideos, parseYouTubeVideoId } from './videos';
+import { DEFAULT_VIDEO_DRAFT, getPublicVideos, parseYouTubeVideoId } from './videos';
 
 describe('video utilities', () => {
+  it('keeps videos private when draft metadata is omitted', () => {
+    expect(DEFAULT_VIDEO_DRAFT).toBe(true);
+  });
+
   it('parses standard, short and Shorts YouTube URLs', () => {
     expect(parseYouTubeVideoId('https://www.youtube.com/watch?v=abcDEF12345')).toBe(
       'abcDEF12345',

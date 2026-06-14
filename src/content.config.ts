@@ -2,6 +2,7 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { coverImageFields, validateCoverImage } from './lib/content-metadata';
+import { DEFAULT_VIDEO_DRAFT } from './lib/videos';
 
 const faqSchema = z.object({
   question: z.string(),
@@ -83,7 +84,7 @@ const videos = defineCollection({
       youtubeUrl: z.url(),
       publishedAt: z.coerce.date(),
       featured: z.boolean().default(false),
-      draft: z.boolean().default(false),
+      draft: z.boolean().default(DEFAULT_VIDEO_DRAFT),
       ...coverImageFields,
     })
     .superRefine(validateCoverImage),
