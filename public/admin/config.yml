@@ -24,11 +24,11 @@ collections:
         fields:
           - { name: name, label: 品牌名称, widget: string }
           - { name: origin, label: 正式网址, widget: string }
-          - { name: email, label: 主询盘邮箱, widget: string }
+          - { name: email, label: 询盘邮箱, widget: string }
           - { name: whatsapp, label: WhatsApp, widget: string, required: false }
           - { name: location, label: 制造地区, widget: string }
           - { name: officeAddress, label: 办公或签约地址, widget: string }
-          - { name: youtube, label: YouTube 地址, widget: string, required: false }
+          - { name: youtube, label: YouTube 频道地址, widget: string, required: false }
           - { name: description, label: 网站简介, widget: text }
           - { name: responsePromise, label: 回复承诺, widget: string }
 
@@ -55,6 +55,16 @@ collections:
           - { label: 其他独立矿种, value: mineral }
           - { label: More 汇总页, value: more }
       - { name: featured, label: 重点展示, widget: boolean, default: false }
+      - name: coverImage
+        label: 封面图片
+        widget: image
+        required: false
+        hint: 建议使用 1600 × 900 横图；上传后必须填写封面替代文字。
+      - name: coverAlt
+        label: 封面替代文字
+        widget: string
+        required: false
+        hint: 客观说明图片内容；如果上传了封面，本项必须填写。
       - { name: keyVariables, label: 关键变量, widget: list, field: { name: item, label: 变量, widget: string } }
       - name: processSteps
         label: 典型流程阶段
@@ -84,6 +94,7 @@ collections:
     extension: md
     format: frontmatter
     slug: "{{slug}}"
+    summary: "{{title}}"
     fields:
       - { name: title, label: 案例标题, widget: string }
       - { name: description, label: 摘要, widget: text }
@@ -95,6 +106,16 @@ collections:
       - { name: featured, label: 首页展示, widget: boolean, default: false }
       - { name: verified, label: 证据已核验并允许收录, widget: boolean, default: false }
       - { name: evidenceNote, label: 证据说明, widget: text }
+      - name: coverImage
+        label: 封面图片
+        widget: image
+        required: false
+        hint: 只能使用获授权的项目图片；图库素材不得冒充真实案例。
+      - name: coverAlt
+        label: 封面替代文字
+        widget: string
+        required: false
+        hint: 如果上传了封面，本项必须填写。
       - { name: body, label: 正文, widget: markdown }
 
   - name: knowledge
@@ -105,6 +126,7 @@ collections:
     extension: md
     format: frontmatter
     slug: "{{slug}}"
+    summary: "{{title}}"
     fields:
       - { name: title, label: 标题, widget: string }
       - { name: description, label: 摘要与 SEO 描述, widget: text }
@@ -113,6 +135,16 @@ collections:
       - { name: updatedAt, label: 更新日期, widget: datetime, time_format: false, required: false }
       - { name: featured, label: 重点文章, widget: boolean, default: false }
       - { name: youtubeUrl, label: 关联 YouTube, widget: string, required: false }
+      - name: coverImage
+        label: 封面图片
+        widget: image
+        required: false
+        hint: 建议使用 1600 × 900 横图；上传后必须填写封面替代文字。
+      - name: coverAlt
+        label: 封面替代文字
+        widget: string
+        required: false
+        hint: 如果上传了封面，本项必须填写。
       - { name: body, label: 正文, widget: markdown }
 
   - name: videos
@@ -123,12 +155,30 @@ collections:
     extension: md
     format: frontmatter
     slug: "{{slug}}"
+    summary: "{{title}}"
     fields:
       - { name: title, label: 标题, widget: string }
       - { name: description, label: 摘要, widget: text }
       - { name: mineral, label: 关联矿种, widget: string }
-      - { name: youtubeUrl, label: YouTube 地址, widget: string }
+      - name: youtubeUrl
+        label: YouTube 视频地址
+        widget: string
+        hint: 支持 youtube.com/watch、youtube.com/shorts 和 youtu.be 链接。
       - { name: publishedAt, label: 发布日期, widget: datetime, time_format: false }
       - { name: featured, label: 重点展示, widget: boolean, default: false }
-      - { name: draft, label: 草稿, widget: boolean, default: true }
+      - name: draft
+        label: 视频草稿
+        widget: boolean
+        default: true
+        hint: 保持开启时，视频即使已保存到仓库也不会在前台公开。
+      - name: coverImage
+        label: 封面图片
+        widget: image
+        required: false
+        hint: 可使用获授权的视频缩略图；上传后必须填写封面替代文字。
+      - name: coverAlt
+        label: 封面替代文字
+        widget: string
+        required: false
+        hint: 如果上传了封面，本项必须填写。
       - { name: body, label: 补充说明, widget: markdown, required: false }

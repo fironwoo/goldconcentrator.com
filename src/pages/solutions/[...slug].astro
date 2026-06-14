@@ -28,6 +28,7 @@ const faqSchema = {
 <BaseLayout
   title={entry.data.seoTitle}
   description={entry.data.description}
+  image={entry.data.coverImage}
   structuredData={faqSchema}
 >
   <header class="page-hero solution-hero">
@@ -51,6 +52,9 @@ const faqSchema = {
   <section class="section">
     <div class="container content-shell">
       <article class="prose">
+        {entry.data.coverImage && entry.data.coverAlt && (
+          <img class="content-cover" src={entry.data.coverImage} alt={entry.data.coverAlt} />
+        )}
         <Content />
 
         <h2>Typical process logic</h2>

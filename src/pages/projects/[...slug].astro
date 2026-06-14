@@ -16,6 +16,7 @@ const { Content } = await render(entry);
 <BaseLayout
   title={entry.data.title}
   description={entry.data.description}
+  image={entry.data.coverImage}
   type="article"
   noindex={!entry.data.verified}
 >
@@ -30,6 +31,9 @@ const { Content } = await render(entry);
   <section class="section">
     <div class="container content-shell">
       <article class="prose">
+        {entry.data.coverImage && entry.data.coverAlt && (
+          <img class="content-cover" src={entry.data.coverImage} alt={entry.data.coverAlt} />
+        )}
         <ul class="meta-list">
           <li class="tag">{entry.data.mineral}</li>
           <li class="tag">{entry.data.process}</li>

@@ -28,6 +28,9 @@ const articles = (await getCollection('knowledge')).sort(
     <div class="container article-grid">
       {articles.map((article) => (
         <article class="surface-card">
+          {article.data.coverImage && article.data.coverAlt && (
+            <img class="card-cover" src={article.data.coverImage} alt={article.data.coverAlt} />
+          )}
           <span class="tag">{article.data.category}</span>
           <time datetime={article.data.publishedAt.toISOString()}>
             {article.data.publishedAt.toLocaleDateString('en', { dateStyle: 'medium' })}

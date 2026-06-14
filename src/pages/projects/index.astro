@@ -29,6 +29,9 @@ const projects = (await getCollection('projects')).sort(
     <div class="container card-grid">
       {projects.map((project) => (
         <article class="surface-card">
+          {project.data.coverImage && project.data.coverAlt && (
+            <img class="card-cover" src={project.data.coverImage} alt={project.data.coverAlt} />
+          )}
           <ul class="meta-list">
             <li class="tag">{project.data.country}</li>
             <li class="tag">{project.data.mineral}</li>

@@ -256,6 +256,22 @@ a {
   color: var(--muted);
 }
 
+.card-cover {
+  width: calc(100% + 56px);
+  max-width: none;
+  aspect-ratio: 16 / 9;
+  margin: -28px -28px 24px;
+  object-fit: cover;
+}
+
+.content-cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 0 0 42px;
+  border: 1px solid var(--line);
+  object-fit: cover;
+}
+
 .prose {
   width: min(100%, 780px);
 }
