@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ProjectCta from '../../components/ProjectCta.astro';
+import { getPublicVideos, parseYouTubeVideoId } from '../../lib/videos';
+
+const videos = getPublicVideos(await getCollection('videos'));
+---
+
+<BaseLayout
+  title="Mineral Processing Videos"
+  description="Field footage, process explanations and equipment operating videos for practical gold and gravity concentration projects."
+>
+  <header class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Videos' }]} />
+      <span class="eyebrow">Field footage and process explanations</span>
+      <h1>Videos</h1>
+      <p>
+        Published footage is identified by source and context. Draft, unapproved or internal
+        videos remain hidden from this page.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      {videos.length > 0 ? (
+        <div class="video-grid">
+          {videos.map((video) => {
+            const videoId = parseYouTubeVideoId(video.data.youtubeUrl);
+            const thumbnail =
+              video.data.coverImage ??
+              (videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : undefined);
+
+            return (
+              <article class="surface-card video-card">
+                {thumbnail && (
+                  <img
+                    class="card-cover"
+                    src={thumbnail}
+                    alt={video.data.coverAlt ?? `${video.data.title} video thumbnail`}
+                    loading="lazy"
+                  />
+                )}
+                <span class="tag">{video.data.mineral}</span>
+                <time datetime={video.data.publishedAt.toISOString()}>
+                  {video.data.publishedAt.toLocaleDateString('en', { dateStyle: 'medium' })}
+                </time>
+                <h2>{video.data.title}</h2>
+                <p>{video.data.description}</p>
+                <a class="text-link" href={`/videos/${video.id}/`}>Watch video</a>
+              </article>
+            );
+          })}
+        </div>
+      ) : (
+        <div class="empty-state">
+          <span class="eyebrow">Publishing carefully</span>
+          <h2>The first approved field videos are being prepared.</h2>
+          <p>
+            Only footage with verified context and publication permission will appear here.
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <ProjectCta />
+</BaseLayout>
+
+<style>
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .video-card {
+    min-height: 420px;
+  }
+
+  time {
+    display: block;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 0.72rem;
+  }
+
+  h2 {
+    margin: 28px 0 14px;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 0.98;
+    text-transform: uppercase;
+  }
+
+  .empty-state {
+    max-width: 760px;
+    padding: 44px;
+    border: 1px solid var(--line);
+    background: rgba(255, 253, 248, 0.76);
+  }
+
+  .empty-state h2 {
+    margin-top: 0;
+  }
+
+  @media (max-width: 700px) {
+    .video-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .empty-state {
+      padding: 28px;
+    }
+  }
+</style>
