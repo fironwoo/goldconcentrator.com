@@ -19,18 +19,55 @@ export const prerender = true;
         font-family: Arial, sans-serif;
       }
 
+      .cms-help,
       noscript {
-        display: block;
         max-width: 680px;
         margin: 80px auto;
         padding: 24px;
         color: #fffdf8;
         background: #222321;
       }
+
+      .cms-help h1 {
+        margin-top: 0;
+        color: #efc56d;
+      }
+
+      .cms-help a {
+        color: #efc56d;
+      }
     </style>
   </head>
   <body>
-    <noscript>内容后台需要启用 JavaScript。</noscript>
+    <div class="cms-help" id="cms-help">
+      <h1>Gold Concentrator 内容后台</h1>
+      <p>后台正在加载。首次使用时，请通过已授权的 GitHub 账户登录。</p>
+      <p>
+        上传图片、文章、案例和视频前，可先阅读
+        <a
+          href="https://github.com/fironwoo/goldconcentrator.com/blob/main/docs/cms-publishing-guide-zh.md"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          中文操作指南
+        </a>。
+      </p>
+    </div>
+    <noscript>内容后台需要启用 JavaScript。请启用后重新打开本页。</noscript>
     <script is:inline src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+    <script is:inline>
+      const help = document.querySelector('#cms-help');
+      let checks = 0;
+      const timer = window.setInterval(() => {
+        checks += 1;
+        const cmsInterface = document.querySelector('main, [role="main"], form');
+        if (cmsInterface && help) {
+          help.hidden = true;
+          window.clearInterval(timer);
+        } else if (checks >= 120) {
+          window.clearInterval(timer);
+        }
+      }, 250);
+    </script>
   </body>
 </html>

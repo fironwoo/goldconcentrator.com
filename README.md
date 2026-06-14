@@ -35,6 +35,15 @@ The admin interface is available at `/admin/` and is connected to
 `fironwoo/goldconcentrator.com`. Configure GitHub authentication for Sveltia CMS before using the
 editor in production.
 
+## Content publishing
+
+- Open `/admin/` to manage solutions, projects, knowledge articles, videos, media and global
+  contact details.
+- Follow the [Chinese CMS publishing guide](docs/cms-publishing-guide-zh.md) for image
+  specifications, editorial workflow, video drafts and troubleshooting.
+- Uploaded media is stored in `public/images/uploads/`.
+- Published changes trigger a new Cloudflare Pages deployment from `main`.
+
 ## Cloudflare deployment
 
 1. Push the repository to GitHub using `main` as the production branch.
