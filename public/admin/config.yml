@@ -2,6 +2,7 @@ backend:
   name: github
   repo: fironwoo/goldconcentrator.com
   branch: main
+  base_url: https://sveltia-cms-auth.fironwoo.workers.dev
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
