@@ -12,6 +12,7 @@
     "astro": "astro",
     "check": "astro check",
     "test": "vitest run",
+    "beautify:factory-images": "node scripts/beautify-authorized-factory-images.mjs",
     "test:watch": "vitest"
   },
   "dependencies": {
