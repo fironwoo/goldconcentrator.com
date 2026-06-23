@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ProjectCta from '../components/ProjectCta.astro';
+import { SITE } from '../lib/site';
 ---
 
 <BaseLayout
@@ -43,10 +44,10 @@ import ProjectCta from '../components/ProjectCta.astro';
       </article>
       <aside class="sidebar">
         <span class="eyebrow">Contact details</span>
-        <h2>Launch information required</h2>
+        <h2>Project review contact</h2>
         <p>
-          Add the real office or contracting address, professional mailbox, WhatsApp number and
-          company registration details before public deployment.
+          Project enquiries are reviewed through {SITE.email} or WhatsApp {SITE.whatsapp}. The
+          manufacturing base is located at {SITE.officeAddress}.
         </p>
         <a class="button" href="/assess-my-project/">Discuss a project</a>
       </aside>

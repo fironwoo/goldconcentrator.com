@@ -71,3 +71,8 @@ export function truncateDescription(value: string, maxLength = 155): string {
   const clean = (lastSpace > 0 ? candidate.slice(0, lastSpace) : candidate).trim();
   return `${clean}…`;
 }
+
+export function getWhatsAppUrl(value: string): string {
+  const digits = value.replace(/\D/g, '');
+  return `https://wa.me/${digits}`;
+}
