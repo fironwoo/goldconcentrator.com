@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Alluvial gold washing and gravity recovery process illustration</title>
+  <desc id="desc">A simplified alluvial gold process route from feed control to washing, screening, gravity recovery and concentrate cleaning.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#222321"/>
+      <stop offset="1" stop-color="#3a3328"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d39a38"/>
+    </marker>
+    <style>
+      .label{font:700 24px Arial,sans-serif;fill:#fffdf8}
+      .small{font:16px Arial,sans-serif;fill:#e9e1d3}
+      .note{font:14px Arial,sans-serif;fill:#efc56d}
+      .box{fill:#fffdf8;stroke:#d39a38;stroke-width:3}
+      .box-dark{fill:#2f302d;stroke:#d39a38;stroke-width:3}
+      .line{fill:none;stroke:#d39a38;stroke-width:4;marker-end:url(#arrow)}
+      .muted{fill:#b7aa96}
+      .gold{fill:#d39a38}
+    </style>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <circle cx="1040" cy="80" r="190" fill="none" stroke="#d39a38" stroke-opacity=".18" stroke-width="2"/>
+  <circle cx="1040" cy="80" r="130" fill="none" stroke="#d39a38" stroke-opacity=".14" stroke-width="2"/>
+  <text x="70" y="76" class="label" font-size="34">Alluvial Gold Process Logic</text>
+  <text x="70" y="108" class="small">Wash first, classify carefully, recover by particle size.</text>
+
+  <rect x="70" y="190" width="160" height="86" rx="12" class="box"/>
+  <text x="100" y="225" font="700 20px Arial" fill="#191a19">Feed</text>
+  <text x="100" y="252" font="15px Arial" fill="#565852">hopper / grizzly</text>
+
+  <rect x="285" y="190" width="176" height="86" rx="12" class="box"/>
+  <text x="318" y="225" font="700 20px Arial" fill="#191a19">Washing</text>
+  <text x="318" y="252" font="15px Arial" fill="#565852">scrubber / trommel</text>
+
+  <rect x="516" y="190" width="160" height="86" rx="12" class="box"/>
+  <text x="548" y="225" font="700 20px Arial" fill="#191a19">Screening</text>
+  <text x="548" y="252" font="15px Arial" fill="#565852">size control</text>
+
+  <rect x="752" y="110" width="185" height="86" rx="12" class="box-dark"/>
+  <text x="786" y="145" class="label" font-size="20">Coarse Gravity</text>
+  <text x="786" y="172" class="small" font-size="15">jig / sluice route</text>
+
+  <rect x="752" y="270" width="185" height="86" rx="12" class="box-dark"/>
+  <text x="786" y="305" class="label" font-size="20">Fine Gravity</text>
+  <text x="786" y="332" class="small" font-size="15">centrifugal route</text>
+
+  <rect x="987" y="190" width="150" height="86" rx="12" class="box"/>
+  <text x="1015" y="225" font="700 20px Arial" fill="#191a19">Cleaning</text>
+  <text x="1015" y="252" font="15px Arial" fill="#565852">table / upgrade</text>
+
+  <path d="M230 233 H280" class="line"/>
+  <path d="M461 233 H511" class="line"/>
+  <path d="M676 233 C720 233 710 153 747 153" class="line"/>
+  <path d="M676 233 C720 233 710 313 747 313" class="line"/>
+  <path d="M937 153 C974 153 966 215 982 225" class="line"/>
+  <path d="M937 313 C974 313 966 252 982 242" class="line"/>
+
+  <rect x="278" y="430" width="645" height="104" rx="18" fill="#191a19" stroke="#8a4c20" stroke-width="2"/>
+  <text x="315" y="469" class="note">Design checks before equipment selection</text>
+  <text x="315" y="501" class="small">clay behavior | gold particle size | water | boulders | tailings handling | test response</text>
+  <text x="70" y="620" class="note">Process illustration only. Final plant design requires representative material testing.</text>
+</svg>

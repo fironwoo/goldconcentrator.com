@@ -48,6 +48,8 @@ Wolframite and scheelite are both dense, but they do not create identical proces
 
 An early mineralogical check prevents the plant from being designed around an assumed tungsten species that does not match the ore.
 
+![Tungsten gravity concentration process illustration](/images/process/tin-tungsten-flowsheet.svg)
+
 ## Stage reduction and recover liberated particles early
 
 The objective is not to grind the entire feed to the finest visible tungsten grain. A staged circuit can recover liberated coarse material, classify the remaining feed and selectively regrind middlings that still contain composites.

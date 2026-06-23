@@ -277,6 +277,13 @@ a {
   background: var(--paper-deep);
 }
 
+.prose img {
+  margin: 34px 0;
+  border: 1px solid var(--line);
+  background: var(--charcoal);
+  box-shadow: var(--shadow);
+}
+
 .tag {
   display: inline-flex;
   padding: 5px 9px;

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Hard rock gold crushing grinding and gravity recovery process illustration</title>
+  <desc id="desc">A simplified hard rock gold process route from crushing and grinding to gravity recovery and downstream route evaluation.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#191a19"/>
+      <stop offset="1" stop-color="#302b23"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d39a38"/>
+    </marker>
+    <style>
+      .title{font:700 34px Arial,sans-serif;fill:#fffdf8}
+      .label{font:700 20px Arial,sans-serif;fill:#191a19}
+      .small{font:15px Arial,sans-serif;fill:#565852}
+      .small-light{font:15px Arial,sans-serif;fill:#e9e1d3}
+      .note{font:14px Arial,sans-serif;fill:#efc56d}
+      .box{fill:#fffdf8;stroke:#d39a38;stroke-width:3}
+      .dark{fill:#2f302d;stroke:#d39a38;stroke-width:3}
+      .line{fill:none;stroke:#d39a38;stroke-width:4;marker-end:url(#arrow)}
+      .loop{fill:none;stroke:#efc56d;stroke-width:3;stroke-dasharray:9 8;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <text x="70" y="76" class="title">Hard Rock Gold Process Logic</text>
+  <text x="70" y="108" class="small-light">Liberation controls the route. Gravity is used where test work supports it.</text>
+
+  <rect x="70" y="185" width="145" height="86" rx="12" class="box"/>
+  <text x="96" y="220" class="label">Jaw Crusher</text>
+  <text x="96" y="247" class="small">primary sizing</text>
+
+  <rect x="260" y="185" width="145" height="86" rx="12" class="box"/>
+  <text x="286" y="220" class="label">Secondary</text>
+  <text x="286" y="247" class="small">crush / screen</text>
+
+  <rect x="450" y="185" width="145" height="86" rx="12" class="box"/>
+  <text x="476" y="220" class="label">Ball Mill</text>
+  <text x="476" y="247" class="small">controlled grind</text>
+
+  <rect x="640" y="185" width="145" height="86" rx="12" class="box"/>
+  <text x="666" y="220" class="label">Classifier</text>
+  <text x="666" y="247" class="small">size split</text>
+
+  <rect x="830" y="120" width="180" height="86" rx="12" class="dark"/>
+  <text x="860" y="155" font="700 20px Arial" fill="#fffdf8">Gravity Gold</text>
+  <text x="860" y="182" class="small-light">centrifugal route</text>
+
+  <rect x="830" y="290" width="180" height="86" rx="12" class="dark"/>
+  <text x="860" y="325" font="700 20px Arial" fill="#fffdf8">Tailings Review</text>
+  <text x="860" y="352" class="small-light">flotation / leach test</text>
+
+  <rect x="1045" y="120" width="105" height="86" rx="12" class="box"/>
+  <text x="1065" y="155" class="label">Table</text>
+  <text x="1065" y="182" class="small">cleaning</text>
+
+  <path d="M215 228 H255" class="line"/>
+  <path d="M405 228 H445" class="line"/>
+  <path d="M595 228 H635" class="line"/>
+  <path d="M785 228 C820 228 805 162 825 162" class="line"/>
+  <path d="M785 228 C820 228 805 332 825 332" class="line"/>
+  <path d="M1010 162 H1040" class="line"/>
+  <path d="M713 271 C713 335 520 335 520 276" class="loop"/>
+
+  <rect x="260" y="455" width="680" height="82" rx="18" fill="#222321" stroke="#8a4c20" stroke-width="2"/>
+  <text x="298" y="493" class="note">Key decision: how fine is enough?</text>
+  <text x="298" y="522" class="small-light">ore hardness | liberation size | sulphide association | gravity-recoverable gold | power and water</text>
+  <text x="70" y="620" class="note">Process illustration only. Do not publish universal recovery percentages.</text>
+</svg>

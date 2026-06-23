@@ -48,6 +48,8 @@ A chrome circuit is designed to produce a usable concentrate, not simply a heavy
 
 The process should therefore start with both feed characterization and a clear product target.
 
+![Chrome ore washing and gravity separation process illustration](/images/process/chrome-flowsheet.svg)
+
 ## Washing and classification stabilize the separator feed
 
 Clay and ultrafine material can alter slurry flow, consume water and reduce the selectivity of spirals or tables. Oversize particles create a different problem: they may be poorly liberated or operate outside the efficient range of the selected separator.

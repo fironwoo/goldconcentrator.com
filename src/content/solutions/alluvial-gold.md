@@ -48,6 +48,8 @@ Alluvial gold may already be liberated, but that does not make the flowsheet aut
 
 The first design question is therefore not “Which concentrator should I buy?” It is “What prevents the gold from reaching a concentrator in a recoverable condition?”
 
+![Alluvial gold washing and gravity recovery process illustration](/images/process/alluvial-gold-flowsheet.svg)
+
 ## Free-washing material and sticky clay need different routes
 
 Free-washing gravel may need controlled feeding, screening and staged gravity recovery. Sticky clay can require longer retention, more attrition and careful management of slimes. Adding more water alone does not always solve disaggregation, and aggressive washing can create excessive fine material that becomes difficult to recover or settle.

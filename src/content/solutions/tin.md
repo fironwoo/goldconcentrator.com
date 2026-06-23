@@ -48,6 +48,8 @@ Cassiterite is dense and often suitable for gravity concentration, but density a
 
 The flowsheet should recover coarse liberated tin as early as practical, then classify and treat the remaining fractions with equipment suited to their size and expected grade.
 
+![Tin gravity concentration process illustration](/images/process/tin-tungsten-flowsheet.svg)
+
 ## Classification is part of the separation
 
 A gravity separator is sensitive to particle size because settling behavior changes rapidly as particles become finer. Sending a broad mixture of coarse sand, fine sand and slime to one machine makes it difficult to maintain a useful operating condition.

@@ -48,6 +48,8 @@ Two ores with the same head grade can require completely different plants. Coars
 
 That is why a crusher, ball mill and concentrator package is not a complete process design. The route must define how much size reduction is required, where gravity recovery should occur, how circulating load is controlled and what happens to gold that gravity does not recover.
 
+![Hard rock gold crushing grinding and gravity recovery process illustration](/images/process/hard-rock-gold-flowsheet.svg)
+
 ## Gravity recovery is valuable when it removes the right material
 
 Recovering liberated gold early can reduce inventory, shorten exposure to downstream losses and create a high-grade product. It works best when the feed stream is controlled and the concentrator is integrated into the grinding circuit.

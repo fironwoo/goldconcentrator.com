@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Tin and tungsten gravity concentration process illustration</title>
+  <desc id="desc">A simplified process route for tin and tungsten gravity concentration with classification, coarse recovery, fine recovery and cleaning.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#222321"/>
+      <stop offset="1" stop-color="#26302c"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d39a38"/>
+    </marker>
+    <style>
+      .title{font:700 34px Arial,sans-serif;fill:#fffdf8}
+      .light{font:15px Arial,sans-serif;fill:#e9e1d3}
+      .label{font:700 20px Arial,sans-serif;fill:#191a19}
+      .small{font:15px Arial,sans-serif;fill:#565852}
+      .note{font:14px Arial,sans-serif;fill:#efc56d}
+      .box{fill:#fffdf8;stroke:#d39a38;stroke-width:3}
+      .dark{fill:#2f302d;stroke:#d39a38;stroke-width:3}
+      .line{fill:none;stroke:#d39a38;stroke-width:4;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <text x="70" y="76" class="title">Tin / Tungsten Gravity Process Logic</text>
+  <text x="70" y="108" class="light">Protect brittle valuable minerals and recover by controlled size fraction.</text>
+
+  <rect x="70" y="185" width="170" height="86" rx="12" class="box"/>
+  <text x="98" y="220" class="label">Prepare Feed</text>
+  <text x="98" y="247" class="small">wash / crush as needed</text>
+
+  <rect x="295" y="185" width="170" height="86" rx="12" class="box"/>
+  <text x="323" y="220" class="label">Classify</text>
+  <text x="323" y="247" class="small">narrow size ranges</text>
+
+  <rect x="545" y="95" width="180" height="86" rx="12" class="dark"/>
+  <text x="575" y="130" font="700 20px Arial" fill="#fffdf8">Coarse Recovery</text>
+  <text x="575" y="157" class="light">jig route</text>
+
+  <rect x="545" y="285" width="180" height="86" rx="12" class="dark"/>
+  <text x="575" y="320" font="700 20px Arial" fill="#fffdf8">Fine Recovery</text>
+  <text x="575" y="347" class="light">spiral / table route</text>
+
+  <rect x="810" y="185" width="175" height="86" rx="12" class="box"/>
+  <text x="838" y="220" class="label">Clean</text>
+  <text x="838" y="247" class="small">table / magnetic check</text>
+
+  <rect x="1030" y="185" width="110" height="86" rx="12" class="box"/>
+  <text x="1052" y="220" class="label">Product</text>
+  <text x="1052" y="247" class="small">verified spec</text>
+
+  <path d="M240 228 H290" class="line"/>
+  <path d="M465 228 C505 228 500 138 540 138" class="line"/>
+  <path d="M465 228 C505 228 500 328 540 328" class="line"/>
+  <path d="M725 138 C785 138 760 216 805 220" class="line"/>
+  <path d="M725 328 C785 328 760 240 805 236" class="line"/>
+  <path d="M985 228 H1025" class="line"/>
+
+  <rect x="260" y="455" width="680" height="82" rx="18" fill="#191a19" stroke="#8a4c20" stroke-width="2"/>
+  <text x="298" y="493" class="note">Key risks</text>
+  <text x="298" y="522" class="light">overgrinding | slime loss | mixed size feed | untested cleaning equipment | product specification mismatch</text>
+  <text x="70" y="620" class="note">Process illustration only. Tin and tungsten routes must be checked by mineral type and liberation.</text>
+</svg>
