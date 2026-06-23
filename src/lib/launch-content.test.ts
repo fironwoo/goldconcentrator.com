@@ -20,6 +20,26 @@ describe('launch contact content', () => {
     expect(aboutPage).toContain('{SITE.officeAddress}');
   });
 
+  it('uses authorized factory images and current factory wording on the manufacturing page', () => {
+    const manufacturingPage = readFileSync(
+      resolve(process.cwd(), 'src/pages/manufacturing-delivery.astro'),
+      'utf8',
+    );
+    const factoryImageRefs = Array.from(
+      manufacturingPage.matchAll(/src: '(\/images\/factory\/[^']+)'/g),
+      (match) => match[1],
+    );
+
+    expect(factoryImageRefs.length).toBeGreaterThanOrEqual(4);
+    expect(
+      factoryImageRefs.filter(
+        (imagePath) => !existsSync(resolve(process.cwd(), 'public', imagePath.replace(/^\//, ''))),
+      ),
+    ).toEqual([]);
+    expect(manufacturingPage).toMatch(/our factory/i);
+    expect(manufacturingPage).not.toMatch(/Change public wording to/);
+  });
+
   it('keeps solution process illustration references backed by public assets', () => {
     const solutionDir = resolve(process.cwd(), 'src/content/solutions');
     const missingAssets: string[] = [];

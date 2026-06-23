@@ -2,16 +2,43 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ProjectCta from '../components/ProjectCta.astro';
+
+const factoryImages = [
+  {
+    src: '/images/factory/gold-trommel-workshop.webp',
+    alt: 'Gold trommel screen assembled in the Jiangxi factory workshop',
+    title: 'Gold wash plant equipment',
+    caption: 'Large trommel screen prepared in our factory workshop before project delivery.',
+  },
+  {
+    src: '/images/factory/rock-gold-field-installation.webp',
+    alt: 'Hard rock gold processing equipment installed at site',
+    title: 'Field installation reference',
+    caption: 'Site installation reference used to review equipment interfaces and operating layout.',
+  },
+  {
+    src: '/images/factory/jig-machine-workshop.webp',
+    alt: 'Jig concentrator assembled in the factory workshop',
+    title: 'Gravity separation equipment',
+    caption: 'Jig concentrator workshop photo for gravity recovery and heavy-mineral circuits.',
+  },
+  {
+    src: '/images/factory/screen-loading-delivery.webp',
+    alt: 'Vibrating screen loaded on truck for delivery',
+    title: 'Packing and shipment',
+    caption: 'Delivery photo showing equipment loading and export preparation from the manufacturing base.',
+  },
+];
 ---
 
 <BaseLayout
   title="Mineral Processing Equipment Manufacturing & Delivery"
-  description="Equipment coordination, production review, quality checks, packing and export delivery from our manufacturing base and supply network in China."
+  description="Equipment coordination, production review, quality checks, packing and export delivery from our Jiangxi factory and manufacturing base in China."
 >
   <header class="page-hero">
     <div class="container">
       <Breadcrumbs items={[{ label: 'Manufacturing & Delivery' }]} />
-      <span class="eyebrow">Jiangxi manufacturing base</span>
+      <span class="eyebrow">Our Jiangxi factory</span>
       <h1>Manufacturing & Delivery</h1>
       <p>
         The flowsheet defines the equipment duty. We then coordinate manufacturing, interfaces,
@@ -33,13 +60,25 @@ import ProjectCta from '../components/ProjectCta.astro';
         <article class="surface-card"><h3>Quality checks</h3><p>Record agreed inspection points, dimensions, components and visible test conditions before packing.</p></article>
         <article class="surface-card"><h3>Packing & shipment</h3><p>Coordinate packing lists, container planning, markings and export documents with the delivery scope.</p></article>
       </div>
-      <div class="authorization-note">
-        <strong>Production wording policy</strong>
-        <p>
-          This site currently uses “manufacturing base and supply network.” Change public wording to
-          “our factory” only after written authorization covers brand use, images, customer visits,
-          warranty and delivery responsibility.
-        </p>
+      <div class="factory-gallery-block">
+        <div class="section-heading">
+          <div><span class="eyebrow">Factory materials</span><h2>Real equipment, not catalog noise.</h2></div>
+          <p>
+            These authorized factory photos support the manufacturing story without turning the site
+            into a public equipment price list.
+          </p>
+        </div>
+        <div class="factory-gallery">
+          {factoryImages.map((image) => (
+            <figure>
+              <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+              <figcaption>
+                <strong>{image.title}</strong>
+                <span>{image.caption}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -47,29 +86,57 @@ import ProjectCta from '../components/ProjectCta.astro';
 </BaseLayout>
 
 <style>
-  .authorization-note {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 28px;
-    margin-top: 40px;
-    padding: 24px;
-    border-left: 4px solid var(--gold);
-    background: var(--paper-deep);
+  .factory-gallery-block {
+    margin-top: 72px;
   }
 
-  .authorization-note strong {
+  .factory-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .factory-gallery figure {
+    overflow: hidden;
+    margin: 0;
+    border: 1px solid var(--line);
+    background: rgba(255, 253, 248, 0.78);
+    box-shadow: 0 8px 30px rgba(29, 28, 25, 0.05);
+  }
+
+  .factory-gallery img {
+    width: 100%;
+    aspect-ratio: 1.12;
+    object-fit: cover;
+  }
+
+  .factory-gallery figcaption {
+    display: grid;
+    gap: 8px;
+    padding: 18px;
+  }
+
+  .factory-gallery strong {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: 1.45rem;
+    line-height: 1;
     text-transform: uppercase;
   }
 
-  .authorization-note p {
-    margin: 0;
+  .factory-gallery span {
     color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.45;
+  }
+
+  @media (max-width: 900px) {
+    .factory-gallery {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   @media (max-width: 650px) {
-    .authorization-note {
+    .factory-gallery {
       grid-template-columns: 1fr;
     }
   }

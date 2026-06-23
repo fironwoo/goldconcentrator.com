@@ -18,14 +18,13 @@
 
 这些流程图是工艺示意图，不是真实项目照片。可以公开使用，但页面或图片说明里不要说成客户现场图。
 
-## 参考网站可以借鉴什么
+## 参考网站和授权工厂图库
 
-参考站点：
+行业参考站点：
 
 - https://mineraldressing.com/
 - https://www.jxscmachine.com/
 - http://www.benefication.com/
-- https://oremachinery.com/
 
 可以借鉴：
 
@@ -34,12 +33,23 @@
 - 常见设备角色，比如 trommel scrubber, jig, spiral concentrator, centrifugal concentrator, shaking table。
 - 客户常问问题，比如 clay, feed size, recovery, capacity, water, power, tailings。
 
-不能直接使用：
+不能从行业参考站点直接使用：
 
 - 对方图片、客户现场照片、视频截图。
 - 对方案例国家、产能、回收率、客户名称。
 - 对方宣传语、整段页面文字。
 - 没有证据的数字，比如固定回收率、固定处理量、固定品位提升。
+
+授权工厂图库：
+
+- https://oremachinery.com/
+
+你已确认 `oremachinery.com` 是我们的工厂/授权素材来源，因此可以直接使用该网站的设备、车间、发货、安装等图片。使用时仍要注意：
+
+- 可以说 factory photo, workshop photo, field installation reference, delivery photo。
+- 不要把图片自动写成某个 GoldConcentrator.com 客户案例，除非另有客户授权和项目证据。
+- 不要照搬 oremachinery 页面上的整段英文介绍。
+- 可以使用图片表达制造能力，但回收率、产能、客户国家等数字仍然需要证据。
 
 我们的定位不是“设备商城”，而是“先定流程，再定设备”。这会和很多江西石城供应商拉开距离。
 
