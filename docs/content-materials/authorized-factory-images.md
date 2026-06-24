@@ -2,22 +2,22 @@
 
 Updated: 2026-06-23
 
-The user confirmed that `oremachinery.com` is the factory / authorized factory image source for GoldConcentrator.com. Images copied from this domain may be used as factory, equipment, delivery or installation materials. Do not convert image use into unsupported customer case claims.
+The factory images used by GoldConcentrator.com come from a user-confirmed authorized factory source. The public repository should not expose the original source domain or original source URLs while the project remains confidential.
 
-## Images Added To This Site
+## Public Images Added To This Site
 
-| Local file | Source URL | Current use |
+| Local file | Private source filename | Current use |
 | --- | --- | --- |
-| `/images/hero-gravity-plant.webp` | `https://oremachinery.com/wp-content/uploads/2017/09/200-tph-trommel-screen28.jpg` | Homepage hero background |
-| `/images/factory/gold-trommel-workshop.webp` | `https://oremachinery.com/wp-content/uploads/2017/09/200-tph-trommel-screen28.jpg` | Manufacturing page factory gallery |
-| `/images/factory/rock-gold-field-installation.webp` | `https://oremachinery.com/wp-content/uploads/2017/09/rock-gold-plant-3.jpg` | Manufacturing page factory gallery |
-| `/images/factory/jig-machine-workshop.webp` | `https://oremachinery.com/wp-content/uploads/2017/09/JIG-MACHINE-30.jpg` | Manufacturing page factory gallery |
-| `/images/factory/shaking-table-workshop.webp` | `https://oremachinery.com/wp-content/uploads/2020/11/6S-shaking-table.jpg` | Reserved local image |
-| `/images/factory/screen-loading-delivery.webp` | `https://oremachinery.com/wp-content/uploads/2020/04/vibration-screen11.jpg` | Manufacturing page factory gallery |
+| `/images/hero-gravity-plant.webp` | `mobile-trommel-screen-23.jpg` | Homepage hero background, cropped to avoid people and source identifiers |
+| `/images/factory/gold-trommel-workshop.webp` | `mobile-trommel-screen-23.jpg` | Manufacturing page factory gallery, cropped equipment detail |
+| `/images/factory/rock-gold-field-installation.webp` | `rotary-scrubber-15.jpg` | Manufacturing page factory gallery, cropped drive/support detail |
+| `/images/factory/jig-machine-workshop.webp` | `jig-machine-clean.jpg` | Manufacturing page factory gallery, cropped jig detail |
+| `/images/factory/shaking-table-workshop.webp` | `rotary-scrubber-15.jpg` | Reserved local image, cropped equipment detail |
+| `/images/factory/screen-loading-delivery.webp` | `mobile-trommel-screen-23.jpg` | Manufacturing page factory gallery, cropped mobile plant detail |
 
-## Beautification Workflow
+## Beautification And Desensitization Workflow
 
-Images are beautified locally with `scripts/beautify-authorized-factory-images.mjs`.
+Images are processed locally with `scripts/beautify-authorized-factory-images.mjs`.
 
 Run:
 
@@ -25,10 +25,13 @@ Run:
 npm run beautify:factory-images
 ```
 
-The script downloads the authorized originals, crops them to site-ready sizes, applies a consistent GoldConcentrator.com treatment and writes optimized WebP files. The treatment is intentionally light: exposure, contrast, saturation, sharpening, warm grading and a subtle vignette. It does not remove watermarks, change equipment, replace backgrounds or invent project scenes.
+The script reads private source files from `private/factory-sources/`, crops them to site-ready sizes, applies a consistent GoldConcentrator.com treatment and writes optimized WebP files. The current launch set prefers clean crop areas over heavy watermark removal, so public images do not show obvious people, watermarks, company text or visible identifiers.
 
-## Safe Caption Rules
+The treatment is intentionally conservative: exposure, contrast, saturation, sharpening, warm grading, subtle vignette and local patching. It should not invent customer scenes or unsupported project results.
 
-- Use: factory workshop, equipment prepared for delivery, field installation reference, authorized factory photo.
-- Avoid: customer success, guaranteed recovery, exact throughput, exact country, exact ore grade, unless separately verified.
-- Keep GoldConcentrator.com positioned as process-led. Images support trust; they should not turn the site into an equipment catalog.
+## Confidentiality Rules
+
+- Keep original source images under `private/factory-sources/`; this folder is ignored by Git.
+- Do not publish the original source domain or original source URLs in current editable files.
+- Do not use customer names, exact project countries, exact throughput or recovery claims unless separately verified.
+- Public image captions may say factory workshop, equipment preparation, field installation reference or authorized factory photo.

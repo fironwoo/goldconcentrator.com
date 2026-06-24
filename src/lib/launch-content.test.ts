@@ -36,8 +36,21 @@ describe('launch contact content', () => {
         (imagePath) => !existsSync(resolve(process.cwd(), 'public', imagePath.replace(/^\//, ''))),
       ),
     ).toEqual([]);
-    expect(manufacturingPage).toMatch(/our factory/i);
+    expect(manufacturingPage).toMatch(/our Jiangxi factory/i);
     expect(manufacturingPage).not.toMatch(/Change public wording to/);
+  });
+
+  it('does not expose confidential factory source URLs in current editable files', () => {
+    const filesToCheck = [
+      'docs/content-materials/authorized-factory-images.md',
+      'scripts/beautify-authorized-factory-images.mjs',
+    ];
+
+    for (const file of filesToCheck) {
+      const content = readFileSync(resolve(process.cwd(), file), 'utf8');
+
+      expect(content).not.toContain('oremachinery.com');
+    }
   });
 
   it('keeps solution process illustration references backed by public assets', () => {

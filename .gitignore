@@ -21,6 +21,7 @@ pnpm-debug.log*
 .dev.vars
 .wrangler/
 .superpowers/
+private/
 
 # macOS-specific files
 .DS_Store
