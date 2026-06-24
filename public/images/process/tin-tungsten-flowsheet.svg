@@ -1,62 +1,78 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">Tin and tungsten gravity concentration process illustration</title>
-  <desc id="desc">A simplified process route for tin and tungsten gravity concentration with classification, coarse recovery, fine recovery and cleaning.</desc>
+  <title id="title">Tin and tungsten staged gravity concentration flowsheet</title>
+  <desc id="desc">Engineering-style tin and tungsten flowsheet showing feed preparation, classification, coarse and fine gravity recovery, concentrate cleaning, tailings and design checks.</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#222321"/>
-      <stop offset="1" stop-color="#26302c"/>
+      <stop offset="0" stop-color="#1b1c1a"/>
+      <stop offset="1" stop-color="#22302b"/>
     </linearGradient>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d39a38"/>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#d39a38"/>
     </marker>
     <style>
       .title{font:700 34px Arial,sans-serif;fill:#fffdf8}
-      .light{font:15px Arial,sans-serif;fill:#e9e1d3}
-      .label{font:700 20px Arial,sans-serif;fill:#191a19}
-      .small{font:15px Arial,sans-serif;fill:#565852}
-      .note{font:14px Arial,sans-serif;fill:#efc56d}
-      .box{fill:#fffdf8;stroke:#d39a38;stroke-width:3}
-      .dark{fill:#2f302d;stroke:#d39a38;stroke-width:3}
+      .subtitle{font:16px Arial,sans-serif;fill:#e9e1d3}
+      .label{font:700 17px Arial,sans-serif;fill:#fffdf8}
+      .small{font:13px Arial,sans-serif;fill:#d8cfbf}
+      .stream-label{font:700 12px Arial,sans-serif;fill:#efc56d;letter-spacing:.04em;text-transform:uppercase}
+      .note{font:13px Arial,sans-serif;fill:#efc56d}
+      .panel{fill:#242522;stroke:#5f5649;stroke-width:1.5}
+      .machine{fill:#fffdf8;stroke:#d39a38;stroke-width:2.5}
+      .machine-dark{fill:#2f302d;stroke:#d39a38;stroke-width:2.5}
       .line{fill:none;stroke:#d39a38;stroke-width:4;marker-end:url(#arrow)}
+      .tail{fill:none;stroke:#a68d6d;stroke-width:3;stroke-dasharray:7 7;marker-end:url(#arrow)}
     </style>
   </defs>
   <rect width="1200" height="675" fill="url(#bg)"/>
-  <text x="70" y="76" class="title">Tin / Tungsten Gravity Process Logic</text>
-  <text x="70" y="108" class="light">Protect brittle valuable minerals and recover by controlled size fraction.</text>
+  <text x="58" y="62" class="title">Tin / Tungsten Flowsheet</text>
+  <text x="58" y="92" class="subtitle">Protect brittle minerals. Recover by narrow size fraction, then clean to product specification.</text>
+  <text x="58" y="122" class="note">The route changes with cassiterite or wolframite liberation, slime content and concentrate specification.</text>
 
-  <rect x="70" y="185" width="170" height="86" rx="12" class="box"/>
-  <text x="98" y="220" class="label">Prepare Feed</text>
-  <text x="98" y="247" class="small">wash / crush as needed</text>
+  <rect x="58" y="178" width="148" height="132" rx="14" class="panel"/>
+  <polygon points="88,216 174,198 180,224 94,242" class="machine"/>
+  <rect x="98" y="244" width="66" height="18" class="machine"/>
+  <text x="86" y="288" class="label">Feed prep</text>
 
-  <rect x="295" y="185" width="170" height="86" rx="12" class="box"/>
-  <text x="323" y="220" class="label">Classify</text>
-  <text x="323" y="247" class="small">narrow size ranges</text>
+  <rect x="250" y="178" width="148" height="132" rx="14" class="panel"/>
+  <path d="M286 204h76l-18 76h-40z" class="machine"/>
+  <text x="284" y="288" class="label">Classify</text>
 
-  <rect x="545" y="95" width="180" height="86" rx="12" class="dark"/>
-  <text x="575" y="130" font="700 20px Arial" fill="#fffdf8">Coarse Recovery</text>
-  <text x="575" y="157" class="light">jig route</text>
+  <rect x="468" y="90" width="162" height="122" rx="14" class="panel"/>
+  <path d="M505 144h88v30h-88zM520 120h58v24h-58z" class="machine-dark"/>
+  <text x="500" y="118" class="label">Coarse recovery</text>
+  <text x="500" y="200" class="small">jig duty</text>
 
-  <rect x="545" y="285" width="180" height="86" rx="12" class="dark"/>
-  <text x="575" y="320" font="700 20px Arial" fill="#fffdf8">Fine Recovery</text>
-  <text x="575" y="347" class="light">spiral / table route</text>
+  <rect x="468" y="305" width="162" height="122" rx="14" class="panel"/>
+  <path d="M505 350c40-34 88-28 86 26-27-18-55-16-86 8z" class="machine-dark"/>
+  <path d="M510 368c34-18 60-14 78 5" fill="none" stroke="#d39a38" stroke-width="3"/>
+  <text x="500" y="333" class="label">Fine recovery</text>
+  <text x="500" y="414" class="small">spiral / table duty</text>
 
-  <rect x="810" y="185" width="175" height="86" rx="12" class="box"/>
-  <text x="838" y="220" class="label">Clean</text>
-  <text x="838" y="247" class="small">table / magnetic check</text>
+  <rect x="714" y="188" width="166" height="132" rx="14" class="panel"/>
+  <polygon points="742,246 850,232 858,252 750,268" class="machine"/>
+  <text x="742" y="216" class="label">Concentrate</text>
+  <text x="742" y="302" class="small">table cleaning</text>
 
-  <rect x="1030" y="185" width="110" height="86" rx="12" class="box"/>
-  <text x="1052" y="220" class="label">Product</text>
-  <text x="1052" y="247" class="small">verified spec</text>
+  <rect x="958" y="188" width="156" height="132" rx="14" class="panel"/>
+  <rect x="988" y="226" width="96" height="28" class="machine"/>
+  <circle cx="1010" cy="260" r="10" fill="#d39a38"/>
+  <circle cx="1062" cy="260" r="10" fill="#d39a38"/>
+  <text x="988" y="216" class="label">Product check</text>
+  <text x="988" y="302" class="small">magnetic / assay</text>
 
-  <path d="M240 228 H290" class="line"/>
-  <path d="M465 228 C505 228 500 138 540 138" class="line"/>
-  <path d="M465 228 C505 228 500 328 540 328" class="line"/>
-  <path d="M725 138 C785 138 760 216 805 220" class="line"/>
-  <path d="M725 328 C785 328 760 240 805 236" class="line"/>
-  <path d="M985 228 H1025" class="line"/>
+  <path d="M206 244H245" class="line"/>
+  <path d="M398 244C430 244 425 151 463 151" class="line"/>
+  <path d="M398 244C430 244 425 366 463 366" class="line"/>
+  <path d="M630 151C680 151 666 244 709 244" class="line"/>
+  <path d="M630 366C680 366 666 264 709 264" class="line"/>
+  <path d="M880 254H953" class="line"/>
+  <path d="M626 400C710 470 835 496 1014 520" class="tail"/>
+  <text x="740" y="500" class="stream-label">Tailings and slimes: sample by size fraction</text>
+  <path d="M1114 252C1145 252 1146 420 1065 448" class="line"/>
+  <text x="870" y="472" class="stream-label">Concentrate to verified product spec</text>
 
-  <rect x="260" y="455" width="680" height="82" rx="18" fill="#191a19" stroke="#8a4c20" stroke-width="2"/>
-  <text x="298" y="493" class="note">Key risks</text>
-  <text x="298" y="522" class="light">overgrinding | slime loss | mixed size feed | untested cleaning equipment | product specification mismatch</text>
-  <text x="70" y="620" class="note">Process illustration only. Tin and tungsten routes must be checked by mineral type and liberation.</text>
+  <rect x="58" y="455" width="450" height="118" rx="16" fill="#111210" stroke="#8a4c20" stroke-width="2"/>
+  <text x="86" y="488" class="label">Design checks</text>
+  <text x="86" y="518" class="small">Overgrinding risk | liberation by size | slime loss</text>
+  <text x="86" y="544" class="small">Cleaning stages | magnetic response | product specification</text>
 </svg>

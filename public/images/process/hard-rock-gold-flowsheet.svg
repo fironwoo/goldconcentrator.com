@@ -1,68 +1,86 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">Hard rock gold crushing grinding and gravity recovery process illustration</title>
-  <desc id="desc">A simplified hard rock gold process route from crushing and grinding to gravity recovery and downstream route evaluation.</desc>
+  <title id="title">Hard rock gold crushing, grinding and gravity recovery flowsheet</title>
+  <desc id="desc">Engineering-style hard rock gold flowsheet with crushing, milling, classification, gravity concentration, concentrate cleaning, tailings review and design checks.</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#191a19"/>
-      <stop offset="1" stop-color="#302b23"/>
+      <stop offset="0" stop-color="#181918"/>
+      <stop offset="1" stop-color="#302820"/>
     </linearGradient>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d39a38"/>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#d39a38"/>
     </marker>
     <style>
       .title{font:700 34px Arial,sans-serif;fill:#fffdf8}
-      .label{font:700 20px Arial,sans-serif;fill:#191a19}
-      .small{font:15px Arial,sans-serif;fill:#565852}
-      .small-light{font:15px Arial,sans-serif;fill:#e9e1d3}
-      .note{font:14px Arial,sans-serif;fill:#efc56d}
-      .box{fill:#fffdf8;stroke:#d39a38;stroke-width:3}
-      .dark{fill:#2f302d;stroke:#d39a38;stroke-width:3}
+      .subtitle{font:16px Arial,sans-serif;fill:#e9e1d3}
+      .label{font:700 17px Arial,sans-serif;fill:#fffdf8}
+      .small{font:13px Arial,sans-serif;fill:#d8cfbf}
+      .stream-label{font:700 12px Arial,sans-serif;fill:#efc56d;letter-spacing:.04em;text-transform:uppercase}
+      .note{font:13px Arial,sans-serif;fill:#efc56d}
+      .panel{fill:#242522;stroke:#5f5649;stroke-width:1.5}
+      .machine{fill:#fffdf8;stroke:#d39a38;stroke-width:2.5}
+      .machine-dark{fill:#2f302d;stroke:#d39a38;stroke-width:2.5}
       .line{fill:none;stroke:#d39a38;stroke-width:4;marker-end:url(#arrow)}
-      .loop{fill:none;stroke:#efc56d;stroke-width:3;stroke-dasharray:9 8;marker-end:url(#arrow)}
+      .loop{fill:none;stroke:#7fb5c9;stroke-width:3;stroke-dasharray:8 7;marker-end:url(#arrow)}
+      .tail{fill:none;stroke:#a68d6d;stroke-width:3;stroke-dasharray:7 7;marker-end:url(#arrow)}
     </style>
   </defs>
   <rect width="1200" height="675" fill="url(#bg)"/>
-  <text x="70" y="76" class="title">Hard Rock Gold Process Logic</text>
-  <text x="70" y="108" class="small-light">Liberation controls the route. Gravity is used where test work supports it.</text>
+  <text x="58" y="62" class="title">Hard Rock Gold Flowsheet</text>
+  <text x="58" y="92" class="subtitle">Liberation size controls the route. Gravity is a test-work decision, not a default promise.</text>
+  <text x="58" y="122" class="note">No universal recovery percentage should be published without test method and operating conditions.</text>
 
-  <rect x="70" y="185" width="145" height="86" rx="12" class="box"/>
-  <text x="96" y="220" class="label">Jaw Crusher</text>
-  <text x="96" y="247" class="small">primary sizing</text>
+  <rect x="50" y="178" width="132" height="132" rx="14" class="panel"/>
+  <path d="M82 214l60-24 24 70H82z" class="machine"/>
+  <path d="M98 226h42l-12 25H98z" fill="#2f302d"/>
+  <text x="74" y="288" class="label">Jaw crusher</text>
 
-  <rect x="260" y="185" width="145" height="86" rx="12" class="box"/>
-  <text x="286" y="220" class="label">Secondary</text>
-  <text x="286" y="247" class="small">crush / screen</text>
+  <rect x="222" y="178" width="132" height="132" rx="14" class="panel"/>
+  <polygon points="246,215 326,202 334,225 254,240" class="machine"/>
+  <line x1="267" y1="212" x2="273" y2="236" stroke="#8a4c20" stroke-width="2"/>
+  <line x1="296" y1="207" x2="302" y2="231" stroke="#8a4c20" stroke-width="2"/>
+  <text x="248" y="288" class="label">Crush / screen</text>
 
-  <rect x="450" y="185" width="145" height="86" rx="12" class="box"/>
-  <text x="476" y="220" class="label">Ball Mill</text>
-  <text x="476" y="247" class="small">controlled grind</text>
+  <rect x="394" y="178" width="132" height="132" rx="14" class="panel"/>
+  <ellipse cx="460" cy="237" rx="48" ry="28" class="machine"/>
+  <rect x="426" y="214" width="68" height="46" class="machine"/>
+  <text x="425" y="288" class="label">Ball mill</text>
 
-  <rect x="640" y="185" width="145" height="86" rx="12" class="box"/>
-  <text x="666" y="220" class="label">Classifier</text>
-  <text x="666" y="247" class="small">size split</text>
+  <rect x="566" y="178" width="132" height="132" rx="14" class="panel"/>
+  <path d="M614 206h42l-18 70h-6z" class="machine"/>
+  <circle cx="635" cy="214" r="25" fill="none" stroke="#d39a38" stroke-width="3"/>
+  <text x="598" y="288" class="label">Classifier</text>
 
-  <rect x="830" y="120" width="180" height="86" rx="12" class="dark"/>
-  <text x="860" y="155" font="700 20px Arial" fill="#fffdf8">Gravity Gold</text>
-  <text x="860" y="182" class="small-light">centrifugal route</text>
+  <rect x="760" y="94" width="162" height="122" rx="14" class="panel"/>
+  <circle cx="842" cy="151" r="35" class="machine-dark"/>
+  <circle cx="842" cy="151" r="17" fill="none" stroke="#d39a38" stroke-width="3"/>
+  <text x="790" y="202" class="small">gravity-recoverable gold</text>
+  <text x="790" y="122" class="label">Centrifugal</text>
 
-  <rect x="830" y="290" width="180" height="86" rx="12" class="dark"/>
-  <text x="860" y="325" font="700 20px Arial" fill="#fffdf8">Tailings Review</text>
-  <text x="860" y="352" class="small-light">flotation / leach test</text>
+  <rect x="760" y="305" width="162" height="122" rx="14" class="panel"/>
+  <path d="M790 365h100l16 28H774z" class="machine-dark"/>
+  <text x="790" y="333" class="label">Tailings review</text>
+  <text x="790" y="414" class="small">flotation / leach test</text>
 
-  <rect x="1045" y="120" width="105" height="86" rx="12" class="box"/>
-  <text x="1065" y="155" class="label">Table</text>
-  <text x="1065" y="182" class="small">cleaning</text>
+  <rect x="988" y="160" width="160" height="136" rx="14" class="panel"/>
+  <polygon points="1018,220 1120,208 1128,228 1026,242" class="machine"/>
+  <text x="1018" y="188" class="label">Concentrate</text>
+  <text x="1018" y="277" class="small">table cleaning</text>
 
-  <path d="M215 228 H255" class="line"/>
-  <path d="M405 228 H445" class="line"/>
-  <path d="M595 228 H635" class="line"/>
-  <path d="M785 228 C820 228 805 162 825 162" class="line"/>
-  <path d="M785 228 C820 228 805 332 825 332" class="line"/>
-  <path d="M1010 162 H1040" class="line"/>
-  <path d="M713 271 C713 335 520 335 520 276" class="loop"/>
+  <path d="M182 244H217" class="line"/>
+  <path d="M354 244H389" class="line"/>
+  <path d="M526 244H561" class="line"/>
+  <path d="M698 244C736 244 724 151 755 151" class="line"/>
+  <path d="M698 244C736 244 724 366 755 366" class="tail"/>
+  <path d="M922 151H983" class="line"/>
+  <path d="M636 310C636 385 468 386 462 314" class="loop"/>
+  <text x="500" y="365" class="stream-label">Classifier underflow returns to mill</text>
+  <path d="M1148 226C1168 226 1168 438 1070 458" class="line"/>
+  <text x="1005" y="480" class="stream-label">Clean gold concentrate</text>
+  <path d="M922 387C970 438 970 505 1044 522" class="tail"/>
+  <text x="822" y="502" class="stream-label">Tailings: test before downstream route</text>
 
-  <rect x="260" y="455" width="680" height="82" rx="18" fill="#222321" stroke="#8a4c20" stroke-width="2"/>
-  <text x="298" y="493" class="note">Key decision: how fine is enough?</text>
-  <text x="298" y="522" class="small-light">ore hardness | liberation size | sulphide association | gravity-recoverable gold | power and water</text>
-  <text x="70" y="620" class="note">Process illustration only. Do not publish universal recovery percentages.</text>
+  <rect x="58" y="455" width="430" height="118" rx="16" fill="#111210" stroke="#8a4c20" stroke-width="2"/>
+  <text x="86" y="488" class="label">Design checks</text>
+  <text x="86" y="518" class="small">Ore hardness | liberation size | sulphide association</text>
+  <text x="86" y="544" class="small">Gravity response | grind target | power and water limits</text>
 </svg>

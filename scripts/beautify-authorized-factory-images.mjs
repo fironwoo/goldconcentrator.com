@@ -12,7 +12,7 @@ const factoryImages = [
     height: 1000,
     quality: 78,
     position: 'centre',
-    sourceCrop: { left: 265, top: 70, width: 435, height: 360 },
+    sourceCrop: { left: 120, top: 45, width: 600, height: 470 },
     treatment: 'hero',
   },
   {

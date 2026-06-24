@@ -53,6 +53,19 @@ describe('launch contact content', () => {
     }
   });
 
+  it('uses a wide enough hero crop to avoid blurry homepage imagery', () => {
+    const script = readFileSync(
+      resolve(process.cwd(), 'scripts/beautify-authorized-factory-images.mjs'),
+      'utf8',
+    );
+    const heroJob = script.match(
+      /output: 'public\/images\/hero-gravity-plant\.webp',[\s\S]*?treatment: 'hero'/,
+    )?.[0];
+
+    expect(heroJob).toBeDefined();
+    expect(heroJob).toMatch(/sourceCrop: \{ left: \d+, top: \d+, width: ([6-9]\d{2}|\d{4,}), height:/);
+  });
+
   it('keeps solution process illustration references backed by public assets', () => {
     const solutionDir = resolve(process.cwd(), 'src/content/solutions');
     const missingAssets: string[] = [];
@@ -71,5 +84,21 @@ describe('launch contact content', () => {
     }
 
     expect(missingAssets).toEqual([]);
+  });
+
+  it('uses engineering-grade process illustrations with equipment, streams and design checks', () => {
+    const processDir = resolve(process.cwd(), 'public/images/process');
+    const requiredTerms = ['Concentrate', 'Tailings', 'Design checks'];
+
+    for (const filename of readdirSync(processDir).filter((file) => file.endsWith('.svg'))) {
+      const content = readFileSync(resolve(processDir, filename), 'utf8');
+
+      for (const term of requiredTerms) {
+        expect(content, `${filename} should include ${term}`).toContain(term);
+      }
+
+      expect(content, `${filename} should draw equipment silhouettes`).toMatch(/class="equipment|class="machine/);
+      expect(content, `${filename} should label at least one process stream`).toMatch(/class="stream-label"/);
+    }
   });
 });

@@ -1,61 +1,85 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">Chrome ore washing and gravity separation process illustration</title>
-  <desc id="desc">A simplified chrome ore process route with washing, desliming, classification, spiral concentration, cleaning and dewatering.</desc>
+  <title id="title">Chrome ore washing, desliming and spiral concentration flowsheet</title>
+  <desc id="desc">Engineering-style chrome ore flowsheet showing washing, desliming, classification, rougher and cleaner spirals, dewatering, concentrate, tailings and design checks.</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0" stop-color="#191a19"/>
       <stop offset="1" stop-color="#2f302d"/>
     </linearGradient>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d39a38"/>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#d39a38"/>
     </marker>
     <style>
       .title{font:700 34px Arial,sans-serif;fill:#fffdf8}
-      .light{font:15px Arial,sans-serif;fill:#e9e1d3}
-      .label{font:700 20px Arial,sans-serif;fill:#191a19}
-      .small{font:15px Arial,sans-serif;fill:#565852}
-      .note{font:14px Arial,sans-serif;fill:#efc56d}
-      .box{fill:#fffdf8;stroke:#d39a38;stroke-width:3}
-      .dark{fill:#2f302d;stroke:#d39a38;stroke-width:3}
+      .subtitle{font:16px Arial,sans-serif;fill:#e9e1d3}
+      .label{font:700 17px Arial,sans-serif;fill:#fffdf8}
+      .small{font:13px Arial,sans-serif;fill:#d8cfbf}
+      .stream-label{font:700 12px Arial,sans-serif;fill:#efc56d;letter-spacing:.04em;text-transform:uppercase}
+      .note{font:13px Arial,sans-serif;fill:#efc56d}
+      .panel{fill:#242522;stroke:#5f5649;stroke-width:1.5}
+      .machine{fill:#fffdf8;stroke:#d39a38;stroke-width:2.5}
+      .machine-dark{fill:#2f302d;stroke:#d39a38;stroke-width:2.5}
       .line{fill:none;stroke:#d39a38;stroke-width:4;marker-end:url(#arrow)}
+      .slime{fill:none;stroke:#7fb5c9;stroke-width:3;stroke-dasharray:8 7;marker-end:url(#arrow)}
+      .tail{fill:none;stroke:#a68d6d;stroke-width:3;stroke-dasharray:7 7;marker-end:url(#arrow)}
     </style>
   </defs>
   <rect width="1200" height="675" fill="url(#bg)"/>
-  <text x="70" y="76" class="title">Chrome Ore Process Logic</text>
-  <text x="70" y="108" class="light">Product quality depends on desliming, size control and staged spiral concentration.</text>
+  <text x="58" y="62" class="title">Chrome Ore Flowsheet</text>
+  <text x="58" y="92" class="subtitle">Grade control depends on desliming, stable size feed and staged spiral concentration.</text>
+  <text x="58" y="122" class="note">Buyer specification and test response control the final route.</text>
 
-  <rect x="70" y="185" width="150" height="86" rx="12" class="box"/>
-  <text x="96" y="220" class="label">Wash</text>
-  <text x="96" y="247" class="small">scrub clay</text>
+  <rect x="52" y="178" width="136" height="132" rx="14" class="panel"/>
+  <ellipse cx="120" cy="235" rx="48" ry="25" class="machine"/>
+  <rect x="86" y="214" width="68" height="42" class="machine"/>
+  <text x="86" y="288" class="label">Wash</text>
 
-  <rect x="265" y="185" width="150" height="86" rx="12" class="box"/>
-  <text x="291" y="220" class="label">Deslime</text>
-  <text x="291" y="247" class="small">remove ultrafines</text>
+  <rect x="230" y="178" width="136" height="132" rx="14" class="panel"/>
+  <path d="M270 206h60l-15 72h-30z" class="machine"/>
+  <circle cx="300" cy="217" r="24" fill="none" stroke="#d39a38" stroke-width="3"/>
+  <text x="266" y="288" class="label">Deslime</text>
 
-  <rect x="460" y="185" width="150" height="86" rx="12" class="box"/>
-  <text x="486" y="220" class="label">Classify</text>
-  <text x="486" y="247" class="small">stable feed size</text>
+  <rect x="408" y="178" width="136" height="132" rx="14" class="panel"/>
+  <polygon points="438,220 518,206 526,230 446,246" class="machine"/>
+  <text x="444" y="288" class="label">Classify</text>
 
-  <rect x="655" y="185" width="170" height="86" rx="12" class="dark"/>
-  <text x="682" y="220" font="700 20px Arial" fill="#fffdf8">Spiral Rougher</text>
-  <text x="682" y="247" class="light">mass pull control</text>
+  <rect x="600" y="115" width="155" height="120" rx="14" class="panel"/>
+  <path d="M635 160c36-30 82-24 80 24-26-16-52-14-80 8z" class="machine-dark"/>
+  <path d="M640 178c31-16 55-12 72 4" fill="none" stroke="#d39a38" stroke-width="3"/>
+  <text x="630" y="143" class="label">Spiral rougher</text>
+  <text x="630" y="222" class="small">mass pull control</text>
 
-  <rect x="870" y="185" width="145" height="86" rx="12" class="dark"/>
-  <text x="898" y="220" font="700 20px Arial" fill="#fffdf8">Clean</text>
-  <text x="898" y="247" class="light">spiral / table</text>
+  <rect x="600" y="315" width="155" height="120" rx="14" class="panel"/>
+  <path d="M635 360c36-30 82-24 80 24-26-16-52-14-80 8z" class="machine-dark"/>
+  <path d="M640 378c31-16 55-12 72 4" fill="none" stroke="#d39a38" stroke-width="3"/>
+  <text x="630" y="343" class="label">Spiral cleaner</text>
+  <text x="630" y="422" class="small">grade upgrade</text>
 
-  <rect x="1060" y="185" width="95" height="86" rx="12" class="box"/>
-  <text x="1077" y="220" class="label">Dewater</text>
-  <text x="1077" y="247" class="small">handle</text>
+  <rect x="825" y="215" width="145" height="120" rx="14" class="panel"/>
+  <polygon points="856,260 942,248 950,270 864,284" class="machine"/>
+  <text x="856" y="243" class="label">Dewater</text>
+  <text x="856" y="322" class="small">screen / pump box</text>
 
-  <path d="M220 228 H260" class="line"/>
-  <path d="M415 228 H455" class="line"/>
-  <path d="M610 228 H650" class="line"/>
-  <path d="M825 228 H865" class="line"/>
-  <path d="M1015 228 H1055" class="line"/>
+  <rect x="1030" y="215" width="126" height="120" rx="14" class="panel"/>
+  <rect x="1056" y="252" width="74" height="38" class="machine"/>
+  <text x="1056" y="243" class="label">Concentrate</text>
+  <text x="1056" y="322" class="small">Cr2O3 check</text>
 
-  <rect x="260" y="455" width="680" height="82" rx="18" fill="#222321" stroke="#8a4c20" stroke-width="2"/>
-  <text x="298" y="493" class="note">Design checks</text>
-  <text x="298" y="522" class="light">feed grade | Cr2O3 target | liberation | slime content | water balance | tailings retreatment potential</text>
-  <text x="70" y="620" class="note">Process illustration only. Buyer specification and test response control the final route.</text>
+  <path d="M188 244H225" class="line"/>
+  <path d="M366 244H403" class="line"/>
+  <path d="M544 244C580 244 570 176 595 176" class="line"/>
+  <path d="M755 176C803 176 790 272 820 272" class="line"/>
+  <path d="M755 378C806 370 790 288 820 288" class="line"/>
+  <path d="M970 276H1025" class="line"/>
+  <path d="M300 310C330 390 422 430 530 438" class="slime"/>
+  <text x="335" y="410" class="stream-label">Slimes to settling and water management</text>
+  <path d="M755 402C835 480 924 505 1040 522" class="tail"/>
+  <text x="805" y="502" class="stream-label">Tailings: grade check and retreatment decision</text>
+  <path d="M1156 276C1176 276 1178 430 1086 456" class="line"/>
+  <text x="858" y="478" class="stream-label">Concentrate to product quality review</text>
+
+  <rect x="58" y="455" width="455" height="118" rx="16" fill="#111210" stroke="#8a4c20" stroke-width="2"/>
+  <text x="86" y="488" class="label">Design checks</text>
+  <text x="86" y="518" class="small">Feed grade | Cr2O3 target | liberation and slime content</text>
+  <text x="86" y="544" class="small">Water balance | spiral split control | tailings retreatment</text>
 </svg>
