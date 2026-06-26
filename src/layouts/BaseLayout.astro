@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import FloatingContact from '../components/FloatingContact.astro';
 import { buildCanonicalUrl, SITE, truncateDescription } from '../lib/site';
 import '../styles/global.css';
 
@@ -78,6 +79,7 @@ const jsonLd = structuredData
       <slot />
     </main>
     <Footer />
+    <FloatingContact />
   </body>
 </html>
 

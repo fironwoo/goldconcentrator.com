@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCta from '../components/ProjectCta.astro';
-import { getHomepageSolutionCards } from '../lib/site';
+import { getHomepageSolutionCards, getWhatsAppUrl, SITE } from '../lib/site';
 
 const solutionCards = getHomepageSolutionCards();
 const projects = (await getCollection('projects'))
@@ -30,6 +30,14 @@ const articles = (await getCollection('knowledge'))
         <a class="button" href="/assess-my-project/">Assess My Gold Project</a>
         <a class="button button--ghost" href="#solutions">Explore Solutions</a>
       </div>
+      <div class="hero-human">
+        <strong>A real person reviews every project message.</strong>
+        <span>
+          WhatsApp is fastest for photos and short videos. Send ore type, target TPH, feed size,
+          country and what equipment you already have.
+        </span>
+        <a href={getWhatsAppUrl(SITE.whatsapp)}>Message us on WhatsApp: {SITE.whatsapp}</a>
+      </div>
       <ul class="hero-proof" aria-label="Key capabilities">
         <li><strong>10+ years</strong><span>Core team experience</span></li>
         <li><strong>Ore-led</strong><span>Process before equipment</span></li>
@@ -47,6 +55,38 @@ const articles = (await getCollection('knowledge'))
         maturity all change the answer. We use those facts to define the route before selecting
         equipment.
       </p>
+    </div>
+  </section>
+
+  <section class="section response-path">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Human review</span>
+          <h2>What happens after you send a message.</h2>
+        </div>
+        <p>
+          You are not dropped into an equipment catalog. A reviewer checks the ore facts first, then
+          asks for the missing details before suggesting a practical route.
+        </p>
+      </div>
+      <div class="response-grid">
+        <article>
+          <span>01</span>
+          <h3>You send the rough facts</h3>
+          <p>Ore type, country, target TPH, feed size, photos, videos and any test or assay notes.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>We ask the useful questions</h3>
+          <p>Clay, water, power, existing equipment, project stage and the real reason the plant is needed.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>You get a route to discuss</h3>
+          <p>Usually within one business day: likely flowsheet, missing data and equipment roles.</p>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -228,6 +268,43 @@ const articles = (await getCollection('knowledge'))
     gap: 12px;
   }
 
+  .hero-human {
+    display: grid;
+    max-width: 640px;
+    gap: 8px;
+    margin-top: 22px;
+    padding: 18px 20px;
+    border: 1px solid rgba(239, 197, 109, 0.26);
+    background: rgba(25, 26, 25, 0.58);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-human strong {
+    color: var(--gold-light);
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .hero-human span {
+    color: rgba(255, 253, 248, 0.72);
+    font-size: 0.9rem;
+  }
+
+  .hero-human a {
+    width: fit-content;
+    color: var(--white);
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero-human a:hover {
+    color: var(--gold-light);
+  }
+
   .hero-proof {
     display: flex;
     max-width: 760px;
@@ -293,6 +370,46 @@ const articles = (await getCollection('knowledge'))
     margin: 0;
     color: rgba(255, 253, 248, 0.94);
     font-size: 0.88rem;
+  }
+
+  .response-path {
+    background:
+      radial-gradient(circle at 12% 14%, rgba(211, 154, 56, 0.13), transparent 22%),
+      var(--paper);
+  }
+
+  .response-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .response-grid article {
+    min-height: 245px;
+    padding: 28px;
+    border: 1px solid var(--line);
+    background: rgba(255, 253, 248, 0.78);
+    box-shadow: 0 8px 30px rgba(29, 28, 25, 0.05);
+  }
+
+  .response-grid span {
+    color: var(--copper);
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+  }
+
+  .response-grid h3 {
+    margin: 46px 0 12px;
+    font-family: var(--font-display);
+    font-size: 2.1rem;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .response-grid p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
   }
 
   .solution-grid {
@@ -588,6 +705,10 @@ const articles = (await getCollection('knowledge'))
       grid-template-columns: 1fr 1fr;
     }
 
+    .response-grid {
+      grid-template-columns: 1fr;
+    }
+
     .process {
       grid-template-columns: 1fr 1fr;
     }
@@ -612,6 +733,10 @@ const articles = (await getCollection('knowledge'))
       gap: 18px;
       flex-direction: column;
       margin-top: 46px;
+    }
+
+    .hero-human {
+      padding: 16px;
     }
 
     .principle-grid {

@@ -1,0 +1,105 @@
+---
+import { getWhatsAppUrl, SITE } from '../lib/site';
+
+const whatsappUrl = getWhatsAppUrl(SITE.whatsapp);
+---
+
+<aside class="floating-contact" aria-label="Project contact options">
+  <span>Manual review</span>
+  <strong>Talk to a process reviewer</strong>
+  <p>Send ore photos, target TPH and country. We review project messages within one business day.</p>
+  <div>
+    <a class="whatsapp" href={whatsappUrl}>WhatsApp</a>
+    <a href={`mailto:${SITE.email}`}>Email</a>
+  </div>
+</aside>
+
+<style>
+  .floating-contact {
+    position: fixed;
+    z-index: 60;
+    right: 18px;
+    bottom: 18px;
+    width: min(320px, calc(100vw - 36px));
+    padding: 18px;
+    border: 1px solid rgba(239, 197, 109, 0.34);
+    color: var(--white);
+    background:
+      linear-gradient(135deg, rgba(138, 76, 32, 0.3), rgba(25, 26, 25, 0.96)),
+      var(--charcoal);
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.24);
+  }
+
+  .floating-contact span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold-light);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .floating-contact span::before {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #76d36b;
+    content: '';
+    box-shadow: 0 0 0 5px rgba(118, 211, 107, 0.12);
+  }
+
+  .floating-contact strong {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .floating-contact p {
+    margin: 8px 0 14px;
+    color: rgba(255, 253, 248, 0.72);
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+
+  .floating-contact div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .floating-contact a {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 253, 248, 0.2);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .floating-contact .whatsapp {
+    border-color: var(--gold);
+    color: var(--ink);
+    background: var(--gold);
+  }
+
+  @media (max-width: 720px) {
+    .floating-contact {
+      right: 12px;
+      bottom: 12px;
+      padding: 14px;
+    }
+
+    .floating-contact p {
+      display: none;
+    }
+  }
+</style>

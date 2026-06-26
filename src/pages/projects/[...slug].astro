@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import ProjectCta from '../../components/ProjectCta.astro';
+import { getWhatsAppUrl, SITE } from '../../lib/site';
 
 export async function getStaticPaths() {
   const entries = await getCollection('projects');
@@ -38,15 +39,51 @@ const { Content } = await render(entry);
         <Content />
       </article>
       <aside class="sidebar">
-        <span class="eyebrow">Case policy</span>
-        <h2>No unsupported recovery claims</h2>
+        <span class="eyebrow">Talk to a reviewer</span>
+        <h2>Send ore photos and project notes</h2>
         <p>
-          Results are published only when test, commissioning or customer records can support the
-          number and its operating conditions.
+          If your ore looks similar, send the mineral, target TPH, feed size, country and a few
+          photos or short videos. WhatsApp is usually the fastest way to start.
         </p>
-        <a class="button" href="/assess-my-project/">Discuss a similar project</a>
+        <ul class="review-list">
+          <li>Ore photos or videos</li>
+          <li>Target capacity and feed size</li>
+          <li>Existing equipment or site limits</li>
+        </ul>
+        <p class="review-note">A real person reviews the project within one business day.</p>
+        <div class="project-actions">
+          <a class="button" href={getWhatsAppUrl(SITE.whatsapp)}>WhatsApp</a>
+          <a class="text-link" href="/assess-my-project/">Use the form</a>
+        </div>
       </aside>
     </div>
   </section>
   <ProjectCta />
 </BaseLayout>
+
+<style>
+  .review-list {
+    display: grid;
+    gap: 10px;
+    margin: 18px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .review-list li {
+    padding: 9px 0;
+    border-top: 1px solid rgba(255, 253, 248, 0.13);
+    color: rgba(255, 253, 248, 0.76);
+    font-size: 0.86rem;
+  }
+
+  .review-note {
+    color: var(--gold-light) !important;
+    font-weight: 700;
+  }
+
+  .project-actions {
+    display: grid;
+    gap: 12px;
+  }
+</style>
