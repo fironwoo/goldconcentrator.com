@@ -34,9 +34,15 @@ const projects = (await getCollection('projects')).sort(
             <li class="tag">{project.data.mineral}</li>
             <li class="tag">{project.data.capacity}</li>
           </ul>
-          <h2>{project.data.title}</h2>
+          <h2>
+            <a class="project-title-link" href={`/projects/${project.id}/`}>
+              {project.data.title}
+            </a>
+          </h2>
           <p>{project.data.description}</p>
-          <a class="text-link" href={`/projects/${project.id}/`}>View case structure</a>
+          <p class="project-card-note">
+            Have similar ore? Send photos, feed size and target TPH for a practical first check.
+          </p>
         </article>
       ))}
     </div>
@@ -51,5 +57,14 @@ const projects = (await getCollection('projects')).sort(
     font-size: 2rem;
     line-height: 1;
     text-transform: uppercase;
+  }
+
+  .project-card-note {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    color: var(--copper);
+    font-size: 0.82rem;
+    font-weight: 700;
   }
 </style>

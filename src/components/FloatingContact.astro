@@ -4,7 +4,15 @@ import { getWhatsAppUrl, SITE } from '../lib/site';
 const whatsappUrl = getWhatsAppUrl(SITE.whatsapp);
 ---
 
-<aside class="floating-contact" aria-label="Project contact options">
+<aside class="floating-contact" aria-label="Project contact options" data-floating-contact>
+  <button
+    class="floating-contact__close"
+    type="button"
+    aria-label="Close contact panel"
+    data-floating-contact-close
+  >
+    X
+  </button>
   <span>Manual review</span>
   <strong>Talk to a process reviewer</strong>
   <p>Send ore photos, target TPH and country. We review project messages within one business day.</p>
@@ -13,6 +21,15 @@ const whatsappUrl = getWhatsAppUrl(SITE.whatsapp);
     <a href={`mailto:${SITE.email}`}>Email</a>
   </div>
 </aside>
+
+<script>
+  const floatingContact = document.querySelector('[data-floating-contact]');
+  const floatingContactClose = document.querySelector('[data-floating-contact-close]');
+
+  floatingContactClose?.addEventListener('click', () => {
+    floatingContact?.setAttribute('hidden', '');
+  });
+</script>
 
 <style>
   .floating-contact {
@@ -28,6 +45,30 @@ const whatsappUrl = getWhatsAppUrl(SITE.whatsapp);
       linear-gradient(135deg, rgba(138, 76, 32, 0.3), rgba(25, 26, 25, 0.96)),
       var(--charcoal);
     box-shadow: 0 20px 70px rgba(0, 0, 0, 0.24);
+  }
+
+  .floating-contact__close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: inline-flex;
+    width: 26px;
+    height: 26px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 253, 248, 0.24);
+    color: rgba(255, 253, 248, 0.72);
+    background: rgba(255, 253, 248, 0.06);
+    cursor: pointer;
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .floating-contact__close:hover {
+    color: var(--ink);
+    background: var(--gold-light);
+    border-color: var(--gold-light);
   }
 
   .floating-contact span {

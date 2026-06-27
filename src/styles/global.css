@@ -235,6 +235,14 @@ a {
   text-transform: uppercase;
 }
 
+.project-title-link {
+  transition: color 160ms ease;
+}
+
+.project-title-link:hover {
+  color: var(--copper);
+}
+
 .surface-card p {
   margin: 0 0 24px;
   color: var(--muted);

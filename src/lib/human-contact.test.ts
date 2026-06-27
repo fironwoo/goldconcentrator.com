@@ -17,6 +17,10 @@ describe('human contact cues', () => {
     expect(homepage).toContain('A real person reviews every project message');
     expect(homepage).toContain('WhatsApp is fastest for photos and short videos');
     expect(homepage).toContain('What happens after you send a message');
+    expect(homepage).toContain('Tell me what you already have on site');
+    expect(homepage).toContain('I will not guess the flowsheet from a machine list');
+    expect(homepage).toContain('Message us on WhatsApp</a>');
+    expect(homepage).not.toContain('Message us on WhatsApp:');
   });
 
   it('turns project pages into a contact path for similar ore conditions', () => {
@@ -25,5 +29,23 @@ describe('human contact cues', () => {
     expect(projectPage).toContain('Send ore photos and project notes');
     expect(projectPage).toContain('WhatsApp');
     expect(projectPage).toContain('one business day');
+  });
+
+  it('makes the assessment form read like a guided technical intake', () => {
+    const assessmentPage = readFileSync(resolve(process.cwd(), 'src/pages/assess-my-project.astro'), 'utf8');
+    const inquiryForm = readFileSync(resolve(process.cwd(), 'src/components/InquiryForm.astro'), 'utf8');
+
+    expect(assessmentPage).toContain('You can send an imperfect project brief');
+    expect(assessmentPage).toContain('What I look for first');
+    expect(inquiryForm).toContain('Photos and short videos are useful');
+    expect(inquiryForm).toContain('What are you trying to separate, and what is causing trouble?');
+  });
+
+  it('lets visitors close the persistent contact widget', () => {
+    const floatingContact = readFileSync(resolve(process.cwd(), 'src/components/FloatingContact.astro'), 'utf8');
+
+    expect(floatingContact).toContain('data-floating-contact');
+    expect(floatingContact).toContain('data-floating-contact-close');
+    expect(floatingContact).toContain("setAttribute('hidden', '')");
   });
 });

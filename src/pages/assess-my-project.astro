@@ -14,8 +14,9 @@ import InquiryForm from '../components/InquiryForm.astro';
       <span class="eyebrow">Initial review at no charge</span>
       <h1>Assess My Project</h1>
       <p>
-        Tell us what you are processing and what is already known. We will identify the likely route,
-        missing information and the next practical step.
+        You can send an imperfect project brief. Tell us what you are processing, what is already
+        known and what is causing trouble. We will identify the likely route, missing information
+        and the next practical step.
       </p>
     </div>
   </header>
@@ -23,16 +24,19 @@ import InquiryForm from '../components/InquiryForm.astro';
     <div class="container assessment-grid">
       <InquiryForm />
       <aside>
-        <span class="eyebrow">What happens next</span>
+        <span class="eyebrow">What I look for first</span>
+        <p class="reviewer-note">
+          A useful first reply comes from the ore facts, not from pushing a machine model.
+        </p>
         <ol>
-          <li><strong>Human review</strong><span>A technical team member reads the submission.</span></li>
-          <li><strong>Missing-data check</strong><span>We identify what prevents a responsible recommendation.</span></li>
-          <li><strong>Initial direction</strong><span>You receive the likely route and recommended next step.</span></li>
-          <li><strong>Detailed scope</strong><span>Testing, calculations or drawings are quoted separately when needed.</span></li>
+          <li><strong>Ore type</strong><span>Alluvial or rock, clay level, visible heavy minerals and feed size.</span></li>
+          <li><strong>Capacity</strong><span>Target TPH, working hours, water source and power condition.</span></li>
+          <li><strong>Current bottleneck</strong><span>Where material is lost, blocked, too wet, too fine or not liberated.</span></li>
+          <li><strong>Existing equipment</strong><span>What you already own, what must be reused and what site limits exist.</span></li>
         </ol>
         <p>
-          We do not publish prices because process scope, equipment duty and delivery conditions
-          change the quotation.
+          After that, we reply with the missing questions, a likely process direction and whether
+          testing or a more detailed scope is needed.
         </p>
       </aside>
     </div>
@@ -87,6 +91,12 @@ import InquiryForm from '../components/InquiryForm.astro';
   aside p {
     color: rgba(255, 253, 248, 0.62);
     font-size: 0.78rem;
+  }
+
+  .reviewer-note {
+    margin: 0 0 14px;
+    color: rgba(255, 253, 248, 0.78);
+    font-weight: 700;
   }
 
   @media (max-width: 900px) {

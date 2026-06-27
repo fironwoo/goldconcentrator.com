@@ -33,10 +33,11 @@ const articles = (await getCollection('knowledge'))
       <div class="hero-human">
         <strong>A real person reviews every project message.</strong>
         <span>
-          WhatsApp is fastest for photos and short videos. Send ore type, target TPH, feed size,
-          country and what equipment you already have.
+          WhatsApp is fastest for photos and short videos. Tell me what you already have on site:
+          ore type, target TPH, feed size, country, water, power and existing equipment.
         </span>
-        <a href={getWhatsAppUrl(SITE.whatsapp)}>Message us on WhatsApp: {SITE.whatsapp}</a>
+        <em>I will not guess the flowsheet from a machine list. The ore facts come first.</em>
+        <a href={getWhatsAppUrl(SITE.whatsapp)}>Message us on WhatsApp</a>
       </div>
       <ul class="hero-proof" aria-label="Key capabilities">
         <li><strong>10+ years</strong><span>Core team experience</span></li>
@@ -66,8 +67,8 @@ const articles = (await getCollection('knowledge'))
           <h2>What happens after you send a message.</h2>
         </div>
         <p>
-          You are not dropped into an equipment catalog. A reviewer checks the ore facts first, then
-          asks for the missing details before suggesting a practical route.
+          You are not dropped into an equipment catalog. A process reviewer checks the ore facts
+          first, then asks for the missing details before suggesting a practical route.
         </p>
       </div>
       <div class="response-grid">
@@ -79,12 +80,12 @@ const articles = (await getCollection('knowledge'))
         <article>
           <span>02</span>
           <h3>We ask the useful questions</h3>
-          <p>Clay, water, power, existing equipment, project stage and the real reason the plant is needed.</p>
+          <p>Clay, water, power, existing equipment, project stage and where gold or heavy minerals are being lost.</p>
         </article>
         <article>
           <span>03</span>
           <h3>You get a route to discuss</h3>
-          <p>Usually within one business day: likely flowsheet, missing data and equipment roles.</p>
+          <p>Usually within one business day: likely flowsheet, missing data, test needs and equipment roles.</p>
         </article>
       </div>
     </div>
@@ -179,8 +180,8 @@ const articles = (await getCollection('knowledge'))
           <h2>Evidence without invented claims.</h2>
         </div>
         <p>
-          These launch case studies are structured placeholders for your verified records. Replace
-          the clearly marked sample facts with approved project evidence before public launch.
+          These case notes show how a project is read: ore condition first, then process route,
+          then equipment duty. Use the closest case as a starting point for your own enquiry.
         </p>
       </div>
       <div class="card-grid">
@@ -190,9 +191,13 @@ const articles = (await getCollection('knowledge'))
               <li class="tag">{project.data.country}</li>
               <li class="tag">{project.data.capacity}</li>
             </ul>
-            <h3>{project.data.title}</h3>
+            <h3>
+              <a class="project-title-link" href={`/projects/${project.id}/`}>
+                {project.data.title}
+              </a>
+            </h3>
             <p>{project.data.description}</p>
-            <a class="text-link" href={`/projects/${project.id}/`}>Read case structure</a>
+            <p class="project-card-note">Send similar ore photos and I will check what data is still missing.</p>
           </article>
         ))}
       </div>
@@ -290,6 +295,13 @@ const articles = (await getCollection('knowledge'))
   .hero-human span {
     color: rgba(255, 253, 248, 0.72);
     font-size: 0.9rem;
+  }
+
+  .hero-human em {
+    color: var(--white);
+    font-size: 0.86rem;
+    font-style: normal;
+    font-weight: 700;
   }
 
   .hero-human a {
@@ -646,6 +658,15 @@ const articles = (await getCollection('knowledge'))
 
   .project-card h3 {
     margin-top: 28px;
+  }
+
+  .project-card-note {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    color: var(--copper);
+    font-size: 0.82rem;
+    font-weight: 700;
   }
 
   .knowledge-preview {
