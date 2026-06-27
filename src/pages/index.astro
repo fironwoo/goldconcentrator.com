@@ -49,13 +49,22 @@ const articles = (await getCollection('knowledge'))
 
   <section class="principle">
     <div class="container principle-grid">
-      <span>01 / Our principle</span>
-      <h2>A machine can be copied. A workable flowsheet has to be reasoned from the ore.</h2>
-      <p>
-        Clay content, liberation size, valuable mineral distribution, water conditions and project
-        maturity all change the answer. We use those facts to define the route before selecting
-        equipment.
-      </p>
+      <span>01 / Site questions</span>
+      <h2>What I check before naming equipment.</h2>
+      <ul class="principle-checks">
+        <li>
+          <strong>Clay and washing difficulty</strong>
+          <small>Free washing sand and sticky clay need very different front-end treatment.</small>
+        </li>
+        <li>
+          <strong>Feed size before and after screening</strong>
+          <small>The cut size decides what reaches the concentrator, jig, table or mill.</small>
+        </li>
+        <li>
+          <strong>Where the valuable mineral may be lost</strong>
+          <small>Fine gold, cassiterite or chromite losses often start before the main machine.</small>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -149,23 +158,76 @@ const articles = (await getCollection('knowledge'))
     </div>
   </section>
 
+  <section class="section workshop-evidence">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Workshop notes</span>
+          <h2>Workshop, packing and delivery checks.</h2>
+        </div>
+        <p>
+          A few real workshop views are enough for the first version. When your own approved project
+          photos are ready, these can be replaced one by one without changing the page structure.
+        </p>
+      </div>
+      <div class="workshop-grid" aria-label="Factory and delivery reference images">
+        <figure>
+          <img
+            src="/images/factory/gold-trommel-workshop.webp"
+            alt="Gold trommel screen in workshop before delivery"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>
+            <strong>Washing section</strong>
+            <span>Check feed size, clay level, water volume and screen opening before selecting recovery equipment.</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img
+            src="/images/factory/shaking-table-workshop.webp"
+            alt="Shaking table workshop reference"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>
+            <strong>Finishing section</strong>
+            <span>Tables, chutes and concentrators must match the actual size range after screening or grinding.</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img
+            src="/images/factory/screen-loading-delivery.webp"
+            alt="Screen equipment loading and delivery preparation"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>
+            <strong>Delivery detail</strong>
+            <span>Quotation should include pumps, pipework, spares, packing and site limits, not only the main machine.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <section class="testing section">
     <div class="container testing-grid">
-      <div class="testing-visual" aria-hidden="true">
-        <div class="ore-dot ore-dot--1"></div>
-        <div class="ore-dot ore-dot--2"></div>
-        <div class="ore-dot ore-dot--3"></div>
-        <div class="testing-lines"></div>
-        <span>Feed</span>
-        <strong>Test</strong>
-        <em>Concentrate</em>
+      <div class="testing-notes">
+        <span>Before a model number</span>
+        <ul>
+          <li><strong>Alluvial gold:</strong> Is the clay washed clean before fine gold recovery?</li>
+          <li><strong>Rock gold:</strong> Is the gold liberated, or is grinding still the real question?</li>
+          <li><strong>Tin / tungsten:</strong> Is it placer ore or rock ore? The front-end can change completely.</li>
+        </ul>
       </div>
       <div>
         <span class="eyebrow">Testing before selection</span>
-        <h2>Small test work can prevent an expensive wrong route.</h2>
+        <h2>Small test work is cheaper than a wrong plant.</h2>
         <p>
-          Our stable in-house capability focuses on gravity test work and amenability screening.
-          Flotation or leaching programs are coordinated only when the ore and project require them.
+          If the ore facts are unclear, the first answer should be a test route, not a full
+          equipment list. Gravity test work, size checks and simple loss observations usually show
+          which section needs attention first.
         </p>
         <a class="text-link" href="/testing-process-design/">How testing informs the flowsheet</a>
       </div>
@@ -177,7 +239,7 @@ const articles = (await getCollection('knowledge'))
       <div class="section-heading">
         <div>
           <span class="eyebrow">Selected project patterns</span>
-          <h2>Evidence without invented claims.</h2>
+          <h2>Case notes you can compare with your ore.</h2>
         </div>
         <p>
           These case notes show how a project is read: ore condition first, then process route,
@@ -356,7 +418,7 @@ const articles = (await getCollection('knowledge'))
 
   .principle-grid {
     display: grid;
-    grid-template-columns: 0.25fr 1.4fr 0.7fr;
+    grid-template-columns: 0.25fr 1fr 1fr;
     align-items: start;
     gap: 48px;
     padding-top: 45px;
@@ -378,8 +440,34 @@ const articles = (await getCollection('knowledge'))
     text-transform: uppercase;
   }
 
-  .principle p {
+  .principle-checks {
+    display: grid;
+    gap: 14px;
     margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .principle-checks li {
+    padding: 0 0 14px;
+    border-bottom: 1px solid rgba(255, 253, 248, 0.22);
+  }
+
+  .principle-checks strong,
+  .principle-checks small {
+    display: block;
+  }
+
+  .principle-checks strong {
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .principle-checks small {
+    margin: 6px 0 0;
     color: rgba(255, 253, 248, 0.94);
     font-size: 0.88rem;
   }
@@ -543,6 +631,48 @@ const articles = (await getCollection('knowledge'))
     font-size: 0.82rem;
   }
 
+  .workshop-evidence {
+    background: var(--paper);
+  }
+
+  .workshop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .workshop-grid figure {
+    margin: 0;
+    border: 1px solid var(--line);
+    background: var(--white);
+    box-shadow: 0 8px 30px rgba(29, 28, 25, 0.05);
+  }
+
+  .workshop-grid img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--charcoal);
+  }
+
+  .workshop-grid figcaption {
+    display: grid;
+    gap: 8px;
+    padding: 20px;
+  }
+
+  .workshop-grid strong {
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .workshop-grid span {
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+
   .testing-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -560,6 +690,42 @@ const articles = (await getCollection('knowledge'))
 
   .testing p {
     color: var(--muted);
+  }
+
+  .testing-notes {
+    padding: clamp(24px, 4vw, 40px);
+    border: 1px solid var(--line);
+    background:
+      linear-gradient(135deg, rgba(211, 154, 56, 0.12), transparent 36%),
+      var(--white);
+    box-shadow: var(--shadow);
+  }
+
+  .testing-notes > span {
+    color: var(--copper);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .testing-notes ul {
+    display: grid;
+    gap: 18px;
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .testing-notes li {
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .testing-notes strong {
+    color: var(--ink);
   }
 
   .testing-visual {
@@ -727,6 +893,10 @@ const articles = (await getCollection('knowledge'))
     }
 
     .response-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .workshop-grid {
       grid-template-columns: 1fr;
     }
 
