@@ -5,15 +5,19 @@ const turnstileSiteKey =
 
 <form class="inquiry-form" data-inquiry-form novalidate>
   <div class="form-progress" aria-label="Form progress">
-    <span class="is-active" data-progress="0">1. Project</span>
+    <span class="is-active" data-progress="0" aria-current="step">1. Project</span>
     <span data-progress="1">2. Ore & scope</span>
     <span data-progress="2">3. Contact</span>
   </div>
 
   <div class="form-alert" data-form-alert role="alert" hidden></div>
+  <div class="route-context" data-route-context hidden>
+    <strong>Your route-check notes are attached.</strong>
+    <span>You can edit them before submitting the project.</span>
+  </div>
 
   <fieldset data-step="0">
-    <legend>What are you processing?</legend>
+    <legend><span tabindex="-1" data-step-heading>What are you processing?</span></legend>
     <p class="step-intro">
       Choose the closest route. If you are not sure, pick the nearest option and describe the
       material in your own words. Other is suitable for tantalum-niobium, manganese, ilmenite,
@@ -78,7 +82,7 @@ const turnstileSiteKey =
   </fieldset>
 
   <fieldset data-step="1" hidden>
-    <legend>What do you know about the ore?</legend>
+    <legend><span tabindex="-1" data-step-heading>What do you know about the ore?</span></legend>
     <p class="step-intro">
       Estimates are acceptable. We use these answers to identify missing data, not to force a final
       flowsheet from incomplete information.
@@ -118,7 +122,7 @@ const turnstileSiteKey =
   </fieldset>
 
   <fieldset data-step="2" hidden>
-    <legend>Where should we reply?</legend>
+    <legend><span tabindex="-1" data-step-heading>Where should we reply?</span></legend>
     <p class="step-intro">
       A technical team member will review the submission within one business day.
     </p>
@@ -173,20 +177,27 @@ const turnstileSiteKey =
     const next = form.querySelector<HTMLButtonElement>('[data-next]');
     const submit = form.querySelector<HTMLButtonElement>('[data-submit]');
     const alert = form.querySelector<HTMLElement>('[data-form-alert]');
+    const routeContext = form.querySelector<HTMLElement>('[data-route-context]');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let currentStep = 0;
 
-    const showStep = (index: number) => {
+    const showStep = (index: number, focus = true) => {
       currentStep = index;
       steps.forEach((step, stepIndex) => {
         step.hidden = stepIndex !== index;
       });
       progress.forEach((item, stepIndex) => {
         item.classList.toggle('is-active', stepIndex <= index);
+        if (stepIndex === index) item.setAttribute('aria-current', 'step');
+        else item.removeAttribute('aria-current');
       });
       if (back) back.hidden = index === 0;
       if (next) next.hidden = index === steps.length - 1;
       if (submit) submit.hidden = index !== steps.length - 1;
-      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (focus) {
+        steps[index]?.querySelector<HTMLElement>('[data-step-heading]')?.focus();
+        form.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      }
     };
 
     const validateStep = () => {
@@ -204,6 +215,31 @@ const turnstileSiteKey =
       return true;
     };
 
+    const query = new URLSearchParams(window.location.search);
+    const mineral = query.get('mineral');
+    const routeNotes = query.get('routeNotes')?.trim();
+    const allowedMinerals = new Set([
+      'alluvial_gold',
+      'hard_rock_gold',
+      'tin',
+      'tungsten',
+      'chrome',
+      'other',
+    ]);
+    if (mineral && allowedMinerals.has(mineral)) {
+      const mineralInput = form.querySelector<HTMLInputElement>(
+        `input[name="mineral"][value="${CSS.escape(mineral)}"]`,
+      );
+      if (mineralInput) mineralInput.checked = true;
+    }
+    if (routeNotes) {
+      const message = form.querySelector<HTMLTextAreaElement>('textarea[name="message"]');
+      if (message && !message.value) {
+        message.value = `${routeNotes}\n\nAdditional project notes:\n`;
+      }
+      if (routeContext) routeContext.hidden = false;
+    }
+
     next?.addEventListener('click', () => {
       if (validateStep()) showStep(Math.min(currentStep + 1, steps.length - 1));
     });
@@ -217,6 +253,7 @@ const turnstileSiteKey =
       if (!validateStep() || !submit) return;
 
       submit.disabled = true;
+      form.setAttribute('aria-busy', 'true');
       submit.textContent = 'Submitting…';
       if (alert) alert.hidden = true;
 
@@ -240,7 +277,7 @@ const turnstileSiteKey =
         }
 
         form.innerHTML = `
-          <div class="success">
+          <div class="success" tabindex="-1">
             <span class="eyebrow">Project received</span>
             <h2>Thank you. Your project is in the review queue.</h2>
             <p>We will review it within one business day. Send assays, ore photos or videos to
@@ -248,6 +285,8 @@ const turnstileSiteKey =
               and include the reference <strong>${result.reference}</strong>.
             </p>
           </div>`;
+        form.removeAttribute('aria-busy');
+        form.querySelector<HTMLElement>('.success')?.focus();
       } catch (error) {
         if (alert) {
           alert.textContent =
@@ -256,6 +295,7 @@ const turnstileSiteKey =
               : 'The form could not be submitted. Please email inquiry@goldconcentrator.com.';
           alert.hidden = false;
         }
+        form.removeAttribute('aria-busy');
         submit.disabled = false;
         submit.textContent = 'Submit project';
       }
@@ -471,6 +511,20 @@ const turnstileSiteKey =
     border-left: 4px solid #a53c2e;
     color: #7a2c22;
     background: #fae8e3;
+  }
+
+  .route-context {
+    display: grid;
+    gap: 2px;
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    border-left: 4px solid var(--gold);
+    background: #f5ecd8;
+  }
+
+  .route-context span {
+    color: var(--muted);
+    font-size: 0.8rem;
   }
 
   :global(.success h2) {

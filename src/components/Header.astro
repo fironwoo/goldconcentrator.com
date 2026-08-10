@@ -9,6 +9,8 @@ const solutions = [
   ['Chrome', '/solutions/chrome/'],
   ['More Minerals', '/solutions/more-minerals/'],
 ];
+const currentPath = Astro.url.pathname;
+const isCurrent = (href: string) => currentPath === href;
 ---
 
 <header class="site-header" data-header>
@@ -21,19 +23,28 @@ const solutions = [
     </button>
     <nav id="site-nav" aria-label="Primary navigation">
       <div class="nav-group">
-        <button class="nav-trigger" type="button" aria-expanded="false">
+        <button
+          class="nav-trigger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="solutions-dropdown"
+        >
           Solutions <span>+</span>
         </button>
-        <div class="dropdown">
-          {solutions.map(([label, href]) => <a href={href}>{label}</a>)}
+        <div class="dropdown" id="solutions-dropdown">
+          {
+            solutions.map(([label, href]) => (
+              <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>{label}</a>
+            ))
+          }
         </div>
       </div>
-      <a href="/testing-process-design/">Testing & Process Design</a>
-      <a href="/projects/">Projects</a>
-      <a href="/knowledge/">Knowledge</a>
-      <a href="/manufacturing-delivery/">Manufacturing & Delivery</a>
-      <a href="/about/">About</a>
-      <a class="button header-cta" href="/assess-my-project/">Assess My Project</a>
+      <a href="/testing-process-design/" aria-current={isCurrent('/testing-process-design/') ? 'page' : undefined}>Testing & Process Design</a>
+      <a href="/projects/" aria-current={isCurrent('/projects/') ? 'page' : undefined}>Projects</a>
+      <a href="/knowledge/" aria-current={isCurrent('/knowledge/') ? 'page' : undefined}>Knowledge</a>
+      <a href="/manufacturing-delivery/" aria-current={isCurrent('/manufacturing-delivery/') ? 'page' : undefined}>Manufacturing & Delivery</a>
+      <a href="/about/" aria-current={isCurrent('/about/') ? 'page' : undefined}>About</a>
+      <a class="button header-cta" href="/assess-my-project/" aria-current={isCurrent('/assess-my-project/') ? 'page' : undefined}>Assess My Project</a>
     </nav>
   </div>
 </header>
@@ -43,17 +54,47 @@ const solutions = [
   const nav = document.querySelector<HTMLElement>('#site-nav');
   const trigger = document.querySelector<HTMLButtonElement>('.nav-trigger');
   const dropdown = document.querySelector<HTMLElement>('.dropdown');
+  const header = document.querySelector<HTMLElement>('[data-header]');
+
+  const closeSolutions = (returnFocus = false) => {
+    trigger?.setAttribute('aria-expanded', 'false');
+    dropdown?.classList.remove('is-open');
+    if (returnFocus) trigger?.focus();
+  };
+
+  const closeMenu = (returnFocus = false) => {
+    menu?.setAttribute('aria-expanded', 'false');
+    nav?.classList.remove('is-open');
+    closeSolutions();
+    if (returnFocus) menu?.focus();
+  };
 
   menu?.addEventListener('click', () => {
     const open = menu.getAttribute('aria-expanded') === 'true';
     menu.setAttribute('aria-expanded', String(!open));
     nav?.classList.toggle('is-open', !open);
+    if (open) closeSolutions();
   });
 
   trigger?.addEventListener('click', () => {
     const open = trigger.getAttribute('aria-expanded') === 'true';
     trigger.setAttribute('aria-expanded', String(!open));
     dropdown?.classList.toggle('is-open', !open);
+  });
+
+  nav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => closeMenu());
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Node) || header?.contains(event.target)) return;
+    closeMenu();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    if (dropdown?.classList.contains('is-open')) closeSolutions(true);
+    else if (nav?.classList.contains('is-open')) closeMenu(true);
   });
 </script>
 
@@ -94,6 +135,10 @@ const solutions = [
 
   nav > a:not(.header-cta):hover,
   .nav-trigger:hover {
+    color: var(--gold-light);
+  }
+
+  nav a[aria-current='page'] {
     color: var(--gold-light);
   }
 
