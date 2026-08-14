@@ -7,6 +7,9 @@ import ProjectCta from '../../components/ProjectCta.astro';
 const articles = (await getCollection('knowledge')).sort(
   (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
 );
+const publishedVideoCount = (await getCollection('videos')).filter(
+  (entry) => !entry.data.draft && (entry.data.videoFile || entry.data.youtubeUrl),
+).length;
 ---
 
 <BaseLayout
@@ -27,7 +30,20 @@ const articles = (await getCollection('knowledge')).sort(
   <section class="section">
     <div class="container article-grid">
       {articles.map((article) => (
-        <article class="surface-card">
+        <article class:list={['surface-card', { 'surface-card--media': article.data.coverImage }] }>
+          {
+            article.data.coverImage && (
+              <img
+                class="card-cover"
+                src={article.data.coverImage.src}
+                alt={article.data.coverImage.alt}
+                width="980"
+                height="680"
+                loading="lazy"
+                decoding="async"
+              />
+            )
+          }
           <span class="tag">{article.data.category}</span>
           <time datetime={article.data.publishedAt.toISOString()}>
             {article.data.publishedAt.toLocaleDateString('en', { dateStyle: 'medium' })}
@@ -38,6 +54,14 @@ const articles = (await getCollection('knowledge')).sort(
         </article>
       ))}
     </div>
+    {
+      publishedVideoCount > 0 && (
+        <div class="container video-entry">
+          <p>Prefer workshop footage to a long article?</p>
+          <a class="text-link" href="/videos/">View field and equipment videos</a>
+        </div>
+      )
+    }
   </section>
   <ProjectCta />
 </BaseLayout>
@@ -51,6 +75,34 @@ const articles = (await getCollection('knowledge')).sort(
 
   article {
     min-height: 340px;
+  }
+
+  .surface-card--media {
+    padding-top: 0;
+  }
+
+  .card-cover {
+    width: calc(100% + 56px);
+    aspect-ratio: 16 / 9;
+    margin: 0 -28px 24px;
+    object-fit: cover;
+    background: var(--charcoal);
+  }
+
+  .video-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 28px;
+    padding: 22px 26px;
+    border: 1px solid var(--line);
+    background: rgba(255, 253, 248, 0.72);
+  }
+
+  .video-entry p {
+    margin: 0;
+    color: var(--muted);
   }
 
   time {
@@ -71,6 +123,11 @@ const articles = (await getCollection('knowledge')).sort(
   @media (max-width: 700px) {
     .article-grid {
       grid-template-columns: 1fr;
+    }
+
+    .video-entry {
+      align-items: flex-start;
+      flex-direction: column;
     }
   }
 </style>

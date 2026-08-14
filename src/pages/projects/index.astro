@@ -28,7 +28,20 @@ const projects = (await getCollection('projects')).sort(
   <section class="section">
     <div class="container card-grid">
       {projects.map((project) => (
-        <article class="surface-card">
+        <article class:list={['surface-card', { 'surface-card--media': project.data.coverImage }] }>
+          {
+            project.data.coverImage && (
+              <img
+                class="card-cover"
+                src={project.data.coverImage.src}
+                alt={project.data.coverImage.alt}
+                width="980"
+                height="680"
+                loading="lazy"
+                decoding="async"
+              />
+            )
+          }
           <ul class="meta-list">
             <li class="tag">{project.data.country}</li>
             <li class="tag">{project.data.mineral}</li>
@@ -51,6 +64,18 @@ const projects = (await getCollection('projects')).sort(
 </BaseLayout>
 
 <style>
+  .surface-card--media {
+    padding-top: 0;
+  }
+
+  .card-cover {
+    width: calc(100% + 56px);
+    aspect-ratio: 16 / 9;
+    margin: 0 -28px 24px;
+    object-fit: cover;
+    background: var(--charcoal);
+  }
+
   h2 {
     margin: 28px 0 12px;
     font-family: var(--font-display);

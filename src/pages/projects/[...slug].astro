@@ -17,6 +17,7 @@ const { Content } = await render(entry);
 <BaseLayout
   title={entry.data.title}
   description={entry.data.description}
+  image={entry.data.coverImage?.src}
   type="article"
   noindex={!entry.data.verified}
 >
@@ -31,6 +32,20 @@ const { Content } = await render(entry);
   <section class="section">
     <div class="container content-shell">
       <article class="prose">
+        {
+          entry.data.coverImage && (
+            <figure class="case-cover">
+              <img
+                src={entry.data.coverImage.src}
+                alt={entry.data.coverImage.alt}
+                width="1200"
+                height="800"
+                loading="eager"
+                decoding="async"
+              />
+            </figure>
+          )
+        }
         <ul class="meta-list">
           <li class="tag">{entry.data.mineral}</li>
           <li class="tag">{entry.data.process}</li>
@@ -62,6 +77,17 @@ const { Content } = await render(entry);
 </BaseLayout>
 
 <style>
+  .case-cover {
+    margin: 0 0 30px;
+  }
+
+  .case-cover img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    margin: 0;
+    object-fit: cover;
+  }
+
   .review-list {
     display: grid;
     gap: 10px;

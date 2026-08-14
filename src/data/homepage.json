@@ -1,0 +1,20 @@
+{
+  "hero": {
+    "poster": "/images/hero-gravity-plant.webp",
+    "video": "",
+    "enableVideo": false,
+    "caption": "Authorized workshop reference: gravity concentration equipment prepared for delivery."
+  },
+  "primarySolutionMedia": {
+    "alluvialGold": {
+      "src": "/images/factory/gold-trommel-workshop.webp",
+      "alt": "Gold trommel washing and screening equipment in the workshop",
+      "caption": "Washing and screening duty"
+    },
+    "hardRockGold": {
+      "src": "/images/factory/rock-gold-field-installation.webp",
+      "alt": "Hard rock gold processing equipment during field installation",
+      "caption": "Liberation and gravity recovery"
+    }
+  }
+}

@@ -2,9 +2,18 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCta from '../components/ProjectCta.astro';
+import homepageData from '../data/homepage.json';
 import { getHomepageSolutionCards, getWhatsAppUrl, SITE } from '../lib/site';
 
-const solutionCards = getHomepageSolutionCards();
+const primarySolutionMedia = {
+  'alluvial-gold': homepageData.primarySolutionMedia.alluvialGold,
+  'hard-rock-gold': homepageData.primarySolutionMedia.hardRockGold,
+};
+const solutionCards = getHomepageSolutionCards().map((solution) => ({
+  ...solution,
+  media: primarySolutionMedia[solution.slug as keyof typeof primarySolutionMedia],
+}));
+const heroVideoActive = homepageData.hero.enableVideo && Boolean(homepageData.hero.video);
 const projects = (await getCollection('projects'))
   .sort((a, b) => Number(b.data.featured) - Number(a.data.featured))
   .slice(0, 3);
@@ -18,7 +27,46 @@ const articles = (await getCollection('knowledge'))
   description="Practical flowsheet design, gravity concentration testing, equipment coordination and delivery for 5-100 TPH gold, tin, tungsten and chrome projects."
 >
   <section class="hero">
-    <div class="hero-media" aria-hidden="true"></div>
+    <div class="hero-media">
+      {
+        heroVideoActive ? (
+          <video
+            data-hero-video
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster={homepageData.hero.poster}
+            aria-describedby="hero-media-caption"
+          >
+            <source src={homepageData.hero.video} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src={homepageData.hero.poster}
+            alt="Gravity concentration equipment prepared in the workshop"
+            width="1600"
+            height="900"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+        )
+      }
+    </div>
+    <div class="hero-media-tools">
+      <p id="hero-media-caption">
+        <strong>Workshop evidence</strong>
+        <span>{homepageData.hero.caption}</span>
+      </p>
+      {
+        heroVideoActive && (
+          <button class="hero-video-toggle" type="button" data-hero-video-toggle aria-pressed="false">
+            Pause video
+          </button>
+        )
+      }
+    </div>
     <div class="container hero-content">
       <span class="eyebrow">Gold processing and gravity concentration</span>
       <h1>The Right Equipment Starts With the Right Flowsheet.</h1>
@@ -122,8 +170,23 @@ const articles = (await getCollection('knowledge'))
             ]}
             href={`/solutions/${solution.slug}/`}
           >
-            <span>{String(index + 1).padStart(2, '0')}</span>
-            <div>
+            {
+              solution.media && (
+                <figure class="solution-card__media">
+                  <img
+                    src={solution.media.src}
+                    alt={solution.media.alt}
+                    width="980"
+                    height="680"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>{solution.media.caption}</figcaption>
+                </figure>
+              )
+            }
+            <span class="solution-card__number">{String(index + 1).padStart(2, '0')}</span>
+            <div class="solution-card__body">
               <small>{solution.category === 'gold' ? 'Primary gold route' : solution.category === 'more' ? 'Additional capability' : 'Gravity mineral'}</small>
               <h3>{solution.name}</h3>
               <p>{solution.summary}</p>
@@ -293,6 +356,33 @@ const articles = (await getCollection('knowledge'))
   <ProjectCta />
 </BaseLayout>
 
+<script>
+  const heroVideo = document.querySelector<HTMLVideoElement>('[data-hero-video]');
+  const heroVideoToggle = document.querySelector<HTMLButtonElement>('[data-hero-video-toggle]');
+
+  if (heroVideo && heroVideoToggle) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const updateVideoButton = () => {
+      const isPlaying = !heroVideo.paused;
+      heroVideoToggle.textContent = isPlaying ? 'Pause video' : 'Play video';
+      heroVideoToggle.setAttribute('aria-pressed', String(isPlaying));
+    };
+
+    if (!reducedMotion) {
+      heroVideo.play().catch(() => updateVideoButton());
+    }
+
+    updateVideoButton();
+    heroVideo.addEventListener('play', updateVideoButton);
+    heroVideo.addEventListener('pause', updateVideoButton);
+    heroVideoToggle.addEventListener('click', () => {
+      if (heroVideo.paused) heroVideo.play().catch(() => updateVideoButton());
+      else heroVideo.pause();
+    });
+  }
+</script>
+
 <style>
   .hero {
     position: relative;
@@ -305,10 +395,77 @@ const articles = (await getCollection('knowledge'))
   .hero-media {
     position: absolute;
     inset: 0;
+  }
+
+  .hero-media::after {
+    position: absolute;
+    inset: 0;
+    content: '';
     background:
       linear-gradient(90deg, rgba(18, 18, 17, 0.98) 0%, rgba(18, 18, 17, 0.82) 42%, rgba(18, 18, 17, 0.2) 76%, rgba(18, 18, 17, 0.42) 100%),
-      linear-gradient(0deg, rgba(18, 18, 17, 0.82), transparent 44%),
-      url('/images/hero-gravity-plant.webp') center / cover;
+      linear-gradient(0deg, rgba(18, 18, 17, 0.82), transparent 44%);
+  }
+
+  .hero-media img,
+  .hero-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-media-tools {
+    position: absolute;
+    z-index: 2;
+    right: max(20px, calc((100vw - var(--max)) / 2));
+    bottom: 26px;
+    display: flex;
+    max-width: 360px;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  .hero-media-tools p {
+    margin: 0;
+    padding: 12px 14px;
+    border-left: 2px solid var(--gold);
+    color: rgba(255, 253, 248, 0.68);
+    background: rgba(18, 18, 17, 0.72);
+    font-size: 0.7rem;
+    line-height: 1.45;
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-media-tools strong,
+  .hero-media-tools span {
+    display: block;
+  }
+
+  .hero-media-tools strong {
+    margin-bottom: 3px;
+    color: var(--gold-light);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .hero-video-toggle {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    color: var(--white);
+    background: rgba(18, 18, 17, 0.76);
+    cursor: pointer;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero-video-toggle:hover {
+    color: var(--ink);
+    background: var(--gold-light);
   }
 
   .hero-content {
@@ -519,11 +676,12 @@ const articles = (await getCollection('knowledge'))
   }
 
   .solution-card {
-    display: flex;
-    min-height: 260px;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 22px;
+    position: relative;
+    display: grid;
+    min-height: 330px;
+    grid-template-rows: auto 1fr;
+    gap: 48px;
+    padding: 28px;
     border: 1px solid var(--line);
     background: rgba(255, 253, 248, 0.72);
     transition:
@@ -533,9 +691,12 @@ const articles = (await getCollection('knowledge'))
   }
 
   .solution-card--primary {
-    min-height: 360px;
+    min-height: 390px;
     grid-column: span 2;
-    padding: 32px;
+    grid-template-columns: minmax(0, 0.9fr) minmax(230px, 1.1fr);
+    grid-template-rows: auto 1fr;
+    gap: 0;
+    padding: 0;
     color: var(--white);
     background:
       linear-gradient(140deg, rgba(211, 154, 56, 0.13), transparent 40%),
@@ -548,10 +709,77 @@ const articles = (await getCollection('knowledge'))
     transform: translateY(-4px);
   }
 
-  .solution-card > span {
+  .solution-card--primary:hover {
+    background: var(--charcoal-soft);
+  }
+
+  .solution-card__number {
     color: var(--gold);
     font-family: var(--font-display);
     font-size: 1.3rem;
+  }
+
+  .solution-card--primary .solution-card__number {
+    grid-column: 1;
+    padding: 30px 30px 0;
+  }
+
+  .solution-card__media {
+    position: relative;
+    grid-row: 1 / -1;
+    grid-column: 2;
+    min-height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: #151615;
+  }
+
+  .solution-card__media::after {
+    position: absolute;
+    inset: 0;
+    content: '';
+    background: linear-gradient(90deg, rgba(34, 35, 33, 0.26), transparent 50%);
+  }
+
+  .solution-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 360ms ease;
+  }
+
+  .solution-card:hover .solution-card__media img,
+  .solution-card:focus-visible .solution-card__media img {
+    transform: scale(1.035);
+  }
+
+  .solution-card__media figcaption {
+    position: absolute;
+    z-index: 1;
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    padding-top: 9px;
+    border-top: 1px solid rgba(255, 255, 255, 0.38);
+    color: var(--white);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .solution-card__body {
+    display: grid;
+    min-width: 0;
+    grid-template-rows: 1.25rem 3.9rem minmax(7.4rem, 1fr) auto;
+    align-content: start;
+  }
+
+  .solution-card--primary .solution-card__body {
+    grid-row: 2;
+    grid-column: 1;
+    grid-template-rows: auto auto 1fr auto;
+    padding: 24px 30px 30px;
   }
 
   .solution-card small {
@@ -562,7 +790,7 @@ const articles = (await getCollection('knowledge'))
   }
 
   .solution-card h3 {
-    margin: 8px 0 12px;
+    margin: 8px 0 0;
     font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 3.5rem);
     line-height: 0.95;
@@ -574,8 +802,13 @@ const articles = (await getCollection('knowledge'))
   }
 
   .solution-card p {
+    margin: 16px 0 20px;
     color: var(--muted);
     font-size: 0.86rem;
+    hyphens: auto;
+    text-align: justify;
+    text-align-last: left;
+    text-justify: inter-word;
   }
 
   .solution-card--primary p {
@@ -892,6 +1125,10 @@ const articles = (await getCollection('knowledge'))
       grid-template-columns: 1fr 1fr;
     }
 
+    .solution-card--primary {
+      grid-column: span 2;
+    }
+
     .response-grid {
       grid-template-columns: 1fr;
     }
@@ -911,13 +1148,24 @@ const articles = (await getCollection('knowledge'))
 
   @media (max-width: 640px) {
     .hero {
-      min-height: 790px;
+      min-height: 860px;
     }
 
-    .hero-media {
-      background:
-        linear-gradient(rgba(18, 18, 17, 0.84), rgba(18, 18, 17, 0.92)),
-        url('/images/hero-gravity-plant.webp') 67% center / cover;
+    .hero-media::after {
+      background: linear-gradient(rgba(18, 18, 17, 0.82), rgba(18, 18, 17, 0.94));
+    }
+
+    .hero-media img,
+    .hero-media video {
+      object-position: 67% center;
+    }
+
+    .hero-media-tools {
+      top: 94px;
+      right: 14px;
+      bottom: auto;
+      left: 14px;
+      max-width: none;
     }
 
     .hero-proof {
@@ -940,8 +1188,37 @@ const articles = (await getCollection('knowledge'))
     }
 
     .solution-card--primary {
-      min-height: 320px;
+      min-height: 0;
       grid-column: span 1;
+      grid-template-columns: 1fr;
+      grid-template-rows: 210px auto auto;
+    }
+
+    .solution-card__media {
+      grid-row: 1;
+      grid-column: 1;
+      min-height: 210px;
+    }
+
+    .solution-card--primary .solution-card__number {
+      grid-row: 2;
+      grid-column: 1;
+      padding-top: 24px;
+    }
+
+    .solution-card--primary .solution-card__body {
+      grid-row: 3;
+      grid-column: 1;
+      padding-top: 18px;
+    }
+
+    .solution-card:not(.solution-card--primary) {
+      min-height: 300px;
+      gap: 30px;
+    }
+
+    .solution-card__body {
+      grid-template-rows: auto auto auto auto;
     }
 
     .process li,

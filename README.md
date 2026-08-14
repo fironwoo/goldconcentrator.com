@@ -28,8 +28,12 @@ inquiry API.
 - `src/content/projects/`: anonymized cases. The included launch files are templates and remain
   `noindex` until `verified: true`.
 - `src/content/knowledge/`: weekly technical articles.
-- `src/content/videos/`: YouTube metadata. The included CMS guide is an internal draft.
+- `src/content/videos/`: YouTube or approved local MP4 metadata. The included CMS guide is an internal draft.
 - `src/data/site.json`: contact details and global site settings.
+- `src/data/homepage.json`: editable homepage poster, optional video and primary solution media.
+
+The Chinese beginner guide for image, video, project and article publishing is available at
+`docs/admin-media-guide.zh.md`.
 
 The admin interface is available at `/admin/` and is connected to
 `fironwoo/goldconcentrator.com`. Configure GitHub authentication for Sveltia CMS before using the

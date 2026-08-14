@@ -3,6 +3,7 @@ import {
   buildCanonicalUrl,
   getHomepageSolutionCards,
   getWhatsAppUrl,
+  getYouTubeEmbedUrl,
   truncateDescription,
 } from './site';
 
@@ -34,5 +35,12 @@ describe('site utilities', () => {
 
   it('builds a WhatsApp click URL from formatted international numbers', () => {
     expect(getWhatsAppUrl('+86 185 0797 7930')).toBe('https://wa.me/8618507977930');
+  });
+
+  it('builds privacy-enhanced YouTube embed URLs', () => {
+    expect(getYouTubeEmbedUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ')).toBe(
+      'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
+    );
+    expect(getYouTubeEmbedUrl('https://example.com/video')).toBeUndefined();
   });
 });

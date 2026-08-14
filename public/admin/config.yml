@@ -9,6 +9,20 @@ public_folder: /images/uploads
 publish_mode: editorial_workflow
 locale: zh_Hans
 
+media_libraries:
+  default:
+    config:
+      max_file_size: 26214400
+      slugify_filename: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 84
+          width: 2000
+          height: 2000
+        svg:
+          optimize: true
+
 slug:
   encoding: ascii
   clean_accents: true
@@ -32,6 +46,40 @@ collections:
           - { name: youtube, label: YouTube 地址, widget: string, required: false }
           - { name: description, label: 网站简介, widget: text }
           - { name: responsePromise, label: 回复承诺, widget: string }
+
+      - name: homepage
+        label: 首页图片与视频
+        file: src/data/homepage.json
+        format: json
+        fields:
+          - name: hero
+            label: 首页大图 / 视频 Banner
+            widget: object
+            hint: 没有视频时只显示封面图。上传 MP4 后再打开“启用视频”。建议 8–12 秒、无声音、不超过 12 MB。
+            fields:
+              - { name: poster, label: 封面图, widget: image }
+              - { name: video, label: MP4 视频, widget: file, required: false, accept: video/mp4,.mp4 }
+              - { name: enableVideo, label: 启用视频, widget: boolean, default: false }
+              - { name: caption, label: 素材说明, widget: string, hint: 说明这是工厂、试机、装车或现场素材，不冒充客户项目。 }
+          - name: primarySolutionMedia
+            label: 首页 Gold 主方案图片
+            widget: object
+            hint: 首页只保留两张主方案图片，其他矿种卡片保持轻量，以控制加载速度。
+            fields:
+              - name: alluvialGold
+                label: Alluvial Gold 图片
+                widget: object
+                fields:
+                  - { name: src, label: 图片, widget: image }
+                  - { name: alt, label: 图片内容说明（英文）, widget: string }
+                  - { name: caption, label: 图片下方短说明（英文）, widget: string }
+              - name: hardRockGold
+                label: Hard Rock Gold 图片
+                widget: object
+                fields:
+                  - { name: src, label: 图片, widget: image }
+                  - { name: alt, label: 图片内容说明（英文）, widget: string }
+                  - { name: caption, label: 图片下方短说明（英文）, widget: string }
 
   - name: solutions
     label: 矿种方案
@@ -96,6 +144,14 @@ collections:
       - { name: featured, label: 首页展示, widget: boolean, default: false }
       - { name: verified, label: 证据已核验并允许收录, widget: boolean, default: false }
       - { name: evidenceNote, label: 证据说明, widget: text }
+      - name: coverImage
+        label: 案例封面图
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { name: src, label: 图片, widget: image }
+          - { name: alt, label: 图片内容说明（英文）, widget: string }
       - { name: body, label: 正文, widget: markdown }
 
   - name: knowledge
@@ -114,6 +170,14 @@ collections:
       - { name: updatedAt, label: 更新日期, widget: datetime, time_format: false, required: false }
       - { name: featured, label: 重点文章, widget: boolean, default: false }
       - { name: youtubeUrl, label: 关联 YouTube, widget: string, required: false }
+      - name: coverImage
+        label: 文章封面图
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { name: src, label: 图片, widget: image }
+          - { name: alt, label: 图片内容说明（英文）, widget: string }
       - { name: body, label: 正文, widget: markdown }
 
   - name: videos
@@ -128,7 +192,16 @@ collections:
       - { name: title, label: 标题, widget: string }
       - { name: description, label: 摘要, widget: text }
       - { name: mineral, label: 关联矿种, widget: string }
-      - { name: youtubeUrl, label: YouTube 地址, widget: string }
+      - { name: youtubeUrl, label: YouTube 地址（可选）, widget: string, required: false }
+      - { name: videoFile, label: 本地 MP4（可选）, widget: file, required: false, accept: video/mp4,.mp4, hint: YouTube 和本地 MP4 二选一。建议较长视频仍使用 YouTube，避免 Git 仓库过大。 }
+      - name: posterImage
+        label: 视频封面图
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { name: src, label: 图片, widget: image }
+          - { name: alt, label: 图片内容说明（英文）, widget: string }
       - { name: publishedAt, label: 发布日期, widget: datetime, time_format: false }
       - { name: featured, label: 重点展示, widget: boolean, default: false }
       - { name: draft, label: 草稿, widget: boolean, default: true }

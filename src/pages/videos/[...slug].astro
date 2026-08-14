@@ -1,0 +1,93 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ProjectCta from '../../components/ProjectCta.astro';
+import { buildCanonicalUrl, getYouTubeEmbedUrl } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const entries = (await getCollection('videos')).filter(
+    (entry) => !entry.data.draft && (entry.data.videoFile || getYouTubeEmbedUrl(entry.data.youtubeUrl)),
+  );
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const embedUrl = getYouTubeEmbedUrl(entry.data.youtubeUrl);
+const videoSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: entry.data.title,
+  description: entry.data.description,
+  uploadDate: entry.data.publishedAt.toISOString(),
+  thumbnailUrl: entry.data.posterImage ? [buildCanonicalUrl(entry.data.posterImage.src)] : undefined,
+  contentUrl: entry.data.videoFile ? buildCanonicalUrl(entry.data.videoFile) : undefined,
+  embedUrl,
+};
+---
+
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  image={entry.data.posterImage?.src}
+  structuredData={videoSchema}
+>
+  <header class="page-hero video-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Videos', href: '/videos/' }, { label: entry.data.title }]} />
+      <span class="eyebrow">{entry.data.mineral}</span>
+      <h1>{entry.data.title}</h1>
+      <p>{entry.data.description}</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container content-shell">
+      <article class="prose video-content">
+        {
+          entry.data.videoFile ? (
+            <video controls playsinline preload="metadata" poster={entry.data.posterImage?.src}>
+              <source src={entry.data.videoFile} type="video/mp4" />
+              Your browser does not support HTML video.
+            </video>
+          ) : (
+            embedUrl && (
+              <iframe
+                src={embedUrl}
+                title={entry.data.title}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              />
+            )
+          )
+        }
+        <Content />
+      </article>
+      <aside class="sidebar">
+        <span class="eyebrow">Evidence boundary</span>
+        <h2>Use the footage as context, not a performance promise.</h2>
+        <p>
+          Equipment shown in one duty cannot confirm recovery, capacity or suitability for another
+          ore without representative project data.
+        </p>
+        <a class="button" href="/assess-my-project/">Send project data</a>
+      </aside>
+    </div>
+  </section>
+  <ProjectCta />
+</BaseLayout>
+
+<style>
+  .video-content video,
+  .video-content iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 0 0 34px;
+    border: 0;
+    background: var(--charcoal);
+    box-shadow: var(--shadow);
+  }
+</style>

@@ -7,6 +7,11 @@ const faqSchema = z.object({
   answer: z.string(),
 });
 
+const mediaSchema = z.object({
+  src: z.string(),
+  alt: z.string(),
+});
+
 const solutions = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/solutions' }),
   schema: z.object({
@@ -47,6 +52,7 @@ const projects = defineCollection({
     featured: z.boolean().default(false),
     verified: z.boolean().default(false),
     evidenceNote: z.string(),
+    coverImage: mediaSchema.optional(),
   }),
 });
 
@@ -60,6 +66,7 @@ const knowledge = defineCollection({
     updatedAt: z.coerce.date().optional(),
     featured: z.boolean().default(false),
     youtubeUrl: z.url().optional(),
+    coverImage: mediaSchema.optional(),
   }),
 });
 
@@ -69,7 +76,9 @@ const videos = defineCollection({
     title: z.string(),
     description: z.string(),
     mineral: z.string(),
-    youtubeUrl: z.url(),
+    youtubeUrl: z.url().optional(),
+    videoFile: z.string().optional(),
+    posterImage: mediaSchema.optional(),
     publishedAt: z.coerce.date(),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
