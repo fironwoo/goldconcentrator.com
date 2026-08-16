@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProjectCta from '../components/ProjectCta.astro';
 import homepageData from '../data/homepage.json';
 import { getHomepageSolutionCards, getWhatsAppUrl, SITE } from '../lib/site';
 
@@ -97,7 +96,6 @@ const articles = (await getCollection('knowledge'))
 
   <section class="principle">
     <div class="container principle-grid">
-      <span>01 / Site questions</span>
       <h2>What I check before naming equipment.</h2>
       <ul class="principle-checks">
         <li>
@@ -120,7 +118,6 @@ const articles = (await getCollection('knowledge'))
     <div class="container">
       <div class="section-heading">
         <div>
-          <span class="eyebrow">Human review</span>
           <h2>What happens after you send a message.</h2>
         </div>
         <p>
@@ -128,22 +125,39 @@ const articles = (await getCollection('knowledge'))
           first, then asks for the missing details before suggesting a practical route.
         </p>
       </div>
-      <div class="response-grid">
-        <article>
-          <span>01</span>
-          <h3>You send the rough facts</h3>
-          <p>Ore type, country, target TPH, feed size, photos, videos and any test or assay notes.</p>
+      <div class="response-desk">
+        <article class="response-desk__lead">
+          <span>Before I name any machine</span>
+          <h3>Send the rough facts, even when the project is incomplete.</h3>
+          <p>
+            A phone video of the ore and a short message are enough to begin. I will tell you which
+            missing facts can change the flowsheet and which details can wait.
+          </p>
+          <a class="text-link" href="/assess-my-project/">Prepare a project brief</a>
         </article>
-        <article>
-          <span>02</span>
-          <h3>We ask the useful questions</h3>
-          <p>Clay, water, power, existing equipment, project stage and where gold or heavy minerals are being lost.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>You get a route to discuss</h3>
-          <p>Usually within one business day: likely flowsheet, missing data, test needs and equipment roles.</p>
-        </article>
+        <ol class="response-sequence">
+          <li>
+            <span>01</span>
+            <div>
+              <h3>You send what is known</h3>
+              <p>Ore type, country, target TPH, feed size, photos, videos and any test or assay notes.</p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>I check the missing process facts</h3>
+              <p>Clay, water, power, existing equipment, project stage and where valuable mineral may be lost.</p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>We discuss a practical route</h3>
+              <p>Usually within one business day: likely flowsheet, missing data, test needs and equipment duties.</p>
+            </div>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
@@ -152,7 +166,6 @@ const articles = (await getCollection('knowledge'))
     <div class="container">
       <div class="section-heading">
         <div>
-          <span class="eyebrow">Mineral solutions</span>
           <h2>Start with your ore type.</h2>
         </div>
         <p>
@@ -202,7 +215,6 @@ const articles = (await getCollection('knowledge'))
     <div class="container">
       <div class="section-heading">
         <div>
-          <span class="eyebrow">How we work</span>
           <h2>From project data to shipment.</h2>
         </div>
         <p>
@@ -225,7 +237,6 @@ const articles = (await getCollection('knowledge'))
     <div class="container">
       <div class="section-heading">
         <div>
-          <span class="eyebrow">Workshop notes</span>
           <h2>Workshop, packing and delivery checks.</h2>
         </div>
         <p>
@@ -285,7 +296,6 @@ const articles = (await getCollection('knowledge'))
         </ul>
       </div>
       <div>
-        <span class="eyebrow">Testing before selection</span>
         <h2>Small test work is cheaper than a wrong plant.</h2>
         <p>
           If the ore facts are unclear, the first answer should be a test route, not a full
@@ -301,7 +311,6 @@ const articles = (await getCollection('knowledge'))
     <div class="container">
       <div class="section-heading">
         <div>
-          <span class="eyebrow">Selected project patterns</span>
           <h2>Case notes you can compare with your ore.</h2>
         </div>
         <p>
@@ -309,20 +318,22 @@ const articles = (await getCollection('knowledge'))
           then equipment duty. Use the closest case as a starting point for your own enquiry.
         </p>
       </div>
-      <div class="card-grid">
+      <div class="project-ledger">
         {projects.map((project) => (
-          <article class="surface-card project-card">
-            <ul class="meta-list">
-              <li class="tag">{project.data.country}</li>
-              <li class="tag">{project.data.capacity}</li>
-            </ul>
+          <article>
+            <div class="project-ledger__meta">
+              <span>{project.data.country}</span>
+              <strong>{project.data.capacity}</strong>
+            </div>
             <h3>
               <a class="project-title-link" href={`/projects/${project.id}/`}>
                 {project.data.title}
               </a>
             </h3>
-            <p>{project.data.description}</p>
-            <p class="project-card-note">Send similar ore photos and I will check what data is still missing.</p>
+            <div class="project-ledger__summary">
+              <p>{project.data.description}</p>
+              <small>Send similar ore photos and I will check what data is still missing.</small>
+            </div>
           </article>
         ))}
       </div>
@@ -333,7 +344,6 @@ const articles = (await getCollection('knowledge'))
     <div class="container">
       <div class="section-heading">
         <div>
-          <span class="eyebrow">Knowledge and field notes</span>
           <h2>Useful answers before a sales call.</h2>
         </div>
         <a class="text-link" href="/knowledge/">View all knowledge</a>
@@ -353,7 +363,6 @@ const articles = (await getCollection('knowledge'))
     </div>
   </section>
 
-  <ProjectCta />
 </BaseLayout>
 
 <script>
@@ -471,7 +480,7 @@ const articles = (await getCollection('knowledge'))
   .hero-content {
     position: relative;
     z-index: 1;
-    padding-top: 182px;
+    padding-top: 210px;
   }
 
   .hero h1 {
@@ -575,18 +584,11 @@ const articles = (await getCollection('knowledge'))
 
   .principle-grid {
     display: grid;
-    grid-template-columns: 0.25fr 1fr 1fr;
+    grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
     align-items: start;
-    gap: 48px;
+    gap: clamp(48px, 8vw, 110px);
     padding-top: 45px;
     padding-bottom: 45px;
-  }
-
-  .principle span {
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
   }
 
   .principle h2 {
@@ -630,43 +632,88 @@ const articles = (await getCollection('knowledge'))
   }
 
   .response-path {
-    background:
-      radial-gradient(circle at 12% 14%, rgba(211, 154, 56, 0.13), transparent 22%),
-      var(--paper);
+    padding: 118px 0 78px;
+    background: var(--paper);
   }
 
-  .response-grid {
+  .response-desk {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
+    grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+    align-items: stretch;
+    gap: clamp(32px, 7vw, 90px);
   }
 
-  .response-grid article {
-    min-height: 245px;
-    padding: 28px;
-    border: 1px solid var(--line);
-    background: rgba(255, 253, 248, 0.78);
-    box-shadow: 0 8px 30px rgba(29, 28, 25, 0.05);
+  .response-desk__lead {
+    padding: clamp(28px, 5vw, 50px);
+    border-top: 3px solid var(--gold);
+    color: var(--white);
+    background: var(--charcoal);
   }
 
-  .response-grid span {
+  .response-desk__lead > span {
+    color: var(--gold-light);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .response-desk__lead h3 {
+    margin: 38px 0 18px;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4.6rem);
+    line-height: 0.94;
+    text-transform: uppercase;
+  }
+
+  .response-desk__lead p {
+    margin: 0 0 26px;
+    color: rgba(255, 253, 248, 0.68);
+    font-size: 0.9rem;
+  }
+
+  .response-desk__lead .text-link {
+    color: var(--gold-light);
+  }
+
+  .response-sequence {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+    list-style: none;
+  }
+
+  .response-sequence li {
+    display: grid;
+    grid-template-columns: 62px 1fr;
+    gap: 24px;
+    padding: 25px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .response-sequence > li > span {
     color: var(--copper);
     font-family: var(--font-display);
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
-  .response-grid h3 {
-    margin: 46px 0 12px;
+  .response-sequence h3 {
+    margin: 0 0 8px;
     font-family: var(--font-display);
-    font-size: 2.1rem;
+    font-size: clamp(1.65rem, 3vw, 2.35rem);
     line-height: 1;
     text-transform: uppercase;
   }
 
-  .response-grid p {
+  .response-sequence p {
     margin: 0;
     color: var(--muted);
     font-size: 0.9rem;
+  }
+
+  #solutions {
+    padding-top: 104px;
+    padding-bottom: 118px;
   }
 
   .solution-grid {
@@ -813,6 +860,8 @@ const articles = (await getCollection('knowledge'))
 
   .solution-card--primary p {
     color: rgba(255, 253, 248, 0.65);
+    hyphens: none;
+    text-align: left;
   }
 
   .solution-card:hover p {
@@ -865,6 +914,8 @@ const articles = (await getCollection('knowledge'))
   }
 
   .workshop-evidence {
+    padding-top: 82px;
+    padding-bottom: 106px;
     background: var(--paper);
   }
 
@@ -911,6 +962,11 @@ const articles = (await getCollection('knowledge'))
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 80px;
+  }
+
+  .testing {
+    padding-top: 118px;
+    padding-bottom: 118px;
   }
 
   .testing h2 {
@@ -961,114 +1017,70 @@ const articles = (await getCollection('knowledge'))
     color: var(--ink);
   }
 
-  .testing-visual {
-    position: relative;
-    min-height: 430px;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    background:
-      radial-gradient(circle at 24% 36%, rgba(182, 111, 50, 0.2), transparent 4%),
-      radial-gradient(circle at 64% 64%, rgba(211, 154, 56, 0.28), transparent 5%),
-      linear-gradient(135deg, var(--paper-deep), #c8b69d);
+  .projects {
+    padding-top: 78px;
+    padding-bottom: 114px;
   }
 
-  .testing-visual::before,
-  .testing-visual::after {
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    border: 1px solid rgba(34, 35, 33, 0.2);
-    border-radius: 50%;
-    content: '';
+  .project-ledger {
+    border-top: 2px solid var(--ink);
   }
 
-  .testing-visual::before {
-    top: -80px;
-    left: -60px;
-    box-shadow: 0 0 0 42px rgba(34, 35, 33, 0.03);
+  .project-ledger article {
+    display: grid;
+    grid-template-columns: 150px minmax(240px, 1fr) minmax(280px, 0.85fr);
+    align-items: start;
+    gap: clamp(24px, 5vw, 68px);
+    padding: 30px 0;
+    border-bottom: 1px solid var(--line);
   }
 
-  .testing-visual::after {
-    right: -40px;
-    bottom: -110px;
-    box-shadow: 0 0 0 42px rgba(211, 154, 56, 0.1);
+  .project-ledger__meta {
+    display: grid;
+    gap: 5px;
   }
 
-  .testing-visual span,
-  .testing-visual strong,
-  .testing-visual em {
-    position: absolute;
-    font-family: var(--font-display);
-    font-style: normal;
+  .project-ledger__meta span {
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
   }
 
-  .testing-visual span {
-    top: 22px;
-    left: 22px;
-  }
-
-  .testing-visual strong {
-    top: 47%;
-    left: 42%;
-    font-size: 3.4rem;
-  }
-
-  .testing-visual em {
-    right: 22px;
-    bottom: 22px;
-    color: #725022;
-  }
-
-  .testing-lines {
-    position: absolute;
-    inset: 70px;
-    border: 2px dashed rgba(34, 35, 33, 0.24);
-    transform: rotate(-10deg);
-  }
-
-  .ore-dot {
-    position: absolute;
-    z-index: 2;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--ink);
-  }
-
-  .ore-dot--1 {
-    top: 110px;
-    left: 90px;
-  }
-
-  .ore-dot--2 {
-    top: 220px;
-    left: 230px;
-    background: var(--copper);
-  }
-
-  .ore-dot--3 {
-    right: 70px;
-    bottom: 80px;
-    width: 36px;
-    height: 36px;
-    background: var(--gold);
-  }
-
-  .project-card h3 {
-    margin-top: 28px;
-  }
-
-  .project-card-note {
-    margin-top: 18px;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
+  .project-ledger__meta strong {
     color: var(--copper);
-    font-size: 0.82rem;
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .project-ledger h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    line-height: 0.98;
+    text-transform: uppercase;
+  }
+
+  .project-ledger__summary p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .project-ledger__summary small {
+    display: block;
+    margin-top: 12px;
+    color: var(--copper);
+    font-size: 0.76rem;
     font-weight: 700;
   }
 
   .knowledge-preview {
+    padding-top: 108px;
+    padding-bottom: 118px;
     background: var(--paper-deep);
   }
 
@@ -1129,8 +1141,16 @@ const articles = (await getCollection('knowledge'))
       grid-column: span 2;
     }
 
-    .response-grid {
+    .response-desk {
       grid-template-columns: 1fr;
+    }
+
+    .project-ledger article {
+      grid-template-columns: 130px minmax(0, 1fr);
+    }
+
+    .project-ledger__summary {
+      grid-column: 2;
     }
 
     .workshop-grid {
@@ -1168,6 +1188,10 @@ const articles = (await getCollection('knowledge'))
       max-width: none;
     }
 
+    .hero-content {
+      padding-top: 270px;
+    }
+
     .hero-proof {
       gap: 18px;
       flex-direction: column;
@@ -1180,6 +1204,30 @@ const articles = (await getCollection('knowledge'))
 
     .principle-grid {
       gap: 20px;
+    }
+
+    .response-path,
+    #solutions,
+    .workshop-evidence,
+    .testing,
+    .projects,
+    .knowledge-preview {
+      padding-top: 68px;
+      padding-bottom: 68px;
+    }
+
+    .response-sequence li {
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+    }
+
+    .project-ledger article {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .project-ledger__summary {
+      grid-column: auto;
     }
 
     .solution-grid,

@@ -26,11 +26,13 @@
 }
 
 html {
+  overflow-x: clip;
   scroll-behavior: smooth;
   background: var(--paper);
 }
 
 body {
+  overflow-x: clip;
   margin: 0;
   color: var(--ink);
   background:
@@ -319,7 +321,7 @@ a {
 .page-hero {
   position: relative;
   overflow: hidden;
-  padding: 138px 0 74px;
+  padding: 206px 0 74px;
   color: var(--white);
   background:
     radial-gradient(circle at 80% 10%, rgba(211, 154, 56, 0.2), transparent 28%),

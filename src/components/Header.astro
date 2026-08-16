@@ -1,5 +1,6 @@
 ---
 import Logo from './Logo.astro';
+import { SITE } from '../lib/site';
 
 const solutions = [
   ['Alluvial Gold', '/solutions/alluvial-gold/'],
@@ -14,14 +15,30 @@ const isCurrent = (href: string) => currentPath === href;
 ---
 
 <header class="site-header" data-header>
-  <div class="container header-inner">
+  <div class="header-utility">
+    <div class="container header-utility__inner">
+      <span>Gravity concentration process desk</span>
+      <div>
+        <span>{SITE.responsePromise}</span>
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      </div>
+    </div>
+  </div>
+  <div class="container header-masthead">
     <Logo light />
+    <p class="header-desk-note">
+      <strong>Ore-led process review</strong>
+      <span>Gold, tin, tungsten and chrome / 5–100 TPH</span>
+    </p>
+    <a class="button header-cta" href="/assess-my-project/" aria-current={isCurrent('/assess-my-project/') ? 'page' : undefined}>Start project review</a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
       <span>Menu</span>
       <i></i>
       <i></i>
     </button>
-    <nav id="site-nav" aria-label="Primary navigation">
+  </div>
+  <div class="header-route-bar">
+    <nav class="container" id="site-nav" aria-label="Primary navigation">
       <div class="nav-group">
         <button
           class="nav-trigger"
@@ -44,7 +61,7 @@ const isCurrent = (href: string) => currentPath === href;
       <a href="/knowledge/" aria-current={isCurrent('/knowledge/') ? 'page' : undefined}>Knowledge</a>
       <a href="/manufacturing-delivery/" aria-current={isCurrent('/manufacturing-delivery/') ? 'page' : undefined}>Manufacturing & Delivery</a>
       <a href="/about/" aria-current={isCurrent('/about/') ? 'page' : undefined}>About</a>
-      <a class="button header-cta" href="/assess-my-project/" aria-current={isCurrent('/assess-my-project/') ? 'page' : undefined}>Assess My Project</a>
+      <a class="button mobile-cta" href="/assess-my-project/" aria-current={isCurrent('/assess-my-project/') ? 'page' : undefined}>Start project review</a>
     </nav>
   </div>
 </header>
@@ -105,35 +122,93 @@ const isCurrent = (href: string) => currentPath === href;
     top: 0;
     right: 0;
     left: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-    background: linear-gradient(rgba(20, 21, 20, 0.84), rgba(20, 21, 20, 0.52));
+    color: var(--white);
+    background: rgba(20, 21, 20, 0.9);
     backdrop-filter: blur(12px);
   }
 
-  .header-inner {
+  .header-utility {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+    color: rgba(255, 253, 248, 0.68);
+    background: rgba(8, 9, 8, 0.34);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .header-utility__inner {
     display: flex;
-    min-height: 78px;
+    min-height: 31px;
     align-items: center;
     justify-content: space-between;
-    gap: 28px;
+    gap: 20px;
+  }
+
+  .header-utility__inner div {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .header-utility a {
+    color: var(--gold-light);
+    letter-spacing: 0.04em;
+    text-transform: none;
+  }
+
+  .header-masthead {
+    display: grid;
+    min-height: 76px;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .header-desk-note {
+    display: grid;
+    justify-self: end;
+    padding-left: 22px;
+    border-left: 1px solid rgba(255, 255, 255, 0.16);
+    color: rgba(255, 253, 248, 0.66);
+    font-size: 0.7rem;
+    line-height: 1.55;
+    letter-spacing: 0.07em;
+  }
+
+  .header-desk-note strong {
+    color: var(--white);
+    font-size: 0.68rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .header-route-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.11);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(8, 9, 8, 0.33);
   }
 
   nav {
     display: flex;
+    min-height: 43px;
     align-items: center;
-    gap: 22px;
+    justify-content: space-between;
+    gap: 0;
     color: rgba(255, 253, 248, 0.84);
-    font-size: 0.72rem;
+    font-size: 0.67rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
   }
 
-  nav > a:not(.header-cta),
+  nav > a:not(.mobile-cta),
   .nav-trigger {
+    white-space: nowrap;
     transition: color 160ms ease;
   }
 
-  nav > a:not(.header-cta):hover,
+  nav > a:not(.mobile-cta):hover,
   .nav-trigger:hover {
     color: var(--gold-light);
   }
@@ -150,7 +225,7 @@ const isCurrent = (href: string) => currentPath === href;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 24px 0;
+    padding: 13px 0;
     border: 0;
     color: inherit;
     background: transparent;
@@ -160,7 +235,7 @@ const isCurrent = (href: string) => currentPath === href;
 
   .dropdown {
     position: absolute;
-    top: calc(100% - 7px);
+    top: 100%;
     left: -20px;
     display: grid;
     width: 230px;
@@ -192,10 +267,15 @@ const isCurrent = (href: string) => currentPath === href;
     transform: translateY(0);
   }
 
-  .header-cta {
+  .header-cta,
+  .mobile-cta {
     min-height: 40px;
     padding: 9px 14px;
     font-size: 0.66rem;
+  }
+
+  .mobile-cta {
+    display: none;
   }
 
   .menu-toggle {
@@ -207,14 +287,34 @@ const isCurrent = (href: string) => currentPath === href;
 
   @media (max-width: 1100px) {
     nav {
-      gap: 13px;
-      font-size: 0.64rem;
+      font-size: 0.59rem;
+    }
+
+    .header-masthead {
+      gap: 24px;
+    }
+
+    .header-desk-note {
+      font-size: 0.62rem;
     }
   }
 
   @media (max-width: 900px) {
     .site-header {
       position: absolute;
+    }
+
+    .header-utility,
+    .header-desk-note,
+    .header-cta,
+    .header-route-bar {
+      display: none;
+    }
+
+    .header-masthead {
+      display: flex;
+      min-height: 78px;
+      justify-content: space-between;
     }
 
     .menu-toggle {
@@ -251,13 +351,18 @@ const isCurrent = (href: string) => currentPath === href;
       gap: 0;
       padding: 18px 20px 24px;
       background: var(--charcoal);
+      text-transform: none;
     }
 
     nav.is-open {
       display: grid;
     }
 
-    nav > a:not(.header-cta),
+    .header-route-bar:has(nav.is-open) {
+      display: block;
+    }
+
+    nav > a:not(.mobile-cta),
     .nav-trigger {
       display: flex;
       width: 100%;
@@ -283,7 +388,8 @@ const isCurrent = (href: string) => currentPath === href;
       display: grid;
     }
 
-    .header-cta {
+    .mobile-cta {
+      display: flex;
       margin-top: 16px;
     }
   }
