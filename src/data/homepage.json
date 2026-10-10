@@ -1,18 +1,18 @@
 {
   "hero": {
-    "poster": "/images/hero-gravity-plant.webp",
+    "poster": "/images/uploads/banner-1.webp",
     "video": "",
     "enableVideo": false,
-    "caption": "Authorized workshop reference: gravity concentration equipment prepared for delivery."
+    "caption": "Real workshop view: large rotary mineral processing equipment during manufacturing preparation."
   },
   "primarySolutionMedia": {
     "alluvialGold": {
-      "src": "/images/factory/gold-trommel-workshop.webp",
+      "src": "/images/uploads/chatgpt-image-2026-9-7-10_33_38-2.webp",
       "alt": "Gold trommel washing and screening equipment in the workshop",
       "caption": "Washing and screening duty"
     },
     "hardRockGold": {
-      "src": "/images/factory/rock-gold-field-installation.webp",
+      "src": "/images/uploads/2.webp",
       "alt": "Hard rock gold processing equipment during field installation",
       "caption": "Liberation and gravity recovery"
     }

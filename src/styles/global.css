@@ -15,6 +15,8 @@
   --max: 1180px;
   --font-display: 'Bahnschrift Condensed', 'Arial Narrow', Impact, sans-serif;
   --font-body: 'Segoe UI', Arial, sans-serif;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-medium: 280ms;
 }
 
 * {

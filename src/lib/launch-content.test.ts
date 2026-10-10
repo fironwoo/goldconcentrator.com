@@ -66,6 +66,29 @@ describe('launch contact content', () => {
     expect(heroJob).toMatch(/sourceCrop: \{ left: \d+, top: \d+, width: ([6-9]\d{2}|\d{4,}), height:/);
   });
 
+  it('publishes the approved factory video with a real poster and evidence boundary', () => {
+    const video = readFileSync(
+      resolve(
+        process.cwd(),
+        'src/content/videos/real-mineral-processing-equipment-factory-tour-workshop-fabrication-assembly.md',
+      ),
+      'utf8',
+    );
+
+    expect(video).toContain('youtubeUrl: https://youtu.be/8xrSEmnUiwQ');
+    expect(video).toContain('draft: false');
+    expect(video).toContain('src: /images/uploads/banner-1.webp');
+    expect(video).toMatch(/not a recovery or capacity guarantee/i);
+  });
+
+  it('publishes AI-readable site guidance without overstating evidence', () => {
+    const llms = readFileSync(resolve(process.cwd(), 'public/llms.txt'), 'utf8');
+
+    expect(llms).toContain('# Gold Concentrator');
+    expect(llms).toContain('## Evidence policy');
+    expect(llms).toMatch(/not performance guarantees/i);
+  });
+
   it('keeps solution process illustration references backed by public assets', () => {
     const solutionDir = resolve(process.cwd(), 'src/content/solutions');
     const missingAssets: string[] = [];

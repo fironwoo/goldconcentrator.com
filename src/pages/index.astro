@@ -19,11 +19,18 @@ const projects = (await getCollection('projects'))
 const articles = (await getCollection('knowledge'))
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
   .slice(0, 3);
+const videos = (await getCollection('videos'))
+  .filter((entry) => !entry.data.draft && (entry.data.youtubeUrl || entry.data.videoFile))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+const featuredVideo = videos.find((entry) => entry.data.featured) ?? videos[0];
 ---
 
 <BaseLayout
-  title="Ore-Led Gold Processing & Gravity Concentration Solutions"
-  description="Practical flowsheet design, gravity concentration testing, equipment coordination and delivery for 5-100 TPH gold, tin, tungsten and chrome projects."
+  title="Gold Processing & Gravity Solutions"
+  description="Ore-led flowsheet design and gravity concentration equipment for 5-100 TPH gold, tin, tungsten and chrome projects."
+  image={homepageData.hero.poster}
+  imageWidth={1915}
+  imageHeight={821}
 >
   <section class="hero">
     <div class="hero-media">
@@ -43,9 +50,9 @@ const articles = (await getCollection('knowledge'))
         ) : (
           <img
             src={homepageData.hero.poster}
-            alt="Gravity concentration equipment prepared in the workshop"
-            width="1600"
-            height="900"
+            alt="Large rotary mineral processing equipment inside the Jiangxi workshop"
+            width="1915"
+            height="821"
             loading="eager"
             decoding="async"
             fetchpriority="high"
@@ -189,8 +196,8 @@ const articles = (await getCollection('knowledge'))
                   <img
                     src={solution.media.src}
                     alt={solution.media.alt}
-                    width="980"
-                    height="680"
+                    width="1672"
+                    height="941"
                     loading="lazy"
                     decoding="async"
                   />
@@ -249,6 +256,8 @@ const articles = (await getCollection('knowledge'))
           <img
             src="/images/factory/gold-trommel-workshop.webp"
             alt="Gold trommel screen in workshop before delivery"
+            width="980"
+            height="680"
             loading="lazy"
             decoding="async"
           />
@@ -261,6 +270,8 @@ const articles = (await getCollection('knowledge'))
           <img
             src="/images/factory/shaking-table-workshop.webp"
             alt="Shaking table workshop reference"
+            width="980"
+            height="680"
             loading="lazy"
             decoding="async"
           />
@@ -273,6 +284,8 @@ const articles = (await getCollection('knowledge'))
           <img
             src="/images/factory/screen-loading-delivery.webp"
             alt="Screen equipment loading and delivery preparation"
+            width="980"
+            height="680"
             loading="lazy"
             decoding="async"
           />
@@ -284,6 +297,39 @@ const articles = (await getCollection('knowledge'))
       </div>
     </div>
   </section>
+
+  {
+    featuredVideo && (
+      <section class="section workshop-video">
+        <div class="container workshop-video__layout">
+          <a
+            class="workshop-video__poster"
+            href={`/videos/${featuredVideo.id}/`}
+            aria-label={`Watch ${featuredVideo.data.title}`}
+          >
+            <img
+              src={featuredVideo.data.posterImage?.src ?? homepageData.hero.poster}
+              alt={featuredVideo.data.posterImage?.alt ?? 'Mineral processing equipment factory video'}
+              width="1915"
+              height="821"
+              loading="lazy"
+              decoding="async"
+            />
+            <span aria-hidden="true">Play factory video</span>
+          </a>
+          <div class="workshop-video__copy">
+            <span>Real workshop footage</span>
+            <h2>See fabrication and assembly before discussing a machine list.</h2>
+            <p>
+              The video shows equipment at different production stages. It is manufacturing
+              evidence, not a recovery or capacity guarantee for another ore.
+            </p>
+            <a class="text-link" href={`/videos/${featuredVideo.id}/`}>Watch with technical context</a>
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   <section class="testing section">
     <div class="container testing-grid">
@@ -393,6 +439,7 @@ const articles = (await getCollection('knowledge'))
 </script>
 
 <style>
+  /* Hallmark · macrostructure: Process Desk · tone: industrial editorial · anchor hue: mineral gold */
   .hero {
     position: relative;
     min-height: 790px;
@@ -957,6 +1004,77 @@ const articles = (await getCollection('knowledge'))
     font-size: 0.86rem;
   }
 
+  .workshop-video {
+    padding-top: 0;
+    padding-bottom: 112px;
+    background: var(--paper);
+  }
+
+  .workshop-video__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+    align-items: center;
+    gap: clamp(32px, 7vw, 92px);
+  }
+
+  .workshop-video__poster {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    background: var(--charcoal);
+    box-shadow: var(--shadow);
+  }
+
+  .workshop-video__poster img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform var(--dur-medium) var(--ease-out);
+  }
+
+  .workshop-video__poster span {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    padding: 12px 16px;
+    color: var(--ink);
+    background: var(--gold-light);
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .workshop-video__poster:hover img {
+    transform: scale(1.018);
+  }
+
+  .workshop-video__poster:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 4px;
+  }
+
+  .workshop-video__copy > span {
+    color: var(--copper);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .workshop-video__copy h2 {
+    margin: 14px 0 18px;
+    font-family: var(--font-display);
+    font-size: clamp(2.7rem, 5vw, 4.8rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  .workshop-video__copy p {
+    color: var(--muted);
+  }
+
   .testing-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1129,7 +1247,8 @@ const articles = (await getCollection('knowledge'))
 
   @media (max-width: 900px) {
     .principle-grid,
-    .testing-grid {
+    .testing-grid,
+    .workshop-video__layout {
       grid-template-columns: 1fr;
     }
 
@@ -1209,6 +1328,7 @@ const articles = (await getCollection('knowledge'))
     .response-path,
     #solutions,
     .workshop-evidence,
+    .workshop-video,
     .testing,
     .projects,
     .knowledge-preview {
@@ -1278,6 +1398,16 @@ const articles = (await getCollection('knowledge'))
 
     .process h3 {
       margin-top: 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .workshop-video__poster img {
+      transition: none;
+    }
+
+    .workshop-video__poster:hover img {
+      transform: none;
     }
   }
 </style>

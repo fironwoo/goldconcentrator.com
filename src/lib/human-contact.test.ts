@@ -46,6 +46,8 @@ describe('human contact cues', () => {
 
     expect(floatingContact).toContain('data-floating-contact');
     expect(floatingContact).toContain('data-floating-contact-close');
+    expect(floatingContact).toContain('data-floating-contact-dismiss');
+    expect(floatingContact).toContain('floatingContactDismiss?.addEventListener');
     expect(floatingContact).toContain("setAttribute('hidden', '')");
   });
 });

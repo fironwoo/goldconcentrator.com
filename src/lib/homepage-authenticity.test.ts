@@ -11,10 +11,11 @@ describe('homepage industrial authenticity without heavy media', () => {
     const source = homepage();
     const imageTags = source.match(/<img\b/g) || [];
 
-    expect(imageTags).toHaveLength(5);
-    expect(source.match(/loading="lazy"/g) || []).toHaveLength(4);
+    expect(imageTags).toHaveLength(6);
+    expect(source.match(/loading="lazy"/g) || []).toHaveLength(5);
     expect(source.match(/loading="eager"/g) || []).toHaveLength(1);
     expect(source).toContain('Workshop, packing and delivery checks');
+    expect(source).toContain('Watch with technical context');
   });
 
   it('keeps secondary solution copy aligned and justified', () => {
