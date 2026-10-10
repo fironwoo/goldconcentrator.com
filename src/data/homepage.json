@@ -1,8 +1,8 @@
 {
   "hero": {
     "poster": "/images/uploads/banner-1.webp",
-    "video": "",
-    "enableVideo": false,
+    "video": "https://youtu.be/8xrSEmnUiwQ",
+    "enableVideo": true,
     "caption": "Authorized workshop reference: gravity concentration equipment prepared for delivery."
   },
   "primarySolutionMedia": {
@@ -12,7 +12,7 @@
       "caption": "Washing and screening duty"
     },
     "hardRockGold": {
-      "src": "/images/factory/rock-gold-field-installation.webp",
+      "src": "/images/uploads/2.webp",
       "alt": "Hard rock gold processing equipment during field installation",
       "caption": "Liberation and gravity recovery"
     }
