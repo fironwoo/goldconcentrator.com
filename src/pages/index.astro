@@ -27,7 +27,7 @@ const featuredVideo = videos.find((entry) => entry.data.featured) ?? videos[0];
 
 <BaseLayout
   title="Gold Processing & Gravity Solutions"
-  description="Ore-led flowsheet design and gravity concentration equipment for 5-100 TPH gold, tin, tungsten and chrome projects."
+  description="Ore-led flowsheet design and gravity concentration equipment for 5-100 TPH gold, tin, tungsten and chrome projects worldwide."
   image={homepageData.hero.poster}
   imageWidth={1915}
   imageHeight={821}
@@ -182,13 +182,12 @@ const featuredVideo = videos.find((entry) => entry.data.featured) ?? videos[0];
       </div>
       <div class="solution-grid">
         {solutionCards.map((solution, index) => (
-          <a
+          <article
             class:list={[
               'solution-card',
               `solution-card--${solution.category}`,
               { 'solution-card--primary': index < 2 },
             ]}
-            href={`/solutions/${solution.slug}/`}
           >
             {
               solution.media && (
@@ -208,11 +207,11 @@ const featuredVideo = videos.find((entry) => entry.data.featured) ?? videos[0];
             <span class="solution-card__number">{String(index + 1).padStart(2, '0')}</span>
             <div class="solution-card__body">
               <small>{solution.category === 'gold' ? 'Primary gold route' : solution.category === 'more' ? 'Additional capability' : 'Gravity mineral'}</small>
-              <h3>{solution.name}</h3>
+              <h3><a class="solution-card__link" href={`/solutions/${solution.slug}/`}>{solution.name}</a></h3>
               <p>{solution.summary}</p>
               <strong>View solution →</strong>
             </div>
-          </a>
+          </article>
         ))}
       </div>
     </div>
@@ -396,14 +395,14 @@ const featuredVideo = videos.find((entry) => entry.data.featured) ?? videos[0];
       </div>
       <div class="article-list">
         {articles.map((article, index) => (
-          <a href={`/knowledge/${article.id}/`}>
+          <article>
             <span>{String(index + 1).padStart(2, '0')}</span>
             <div>
               <small>{article.data.category}</small>
-              <h3>{article.data.title}</h3>
+              <h3><a href={`/knowledge/${article.id}/`}>{article.data.title}</a></h3>
             </div>
             <b>→</b>
-          </a>
+          </article>
         ))}
       </div>
     </div>
@@ -803,6 +802,22 @@ const featuredVideo = videos.find((entry) => entry.data.featured) ?? videos[0];
     transform: translateY(-4px);
   }
 
+  .solution-card__link {
+    color: inherit;
+  }
+
+  .solution-card__link::after {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    content: '';
+  }
+
+  .solution-card:focus-within {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+  }
+
   .solution-card--primary:hover {
     background: var(--charcoal-soft);
   }
@@ -843,7 +858,7 @@ const featuredVideo = videos.find((entry) => entry.data.featured) ?? videos[0];
   }
 
   .solution-card:hover .solution-card__media img,
-  .solution-card:focus-visible .solution-card__media img {
+  .solution-card:focus-within .solution-card__media img {
     transform: scale(1.035);
   }
 
@@ -1206,7 +1221,8 @@ const featuredVideo = videos.find((entry) => entry.data.featured) ?? videos[0];
     border-top: 1px solid var(--line);
   }
 
-  .article-list a {
+  .article-list article {
+    position: relative;
     display: grid;
     grid-template-columns: 60px 1fr 40px;
     align-items: center;
@@ -1215,7 +1231,7 @@ const featuredVideo = videos.find((entry) => entry.data.featured) ?? videos[0];
     border-bottom: 1px solid var(--line);
   }
 
-  .article-list > a > span {
+  .article-list > article > span {
     color: var(--copper);
     font-family: var(--font-display);
     font-size: 1.3rem;
@@ -1236,12 +1252,27 @@ const featuredVideo = videos.find((entry) => entry.data.featured) ?? videos[0];
     text-transform: uppercase;
   }
 
+  .article-list h3 a {
+    color: inherit;
+  }
+
+  .article-list h3 a::after {
+    position: absolute;
+    inset: 0;
+    content: '';
+  }
+
+  .article-list article:focus-within {
+    outline: 3px solid var(--gold);
+    outline-offset: 4px;
+  }
+
   .article-list b {
     font-size: 1.6rem;
     transition: transform 160ms ease;
   }
 
-  .article-list a:hover b {
+  .article-list article:hover b {
     transform: translateX(6px);
   }
 
