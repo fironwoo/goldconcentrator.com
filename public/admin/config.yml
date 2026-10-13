@@ -7,7 +7,6 @@ backend:
 media_folder: public/images/uploads
 public_folder: /images/uploads
 publish_mode: editorial_workflow
-locale: zh_Hans
 
 media_libraries:
   default:
@@ -58,7 +57,7 @@ collections:
             hint: 没有视频时只显示封面图。上传 MP4 后再打开“启用视频”。建议 8–12 秒、无声音、不超过 12 MB。
             fields:
               - { name: poster, label: 封面图, widget: image }
-              - { name: video, label: MP4 视频, widget: file, required: false, accept: video/mp4,.mp4 }
+              - { name: video, label: MP4 视频, widget: file, required: false, accept: "video/mp4,.mp4" }
               - { name: enableVideo, label: 启用视频, widget: boolean, default: false }
               - { name: caption, label: 素材说明, widget: string, hint: 说明这是工厂、试机、装车或现场素材，不冒充客户项目。 }
           - name: primarySolutionMedia
@@ -193,7 +192,7 @@ collections:
       - { name: description, label: 摘要, widget: text }
       - { name: mineral, label: 关联矿种, widget: string }
       - { name: youtubeUrl, label: YouTube 地址（可选）, widget: string, required: false }
-      - { name: videoFile, label: 本地 MP4（可选）, widget: file, required: false, accept: video/mp4,.mp4, hint: YouTube 和本地 MP4 二选一。建议较长视频仍使用 YouTube，避免 Git 仓库过大。 }
+      - { name: videoFile, label: 本地 MP4（可选）, widget: file, required: false, accept: "video/mp4,.mp4", hint: YouTube 和本地 MP4 二选一。建议较长视频仍使用 YouTube，避免 Git 仓库过大。 }
       - name: posterImage
         label: 视频封面图
         widget: object
