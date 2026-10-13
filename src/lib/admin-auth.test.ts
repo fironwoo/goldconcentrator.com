@@ -10,7 +10,7 @@ describe('CMS GitHub authentication', () => {
     );
 
     expect(config.backend.base_url).toBe(
-      'https://sveltia-cms-auth.fironwoo.workers.dev',
+      'https://auth.goldconcentrator.com',
     );
   });
 
