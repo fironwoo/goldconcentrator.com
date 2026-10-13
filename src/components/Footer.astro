@@ -9,26 +9,26 @@ import { getWhatsAppUrl, SITE } from '../lib/site';
       <Logo light />
       <h2>Start with the ore.<br />Build the flowsheet.<br />Then size the equipment.</h2>
       <p>
-        Ore-led flowsheet design, gravity concentration testing and coordinated equipment delivery
-        for practical 5-100 TPH mineral processing projects.
+        Flowsheet development, gravity test work and equipment coordination for 5-100 TPH mineral
+        processing projects.
       </p>
     </div>
     <aside class="review-desk" aria-label="Project review contact">
       <div class="review-desk__status">
-        <span>Project review desk</span>
+        <span>Project enquiries</span>
         <strong>{SITE.responsePromise}</strong>
       </div>
       <p>Send the ore type, target capacity, feed size, country and any photos or test notes you already have.</p>
       <a class="review-desk__email" href={`mailto:${SITE.email}`}>{SITE.email}</a>
       <div class="review-desk__actions">
-        <a class="button" href="/assess-my-project/">Assess My Project</a>
+        <a class="button" href="/assess-my-project/">Request a Project Review</a>
         {SITE.whatsapp && <a class="button button--ghost" href={getWhatsAppUrl(SITE.whatsapp)}>WhatsApp</a>}
       </div>
       <small>{SITE.officeAddress}</small>
     </aside>
   </div>
   <div class="container footer-index">
-    <span>Browse the process desk</span>
+    <span>Explore</span>
     <nav aria-label="Footer navigation">
       <a href="/solutions/alluvial-gold/">Alluvial Gold</a>
       <a href="/solutions/hard-rock-gold/">Hard Rock Gold</a>

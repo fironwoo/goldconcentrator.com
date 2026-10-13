@@ -7,7 +7,7 @@ interface Props {
 }
 
 const {
-  title = 'Start with the ore, not a machine list.',
+  title = 'Tell us about your ore and project requirements.',
   text = 'Share the mineral, target capacity and what you already know about the feed. We will review the project within one business day.',
 } = Astro.props;
 ---
@@ -19,7 +19,7 @@ const {
       <p>{text}</p>
     </div>
     <div class="cta-actions">
-      <a class="button" href="/assess-my-project/">Assess My Project</a>
+      <a class="button" href="/assess-my-project/">Request a Project Review</a>
       <a class="button button--ghost" href={getWhatsAppUrl(SITE.whatsapp)}>WhatsApp</a>
     </div>
   </div>

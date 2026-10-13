@@ -14,11 +14,11 @@ describe('human contact cues', () => {
   it('makes the homepage feel handled by a real reviewer', () => {
     const homepage = readFileSync(resolve(process.cwd(), 'src/pages/index.astro'), 'utf8');
 
-    expect(homepage).toContain('A real person reviews every project message');
+    expect(homepage).toContain('We reply within one business day');
     expect(homepage).toContain('WhatsApp is fastest for photos and short videos');
     expect(homepage).toContain('What happens after you send a message');
-    expect(homepage).toContain('Tell me what you already have on site');
-    expect(homepage).toContain('I will not guess the flowsheet from a machine list');
+    expect(homepage).toContain('Tell us what you already have on site');
+    expect(homepage).toContain('We begin with the ore type');
     expect(homepage).toContain('Message us on WhatsApp</a>');
     expect(homepage).not.toContain('Message us on WhatsApp:');
   });
@@ -35,8 +35,8 @@ describe('human contact cues', () => {
     const assessmentPage = readFileSync(resolve(process.cwd(), 'src/pages/assess-my-project.astro'), 'utf8');
     const inquiryForm = readFileSync(resolve(process.cwd(), 'src/components/InquiryForm.astro'), 'utf8');
 
-    expect(assessmentPage).toContain('You can send an imperfect project brief');
-    expect(assessmentPage).toContain('What I look for first');
+    expect(assessmentPage).toContain('Tell us what you are processing');
+    expect(assessmentPage).toContain('Information we need first');
     expect(inquiryForm).toContain('Photos and short videos are useful');
     expect(inquiryForm).toContain('What are you trying to separate, and what is causing trouble?');
   });

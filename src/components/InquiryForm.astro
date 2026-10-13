@@ -12,7 +12,7 @@ const turnstileSiteKey =
 
   <div class="form-alert" data-form-alert role="alert" hidden></div>
   <div class="route-context" data-route-context hidden>
-    <strong>Your route-check notes are attached.</strong>
+    <strong>Your answers have been added to this form.</strong>
     <span>You can edit them before submitting the project.</span>
   </div>
 
@@ -84,8 +84,7 @@ const turnstileSiteKey =
   <fieldset data-step="1" hidden>
     <legend><span tabindex="-1" data-step-heading>What do you know about the ore?</span></legend>
     <p class="step-intro">
-      Estimates are acceptable. We use these answers to identify missing data, not to force a final
-      flowsheet from incomplete information.
+      Estimates are fine. They help us decide what information or testing is still needed.
     </p>
     <div class="form-grid">
       <label>
@@ -124,7 +123,7 @@ const turnstileSiteKey =
   <fieldset data-step="2" hidden>
     <legend><span tabindex="-1" data-step-heading>Where should we reply?</span></legend>
     <p class="step-intro">
-      A technical team member will review the submission within one business day.
+      Our process team will reply within one business day.
     </p>
     <div class="form-grid">
       <label>
@@ -279,7 +278,7 @@ const turnstileSiteKey =
         form.innerHTML = `
           <div class="success" tabindex="-1">
             <span class="eyebrow">Project received</span>
-            <h2>Thank you. Your project is in the review queue.</h2>
+            <h2>We have received your project details.</h2>
             <p>We will review it within one business day. Send assays, ore photos or videos to
               <a href="mailto:inquiry@goldconcentrator.com">inquiry@goldconcentrator.com</a>
               and include the reference <strong>${result.reference}</strong>.

@@ -1,6 +1,6 @@
 ---
-title: East Africa 200 TPH Alluvial Gold Washing Reference
-description: A high-throughput alluvial gold reference case for explaining screening, scrubber washing, gravity recovery and concentrate handling decisions.
+title: East Africa 200 TPH Alluvial Gold Wash Plant
+description: A high-throughput alluvial gold plant covering screening, scrubber washing, gravity recovery and concentrate handling.
 country: East Africa Region
 mineral: Alluvial gold
 capacity: 200 t/h
@@ -11,13 +11,13 @@ verified: false
 evidenceNote: Reference case prepared from user-supplied project notes. Keep noindex until source drawings, site permission and approved public wording are confirmed.
 ---
 
-## Project positioning
+## Project background
 
 This reference is useful for larger alluvial gold projects where the design conversation must cover the whole ore handling route: screening, washing, gravity recovery, concentrate cleaning, water balance and tailings handling.
 
 The supplied notes describe a 200 t/h alluvial gold line in the East Africa region. It is best used as a process-logic reference rather than a public performance case.
 
-## Known project facts
+## Feed and design basis
 
 - Mineral: alluvial gold
 - Location: East Africa region
@@ -26,7 +26,7 @@ The supplied notes describe a 200 t/h alluvial gold line in the East Africa regi
 - Slurry density after washing: approximately 30%-40% solids in the supplied notes
 - Main route: raw ore screening, trommel scrubber washing, centrifugal concentration and concentrate cleaning
 
-## Process route
+## Proposed flowsheet
 
 The useful public lesson is the sequence:
 
@@ -46,10 +46,10 @@ The source notes included amalgamation and mercury recovery system descriptions.
 
 For this website, the publishable process focus should remain screening, washing, gravity recovery and controlled concentrate cleaning.
 
-## Quotation and design lessons
+## What the equipment scope must include
 
 Large alluvial projects fail when washing, water and tailings are treated as afterthoughts. A high-throughput quotation should check screen cut size, scrubber retention, water consumption, pump duty, concentrate cleaning, tailings placement and spare parts before final equipment sizing.
 
-## Publication status
+## Data note
 
-No recovery percentage or final production result is published here. The page remains a reference case until approved evidence is available.
+Recovery and concentrate figures are omitted because verified operating records are not available.

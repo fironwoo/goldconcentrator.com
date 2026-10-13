@@ -39,7 +39,7 @@ describe('homepage industrial authenticity without heavy media', () => {
   it('replaces abstract landing-page language with practical ore questions', () => {
     const source = homepage();
 
-    expect(source).toContain('What I check before naming equipment');
+    expect(source).toContain('What we need before recommending equipment');
     expect(source).toContain('Clay and washing difficulty');
     expect(source).toContain('Feed size before and after screening');
     expect(source).toContain('Where the valuable mineral may be lost');

@@ -47,18 +47,18 @@ describe('solution pages follow the site first principles', () => {
     expect(checker).toContain('sessionStorage.setItem');
     expect(checker).toContain("prefers-reduced-motion: reduce");
     expect(checker).toContain('Continue with these notes');
-    expect(checker).toContain('This is not final equipment selection.');
+    expect(checker).toContain('Before equipment is sized');
   });
 
   it('turns solution pages into a technical review path with comparable evidence', () => {
     const page = read('src/pages/solutions/[...slug].astro');
 
-    expect(page).toContain('Check whether this route fits the ore.');
+    expect(page).toContain('When this flowsheet is a good starting point.');
     expect(page).toContain('The route may change when');
-    expect(page).toContain('Why equipment appears in the route');
-    expect(page).toContain('Case notes to compare with your ore');
-    expect(page).toContain('What a reviewer will return');
-    expect(page).toContain('We will not generate a final equipment package from capacity alone.');
+    expect(page).toContain('Equipment and its role');
+    expect(page).toContain('Compare feed conditions and flowsheet choices');
+    expect(page).toContain('Our initial reply includes');
+    expect(page).toContain('Final equipment sizing requires feed data');
   });
 
   it('carries route context into the project form without repeating mineral selection', () => {
@@ -78,7 +78,7 @@ describe('solution pages follow the site first principles', () => {
   it('keeps contact visible but avoids a fake live-chat signal or content obstruction', () => {
     const contact = read('src/components/FloatingContact.astro');
 
-    expect(contact).toContain('Manual review, not live chat');
+    expect(contact).toContain('Replies within one business day');
     expect(contact).toContain("sessionStorage.setItem(dismissalKey, 'true')");
     expect(contact).toContain('width: 44px');
     expect(contact).toContain('height: 44px');

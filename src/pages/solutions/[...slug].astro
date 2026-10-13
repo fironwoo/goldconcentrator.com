@@ -78,9 +78,9 @@ const faqSchema = {
     </div>
   </header>
 
-  <section class="reviewer-strip" aria-label="Manual process review">
+  <section class="reviewer-strip" aria-label="Process team review">
     <div class="container reviewer-strip__inner">
-      <span>Manual process review</span>
+      <span>Reviewed by our process team</span>
       <p>{profile.reviewerIntro}</p>
       <strong>First reply within one business day</strong>
     </div>
@@ -89,11 +89,11 @@ const faqSchema = {
   <section class="section ore-fit">
     <div class="container">
       <div class="ore-fit__heading">
-        <span class="eyebrow">Before a machine model</span>
-        <h2>Check whether this route fits the ore.</h2>
+        <span class="eyebrow">Before selecting equipment</span>
+        <h2>When this flowsheet is a good starting point.</h2>
         <p>
-          The mineral name is only the starting point. These conditions decide whether this page is
-          relevant or whether another test route is needed.
+          Clay, particle size, liberation and site conditions determine whether this flowsheet is
+          suitable.
         </p>
       </div>
       <div class="ore-fit__grid">
@@ -126,11 +126,11 @@ const faqSchema = {
         <Content />
 
         <section class="process-section" aria-labelledby="process-heading">
-          <span class="section-kicker">Indicative route, not a fixed package</span>
+          <span class="section-kicker">Typical flowsheet</span>
           <h2 id="process-heading">Typical process logic</h2>
           <p class="section-lead">
-            Open each stage to see the duty it performs. Test data can remove, add or change a
-            stage before equipment is sized.
+            Open each stage to see its function. The final sequence is adjusted after reviewing the
+            ore and test data.
           </p>
           <div class="process-list">
             {
@@ -150,11 +150,10 @@ const faqSchema = {
         </section>
 
         <section class="equipment-section" aria-labelledby="equipment-heading">
-          <span class="section-kicker">Duty before model number</span>
-          <h2 id="equipment-heading">Why equipment appears in the route</h2>
+          <span class="section-kicker">Equipment by process stage</span>
+          <h2 id="equipment-heading">Equipment and its role</h2>
           <p class="section-lead">
-            These are process duties, not a shopping list. Feed conditions and mass flow decide
-            whether a machine belongs in the final scope.
+            Each machine is selected for a defined feed size, throughput and separation task.
           </p>
           <div class="role-grid">
             {
@@ -172,11 +171,11 @@ const faqSchema = {
         {
           relatedProjects.length > 0 && (
             <section class="evidence-section" aria-labelledby="evidence-heading">
-              <span class="section-kicker">Comparable operating conditions</span>
-              <h2 id="evidence-heading">Case notes to compare with your ore</h2>
+              <span class="section-kicker">Related project references</span>
+              <h2 id="evidence-heading">Compare feed conditions and flowsheet choices</h2>
               <p class="section-lead">
-                A reference case shows how a previous scope was reasoned. It is not a design
-                recommendation for a different deposit.
+                Use these cases to compare feed conditions and flowsheet choices. Your final design
+                still requires project-specific data.
               </p>
               <div class="evidence-list">
                 {relatedProjects.map((project) => (
@@ -214,20 +213,20 @@ const faqSchema = {
       </article>
 
       <aside class="sidebar solution-sidebar">
-        <span class="eyebrow">Your first reply</span>
-        <h2>What a reviewer will return</h2>
+        <span class="eyebrow">What you will receive</span>
+        <h2>Our initial reply includes</h2>
         <ol>
           <li><b>01</b><span>The likely process direction from the facts supplied</span></li>
           <li><b>02</b><span>The missing data that could change the route</span></li>
           <li><b>03</b><span>Whether testing, sizing or a detailed scope should come next</span></li>
         </ol>
-        <p>We will not generate a final equipment package from capacity alone.</p>
+        <p>Final equipment sizing requires feed data, site conditions and, where necessary, test work.</p>
         <a class="button" href={assessmentUrl}>Continue project review</a>
       </aside>
     </div>
   </section>
 
-  <ProjectCta title={`Send the ore facts before we size the ${entry.data.title.toLowerCase()} route.`} />
+  <ProjectCta title={`Send us your ${entry.data.title.toLowerCase()} project details.`} />
 </BaseLayout>
 
 <style>

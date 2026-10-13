@@ -2,7 +2,7 @@
 import { getWhatsAppUrl, SITE } from '../lib/site';
 
 const whatsappUrl = `${getWhatsAppUrl(SITE.whatsapp)}?text=${encodeURIComponent(
-  'Hello, I would like a manual review of my mineral processing project. I can send ore photos and project notes.',
+  'Hello, I would like to discuss a mineral processing project. I can send ore photos and project notes.',
 )}`;
 ---
 
@@ -14,8 +14,8 @@ const whatsappUrl = `${getWhatsAppUrl(SITE.whatsapp)}?text=${encodeURIComponent(
     aria-controls="project-contact-panel"
     data-floating-contact-open
   >
-    <span>Project review</span>
-    <strong>Ask about your ore</strong>
+    <span>Need help with a project?</span>
+    <strong>Send your project details</strong>
   </button>
   <button
     class="floating-contact__dismiss"
@@ -35,11 +35,10 @@ const whatsappUrl = `${getWhatsAppUrl(SITE.whatsapp)}?text=${encodeURIComponent(
     >
       <span aria-hidden="true">X</span>
     </button>
-    <span class="floating-contact__label">Manual review, not live chat</span>
-    <strong>Talk to a process reviewer</strong>
+    <span class="floating-contact__label">Replies within one business day</span>
+    <strong>Talk to our process team</strong>
     <p>
-      Send ore photos, target TPH and country. A person reviews project messages within one
-      business day.
+      Send ore photos, target TPH and country. Our team replies within one business day.
     </p>
     <div class="floating-contact__actions">
       <a class="whatsapp" href={whatsappUrl}>WhatsApp</a>

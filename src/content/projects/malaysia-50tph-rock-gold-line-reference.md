@@ -1,6 +1,6 @@
 ---
-title: Malaysia 50 TPH Rock Gold Processing Line Reference
-description: A standard hard-rock gold reference case covering feeding, crushing, grinding, gravity concentration and smelting support.
+title: Malaysia 50 TPH Hard Rock Gold Processing Line
+description: A complete hard-rock gold line covering feeding, crushing, grinding, gravity concentration and smelting support.
 country: Malaysia
 mineral: Rock gold
 capacity: 50 TPH
@@ -11,13 +11,13 @@ verified: false
 evidenceNote: Reference case prepared from user-supplied project notes. Keep noindex until project records, client permission and approved public data are available.
 ---
 
-## Project positioning
+## Project background
 
 This is a more conventional hard-rock gold reference than the 30 TPH Australia fine-gold route because it includes grinding and a complete downstream gravity section.
 
 It is useful as the basis for a 50 TPH rock gold quotation checklist, especially when the client needs an integrated line rather than a single machine.
 
-## Known project facts
+## Feed and design basis
 
 - Mineral: rock gold
 - Location: Malaysia
@@ -26,7 +26,7 @@ It is useful as the basis for a 50 TPH rock gold quotation checklist, especially
 - Screening fractions: 0-10 mm, 10-35 mm and above 35 mm
 - Route: feeding, primary crushing, fine crushing, screening, grinding, gravity concentration and smelting
 
-## Process route
+## Proposed flowsheet
 
 The route described in the supplied notes is a complete hard-rock gold line:
 
@@ -40,7 +40,7 @@ The route described in the supplied notes is a complete hard-rock gold line:
 
 The supplied equipment scope included vibrating feeder, jaw crusher, fine jaw crusher, vibrating screen, double-roll crusher, grate-type ball mill, centrifugal concentrator, shaking table, sluice, slurry pump, water pump, belt conveyors and gold melting furnace.
 
-## Quotation and design lessons
+## What the equipment scope must include
 
 For this kind of 50 TPH hard-rock gold route, the quotation should not stop at the crushers or concentrators. It must include:
 
@@ -52,6 +52,6 @@ For this kind of 50 TPH hard-rock gold route, the quotation should not stop at t
 - Electrical control
 - Installation spares and site support
 
-## Publication status
+## Data note
 
-No recovery percentage, concentrate grade or commissioning result is published. Those figures should only be added when backed by test work, operating records and permission for public use.
+Recovery and concentrate figures are omitted because verified operating records are not available.

@@ -1,6 +1,6 @@
 ---
-title: Tanzania 10 TPH Tin Tungsten Gravity Reference
-description: A compact tin-tungsten alluvial reference case showing washing, classification, jig recovery and shaking table cleaning.
+title: Tanzania 10 TPH Tin-Tungsten Gravity Plant
+description: A compact alluvial tin-tungsten plant using washing, classification, jig recovery and shaking table cleaning.
 country: Tanzania
 mineral: Tungsten-tin ore
 capacity: 10 TPH
@@ -11,13 +11,13 @@ verified: false
 evidenceNote: Reference case prepared from user-supplied project notes. Keep noindex until source evidence, project permission and product data are confirmed.
 ---
 
-## Project positioning
+## Project background
 
 This reference is useful for explaining the difference between tin-tungsten alluvial ore and tin-tungsten rock ore. The supplied notes describe a small alluvial route with little clay and no need for crushing or preconcentration.
 
 For rock-type tin or tungsten ore, the route would normally require crushing, grinding and tighter classification before gravity recovery.
 
-## Known project facts
+## Feed and design basis
 
 - Mineral: tungsten-tin ore
 - Location: Tanzania
@@ -27,7 +27,7 @@ For rock-type tin or tungsten ore, the route would normally require crushing, gr
 - Target output size: 0-2 mm
 - Route: washing and gravity separation
 
-## Process route
+## Proposed flowsheet
 
 The supplied classification logic was:
 
@@ -40,10 +40,10 @@ The supplied classification logic was:
 
 The supplied notes listed GT0813 trommel screen, JT2-2 jig concentrator, 4500 shaking table and 3 inch water pump.
 
-## Quotation and design lessons
+## What the equipment scope must include
 
 Tin-tungsten projects should never be quoted before confirming whether the ore is alluvial or hard rock. Alluvial ore often centers on washing, classification, jigging and table cleaning. Hard-rock ore usually adds crushing, grinding, classification and sometimes magnetic separation depending on mineral association.
 
-## Publication status
+## Data note
 
-No grade upgrade, recovery percentage or product quality is published here. Those details should be added only when supported by assay data, sampling method and customer approval.
+Recovery and concentrate figures are omitted because verified operating records are not available.

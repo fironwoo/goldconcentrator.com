@@ -21,11 +21,11 @@ const assessmentUrl = `/assess-my-project/?mineral=${profile.formMineral}&source
   data-solution={solutionTitle}
 >
   <div class="route-check__intro">
-    <span class="eyebrow">Three-question route check</span>
-    <h2>Tell me how the material behaves.</h2>
+    <span class="eyebrow">Quick project check</span>
+    <h2>Tell us how the material behaves.</h2>
     <p>
-      These answers do not produce a final plant design. They help us identify the likely process
-      direction, the missing evidence and the first risk worth checking.
+      Your answers help us identify a likely flowsheet and the information still needed for an
+      equipment proposal.
     </p>
   </div>
 
@@ -82,10 +82,10 @@ const assessmentUrl = `/assess-my-project/?mineral=${profile.formMineral}&source
       <h3>What your answers point to</h3>
       <ul data-route-result-list></ul>
       <div class="route-result__boundary">
-        <strong>This is not final equipment selection.</strong>
-        <p>Representative data and site conditions still need to confirm the duty and machine size.</p>
+        <strong>Before equipment is sized</strong>
+        <p>We still need representative ore data and site conditions to confirm operating requirements and machine size.</p>
       </div>
-      <h4>What I would verify next</h4>
+      <h4>What we would verify next</h4>
       <ul>
         {profile.verificationNeeds.map((item) => <li>{item}</li>)}
       </ul>

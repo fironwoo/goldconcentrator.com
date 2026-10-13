@@ -10,13 +10,12 @@ import InquiryForm from '../components/InquiryForm.astro';
 >
   <header class="page-hero">
     <div class="container">
-      <Breadcrumbs items={[{ label: 'Assess My Project' }]} />
+      <Breadcrumbs items={[{ label: 'Request a Project Review' }]} />
       <span class="eyebrow">Initial review at no charge</span>
-      <h1>Assess My Project</h1>
+      <h1>Request a Project Review</h1>
       <p>
-        You can send an imperfect project brief. Tell us what you are processing, what is already
-        known and what is causing trouble. We will identify the likely route, missing information
-        and the next practical step.
+        Tell us what you are processing, your target capacity and what is not working. We will
+        reply with the missing questions and a recommended next step.
       </p>
     </div>
   </header>
@@ -24,9 +23,10 @@ import InquiryForm from '../components/InquiryForm.astro';
     <div class="container assessment-grid">
       <InquiryForm />
       <aside>
-        <span class="eyebrow">What I look for first</span>
+        <span class="eyebrow">Information we need first</span>
         <p class="reviewer-note">
-          A useful first reply comes from the ore facts, not from pushing a machine model.
+          The initial review focuses on the ore, capacity, feed size, utilities and existing
+          equipment.
         </p>
         <ol>
           <li><strong>Ore type</strong><span>Alluvial or rock, clay level, visible heavy minerals and feed size.</span></li>

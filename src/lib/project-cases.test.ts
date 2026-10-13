@@ -35,6 +35,16 @@ describe('supplied project reference cases', () => {
     }
   });
 
+  it('keeps internal evidence notes out of the public case template', () => {
+    const template = readFileSync(
+      resolve(process.cwd(), 'src/pages/projects/[...slug].astro'),
+      'utf8',
+    );
+
+    expect(template).not.toContain('Evidence status:');
+    expect(template).not.toContain('entry.data.evidenceNote');
+  });
+
   it('does not present mercury or amalgamation as a default recommended route', () => {
     const eastAfricaCase = readFileSync(
       resolve(projectDir, 'east-africa-200tph-alluvial-gold-reference.md'),

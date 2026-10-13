@@ -36,9 +36,9 @@ const unknown = (insight: string): RouteOption => ({
 export const solutionProfiles: Record<string, SolutionProfile> = {
   'alluvial-gold': {
     formMineral: 'alluvial_gold',
-    heroPrompt: 'Your route starts with clay behavior, feed size and the gold size distribution.',
+    heroPrompt: 'Clay content, feed size and gold particle size determine the washing and recovery circuit.',
     reviewerIntro:
-      'I first check whether the gold can reach a gravity separator in a clean, classified and stable feed.',
+      'We check whether washing and screening can deliver a clean, correctly sized feed to the gravity circuit.',
     suitableFor: [
       'Placer, river, beach or eluvial material containing liberated gold',
       'New wash plants and existing lines that are losing gold in a known size fraction',
@@ -133,14 +133,14 @@ export const solutionProfiles: Record<string, SolutionProfile> = {
     proofImage: {
       src: '/images/factory/gold-trommel-workshop.webp',
       alt: 'Large gold trommel being assembled in a mineral processing workshop',
-      caption: 'Workshop reference: trommel washing duty must still be sized from clay, feed and water conditions.',
+      caption: 'Trommel under assembly in our Jiangxi workshop. Drum size and screen openings are selected from feed, clay and water conditions.',
     },
   },
   'hard-rock-gold': {
     formMineral: 'hard_rock_gold',
-    heroPrompt: 'The route starts with gold association and liberation, not with a ball mill model.',
+    heroPrompt: 'Gold association and liberation determine the crushing, grinding and recovery circuit.',
     reviewerIntro:
-      'I first separate free-gold opportunities from sulphide-associated or refractory risks before discussing a machine package.',
+      'We separate free-gold opportunities from sulphide-associated or refractory risks before recommending equipment.',
     suitableFor: [
       'Primary or weathered rock where crushing and grinding duties need definition',
       'Projects assessing gravity recovery inside a controlled grinding circuit',
@@ -240,9 +240,9 @@ export const solutionProfiles: Record<string, SolutionProfile> = {
   },
   tin: {
     formMineral: 'tin',
-    heroPrompt: 'Tin recovery starts by separating placer logic from rock-ore liberation.',
+    heroPrompt: 'Placer and hard-rock tin ores require different front-end treatment and liberation steps.',
     reviewerIntro:
-      'I first check cassiterite liberation, fragility and fine losses before selecting jigs, spirals or tables.',
+      'We check cassiterite liberation, fragility and fine losses before selecting jigs, spirals or tables.',
     suitableFor: [
       'Placer tin requiring washing, classification and staged gravity recovery',
       'Rock tin where crushing, selective grinding and early coarse recovery need review',
@@ -305,7 +305,7 @@ export const solutionProfiles: Record<string, SolutionProfile> = {
     formMineral: 'tungsten',
     heroPrompt: 'Tungsten design starts by identifying the mineral and protecting it from overgrinding.',
     reviewerIntro:
-      'I first distinguish wolframite, scheelite and mixed ore, then check where fine losses and cleaning limits occur.',
+      'We distinguish wolframite, scheelite and mixed ore, then check where fine losses and cleaning limits occur.',
     suitableFor: [
       'Placer or rock tungsten with defined mineral identity and gravity response',
       'Circuits that can recover liberated coarse tungsten before selective regrinding',
@@ -366,9 +366,9 @@ export const solutionProfiles: Record<string, SolutionProfile> = {
   },
   chrome: {
     formMineral: 'chrome',
-    heroPrompt: 'Chrome design starts with liberation, Cr/Fe requirements and the material that must be rejected.',
+    heroPrompt: 'Chromite mineralogy, liberation and the target Cr/Fe ratio determine the separation circuit.',
     reviewerIntro:
-      'I first check whether the feed is primary ore, placer material or old tailings, then review clay, size and buyer specification.',
+      'We check whether the feed is primary ore, placer material or old tailings, then review clay, size and buyer specification.',
     suitableFor: [
       'Chromite ore or tailings with representative grade and size information',
       'Projects requiring washing, classification and staged gravity assessment',
@@ -429,9 +429,9 @@ export const solutionProfiles: Record<string, SolutionProfile> = {
   },
   'more-minerals': {
     formMineral: 'other',
-    heroPrompt: 'A density difference is only the start; mineral identity and liberation decide whether gravity is useful.',
+    heroPrompt: 'Mineral identity, liberation and density contrast determine whether gravity concentration is suitable.',
     reviewerIntro:
-      'I first check whether the valuable mineral can be identified, liberated and concentrated at a practical mass pull.',
+      'We check whether the valuable mineral can be identified, liberated and concentrated at a workable mass pull.',
     suitableFor: [
       'Tantalum-niobium, manganese, ilmenite, zircon and other heavy-mineral enquiries',
       'Projects with representative assays, mineral observations or an existing test history',

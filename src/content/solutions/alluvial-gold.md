@@ -58,6 +58,6 @@ Representative bulk samples and simple size-by-size observations are often more 
 
 ## Design around operating reality
 
-A practical route also accounts for seasonal water, generator capacity, excavator feeding, operator skill, spare-parts access and tailings placement. Modular equipment is valuable only when the modules form a balanced circuit.
+A complete flowsheet also accounts for seasonal water, generator capacity, excavator feeding, operator skill, spare-parts access and tailings placement. Modular equipment is valuable only when the modules form a balanced circuit.
 
 > Initial online guidance can define the likely route and missing data. Final equipment selection should follow representative material testing and confirmation of site conditions.

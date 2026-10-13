@@ -50,11 +50,10 @@ const { Content } = await render(entry);
           <li class="tag">{entry.data.mineral}</li>
           <li class="tag">{entry.data.process}</li>
         </ul>
-        <blockquote><strong>Evidence status:</strong> {entry.data.evidenceNote}</blockquote>
         <Content />
       </article>
       <aside class="sidebar">
-        <span class="eyebrow">Talk to a reviewer</span>
+        <span class="eyebrow">Project enquiries</span>
         <h2>Send ore photos and project notes</h2>
         <p>
           If your ore looks similar, send the mineral, target TPH, feed size, country and a few
@@ -65,7 +64,7 @@ const { Content } = await render(entry);
           <li>Target capacity and feed size</li>
           <li>Existing equipment or site limits</li>
         </ul>
-        <p class="review-note">A real person reviews the project within one business day.</p>
+        <p class="review-note">Our process team replies within one business day.</p>
         <div class="project-actions">
           <a class="button" href={getWhatsAppUrl(SITE.whatsapp)}>WhatsApp</a>
           <a class="text-link" href="/assess-my-project/">Use the form</a>

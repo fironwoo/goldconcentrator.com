@@ -1,6 +1,6 @@
 ---
-title: Australia 30 TPH Rock Gold Fine Recovery Reference
-description: A medium-small rock gold reference case focused on fine gold recovery, water circulation and a low-civil-work gravity route without a ball mill.
+title: Australia 30 TPH Fine Gold Recovery Circuit
+description: A 30 TPH rock gold circuit focused on fine gold recovery, water circulation and reduced civil work without a ball mill.
 country: Australia
 mineral: Rock gold
 capacity: 30 TPH
@@ -11,13 +11,13 @@ verified: false
 evidenceNote: Reference case prepared from user-supplied project notes. Keep noindex until quotation evidence, technical drawings and approval for public publication are confirmed.
 ---
 
-## Project positioning
+## Project background
 
 This reference is useful for rock gold clients who already have some front-end crushing and want a gravity-focused fine-gold recovery route with water recycling and limited civil work.
 
 The supplied notes describe a client who did not like using a ball mill. That constraint changes the process discussion: liberation and fine-gold recovery must be checked carefully before the route is treated as repeatable.
 
-## Known project facts
+## Feed and design basis
 
 - Mineral: rock gold
 - Location: Australia
@@ -26,7 +26,7 @@ The supplied notes describe a client who did not like using a ball mill. That co
 - Target liberation / recovery size noted: 0-2 mm
 - Client requirements: suitable for fine gold particles, tailings water circulation and lower civil construction cost
 
-## Process route
+## Proposed flowsheet
 
 The route described in the supplied notes follows:
 
@@ -42,7 +42,7 @@ The notes referenced a fine jaw crusher, high-pressure roller crusher, vibrating
 
 Specific quotation examples included PEX250 x 1200 fine jaw crusher, 800 x 600 high-pressure roller crusher, 4/3 inch slurry pump, 4500 shaking table, 60 centrifugal concentrator and 35A melting furnace.
 
-## Quotation and design lessons
+## What the equipment scope must include
 
 This type of project needs more confirmation than a simple equipment list:
 
@@ -54,6 +54,6 @@ This type of project needs more confirmation than a simple equipment list:
 - Pump duty and slurry handling
 - Installation spares and commissioning support
 
-## Publication status
+## Data note
 
-This is not a published performance claim. It is a reference structure for discussing a similar fine-gold gravity route when the ore has already been partially crushed.
+Recovery and concentrate figures are omitted because verified operating records are not available.
