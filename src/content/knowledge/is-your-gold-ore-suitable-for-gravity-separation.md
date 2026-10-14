@@ -2,7 +2,7 @@
 title: Is Your Gold Ore Suitable for Gravity Separation?
 description: Assess gold gravity-separation potential through gold occurrence, particle size, slurry conditions and representative tests before choosing a processing route.
 category: Gold Gravity Separation
-publishedAt: 2026-10-14
+publishedAt: 2024-10-14
 updatedAt: ''
 featured: false
 youtubeUrl: ''
