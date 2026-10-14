@@ -3,6 +3,8 @@ backend:
   repo: fironwoo/goldconcentrator.com
   branch: main
   base_url: https://auth.goldconcentrator.com
+  api_root: https://www.goldconcentrator.com/api/cms/github/rest/api/v3
+  graphql_api_root: https://www.goldconcentrator.com/api/cms/github/graphql
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
