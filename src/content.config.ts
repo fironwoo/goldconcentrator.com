@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { cmsOptional } from './lib/cms-values';
 
 const faqSchema = z.object({
   question: z.string(),
@@ -52,7 +53,7 @@ const projects = defineCollection({
     featured: z.boolean().default(false),
     verified: z.boolean().default(false),
     evidenceNote: z.string(),
-    coverImage: mediaSchema.optional(),
+    coverImage: cmsOptional(mediaSchema),
   }),
 });
 
@@ -63,10 +64,10 @@ const knowledge = defineCollection({
     description: z.string(),
     category: z.string(),
     publishedAt: z.coerce.date(),
-    updatedAt: z.coerce.date().optional(),
+    updatedAt: cmsOptional(z.coerce.date()),
     featured: z.boolean().default(false),
-    youtubeUrl: z.url().optional(),
-    coverImage: mediaSchema.optional(),
+    youtubeUrl: cmsOptional(z.url()),
+    coverImage: cmsOptional(mediaSchema),
   }),
 });
 
@@ -76,9 +77,9 @@ const videos = defineCollection({
     title: z.string(),
     description: z.string(),
     mineral: z.string(),
-    youtubeUrl: z.url().optional(),
-    videoFile: z.string().optional(),
-    posterImage: mediaSchema.optional(),
+    youtubeUrl: cmsOptional(z.url()),
+    videoFile: cmsOptional(z.string()),
+    posterImage: cmsOptional(mediaSchema),
     publishedAt: z.coerce.date(),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
