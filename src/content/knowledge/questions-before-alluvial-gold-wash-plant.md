@@ -2,8 +2,11 @@
 title: 7 Questions to Answer Before Buying an Alluvial Gold Wash Plant
 description: Seven practical questions that determine washing duty, classification, gravity recovery and the real size of an alluvial gold plant.
 category: Alluvial gold
-publishedAt: 2026-06-13
+publishedAt: 2024-06-13
+updatedAt: ''
 featured: true
+youtubeUrl: ''
+coverImage: null
 ---
 
 Buying a wash plant before answering basic ore and site questions usually shifts uncertainty into steel. The plant may still run, but it may wash the wrong way, classify at the wrong sizes or send most of the valuable fine fraction into tailings.
