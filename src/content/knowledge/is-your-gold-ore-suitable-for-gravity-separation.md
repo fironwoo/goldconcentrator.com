@@ -7,8 +7,8 @@ updatedAt: ''
 featured: false
 youtubeUrl: ''
 coverImage:
-  src: /images/uploads/chatgpt-2026-10-13-21_09_15.webp
-  alt: Illustrative view of washing, screening and gravity separation equipment for gold ore preparation.
+  src: /images/uploads/gold-ore-suitable-for-gravity-separation-1.webp
+  alt: from CC BY 2.0
 ---
 
 # Is Your Gold Ore Suitable for Gravity Separation?
@@ -19,6 +19,8 @@ For a mine owner, separate two decisions: whether to investigate a gravity stage
 
 ## Start with the gold-bearing particle
 
+![](/images/uploads/gold-ore-suitable-for-gravity-separation-1-1.webp "Microscopic Comparison of Exposed and Encapsulated Gold")
+
 Gravity concentration exploits the density contrast between gold and common silicate gangue, while particle size, shape and slurry properties affect separation.
 
 Gravity-recoverable gold, or GRG, includes liberated gold and high-grade composite particles that respond to gravity methods. Composite particles may respond to gravity concentration when their gold proportion provides sufficient particle density.
@@ -28,6 +30,8 @@ This distinction matters when interpreting a mineralogical report. Request a des
 The opposite boundary also deserves attention. A study of tailings-derived sulfide concentrates associated poor gravity recovery with fine particles and largely encapsulated gold. That finding concerns the tested concentrates; use it to frame a question about similar material, rather than to reject every sulfide-bearing ore.
 
 ## Measure gold distribution by size
+
+![](/images/uploads/gold-ore-suitable-for-gravity-separation-4.webp "Gold Particle Morphology and Photomicrographs")
 
 The size distribution of gold differs from the size distribution of the bulk ore. A screen analysis tells you how much material lies in each fraction; pair it with gold assays to determine where the metal lies.
 
@@ -40,6 +44,8 @@ Particle shape also deserves examination. Research on a grinding–gravity circu
 Ask the laboratory to explain the response of each size fraction under the proposed conditions. Avoid converting a quoted fine-particle capability into an expected recovery for the entire ore.
 
 ## Evaluate the prepared slurry
+
+![](/images/uploads/chatgpt-2026-10-13-21_09_15.webp "Rotary Drum Scrubber and Vibrating Screen at a Mineral Processing Site")
 
 Clay minerals can increase pulp viscosity and reduce centrifugal gold recovery. Evaluate the slurry after its intended washing, screening or grinding steps, rather than testing an unusually clean fraction without documenting the preparation.
 
