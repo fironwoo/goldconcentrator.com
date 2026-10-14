@@ -6,7 +6,9 @@ publishedAt: 2026-10-14
 updatedAt: ''
 featured: false
 youtubeUrl: ''
-coverImage: null
+coverImage:
+  src: /images/uploads/img_0993.webp
+  alt: Factory equipment photograph used in an unpublished save verification draft.
 ---
 
 Temporary save verification draft. This checks whether GitHub accepts the content commit.
