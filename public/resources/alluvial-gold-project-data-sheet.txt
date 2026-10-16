@@ -1,0 +1,80 @@
+GOLD CONCENTRATOR
+ALLUVIAL GOLD PROJECT DATA SHEET
+Version 1.0 | 16 October 2026
+
+Purpose: an initial project brief before discussing a wash plant quotation.
+This is not a sampling protocol, feasibility study or final plant design.
+Equipment duties and expected recovery require project-specific assessment.
+
+HOW TO USE
+Copy this file or open it in a text editor and type after each colon.
+Write UNKNOWN where information is unavailable. Label estimates as estimates.
+For each measurement, note the method, date and supporting report if available.
+Do not fill missing values with zero or assume visible gold is representative.
+
+1. PROJECT AND DUTY
+Project reference (no confidential customer name needed):
+Country / general region:
+Project stage (exploration / test work / new plant / existing plant):
+Material source (alluvial deposit / stockpile / tailings / other):
+Target dry-solids throughput (dry t/h):
+If throughput is wet tonnes, state moisture and how it was measured:
+Planned operating hours per day and days per week:
+Existing equipment and the scope to be supplied:
+
+2. FEED AND WASHING
+Normal largest feed size (mm):
+Occasional boulder size (mm) and how boulders are handled:
+Available feed size distribution (include sieve sizes and mass basis):
+Observed clay, sticky lumps or organic matter:
+What happens when representative material is soaked and gently agitated:
+How material will be excavated, delivered and fed:
+Seasonal or deposit variability already observed:
+
+3. GOLD AND TEST EVIDENCE
+Reported feed gold grade (g/t), if available:
+Sampling location, method, date and represented material:
+Laboratory / report reference and analytical method:
+Gold distribution by size fraction, if tested (sizes and units):
+Evidence for free gold or gold associated with other minerals:
+Previous gravity test conditions and feed / concentrate / tailings results:
+Any limitations or uncertainty noted by the laboratory:
+
+Do not infer deposit grade or plant recovery from a photograph, a pan result
+or an unrepresentative sample. A visual washing observation is not a recovery test.
+
+4. WATER, SLURRY AND POWER
+Available fresh water in the dry season (m3/h) and basis of estimate:
+Water source, pumping distance (m) and elevation difference (m):
+Whether water must be recycled and any available water quality results:
+Slurry flow (m3/h), if measured; keep separate from dry-solids throughput:
+Slurry solids concentration, if measured; specify % by mass or % by volume:
+Electricity supply (voltage / frequency / phases / available kW):
+Power reliability or generator constraints:
+
+5. SITE, DISCHARGE AND DELIVERY
+Available plant footprint and access restrictions:
+Oversize handling and disposal arrangement:
+Tailings placement, water return and applicable permit constraints:
+Required local safety standards and guarding / control requirements:
+Delivery destination and inland transport limitations:
+Required scope (equipment / structure / pumps / piping / electrics / spares):
+Installation or commissioning support required:
+Target timing and optional budget range:
+
+6. SUPPORTING MATERIAL AND OPEN QUESTIONS
+Representative photos or short videos available:
+Test reports, sieve results or existing layout available:
+Most important unanswered questions:
+Preferred private contact method:
+
+Keep personal, customer and sensitive site information out of public posts.
+Share completed sheets, reports and photos through an agreed private channel.
+
+You may use or share this blank sheet with a project team, laboratory or
+equipment supplier. No backlink or purchase is required.
+
+For a review by Gold Concentrator:
+Email: inquiry@goldconcentrator.com
+Project review: https://www.goldconcentrator.com/assess-my-project/
+Guide: https://www.goldconcentrator.com/knowledge/questions-before-alluvial-gold-wash-plant/
